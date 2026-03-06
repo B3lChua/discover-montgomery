@@ -15,332 +15,397 @@ body{font-family:'Inter',sans-serif;background:#0f172a;color:#e2e8f0;overflow:hi
 .leaflet-control-zoom{display:none}
 
 /* ── Header ── */
-.header{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:linear-gradient(180deg,rgba(15,23,42,.95) 0%,rgba(15,23,42,.7) 100%);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}
-.header-brand{display:flex;align-items:center;gap:12px}
-.header-brand h1{font-family:'Playfair Display',serif;font-size:22px;color:#fff;letter-spacing:-.5px}
-.header-brand span{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:2px;border-left:1px solid #334155;padding-left:12px}
-.header-actions{display:flex;gap:8px;align-items:center}
+.header{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:10px 24px;background:linear-gradient(180deg,rgba(15,23,42,.95) 0%,rgba(15,23,42,.7) 100%);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);height:54px}
+.header-brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.header-brand h1{font-family:'Playfair Display',serif;font-size:20px;color:#fff;letter-spacing:-.5px}
+.header-brand span{font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:2px;border-left:1px solid #334155;padding-left:12px}
+
+/* ── Search Bar (in header) ── */
+.search-wrap{flex:1;max-width:420px;margin:0 24px;position:relative}
+.search-wrap input{width:100%;padding:7px 14px 7px 32px;border-radius:20px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#e2e8f0;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:all .2s}
+.search-wrap input:focus{background:rgba(255,255,255,.1);border-color:rgba(214,158,46,.4)}
+.search-wrap input::placeholder{color:#64748b}
+.search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#64748b;font-size:13px;pointer-events:none}
+.search-dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;background:rgba(15,23,42,.97);border:1px solid rgba(255,255,255,.1);border-radius:10px;display:none;overflow:hidden;z-index:1100;backdrop-filter:blur(14px)}
+.search-dropdown.visible{display:block}
+.search-section-label{padding:8px 14px 4px;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#475569}
+.search-result{padding:9px 14px;cursor:pointer;font-size:13px;color:#94a3b8;display:flex;align-items:center;gap:10px;transition:all .15s}
+.search-result:hover,.search-result.highlighted{background:rgba(255,255,255,.06);color:#e2e8f0}
+.search-result-icon{width:22px;text-align:center;font-size:14px;flex-shrink:0}
+.search-result-sub{font-size:11px;color:#475569;margin-left:auto}
+
+/* ── Header Actions ── */
+.header-actions{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.story-icon-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#cbd5e1;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;position:relative}
+.story-icon-btn:hover{background:rgba(255,255,255,.1);color:#fff}
+.story-icon-btn .btn-tooltip{position:absolute;top:calc(100% + 8px);right:0;background:rgba(15,23,42,.95);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:5px 10px;font-size:11px;color:#94a3b8;white-space:nowrap;display:none;pointer-events:none}
+.story-icon-btn:hover .btn-tooltip{display:block}
+
+/* ── State Breadcrumb ── */
+.state-bar{position:fixed;top:54px;left:260px;right:0;z-index:997;padding:5px 20px;font-size:11px;color:#475569;background:rgba(15,23,42,.6);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.03);display:flex;align-items:center;gap:6px}
+.state-bar span{color:#64748b}
+.state-bar strong{color:#94a3b8;font-weight:500}
+.state-dot{width:6px;height:6px;border-radius:50%;display:inline-block}
 
 /* ── Buttons ── */
 .btn{padding:8px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#cbd5e1;font-size:13px;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s;font-weight:500}
 .btn:hover{background:rgba(255,255,255,.1);color:#fff}
-.btn.active{background:rgba(214,158,46,.15);border-color:rgba(214,158,46,.4);color:#d69e2e}
-.btn-story{background:linear-gradient(135deg,#d69e2e,#b7791f);color:#fff;border:none;font-weight:600}
-.btn-story:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(214,158,46,.3)}
-.btn-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.btn-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .btn-close:hover{background:rgba(255,255,255,.2)}
 
 /* ── Sidebar ── */
-.sidebar{position:fixed;top:60px;left:0;bottom:0;width:280px;z-index:999;background:rgba(15,23,42,.9);backdrop-filter:blur(16px);border-right:1px solid rgba(255,255,255,.06);overflow-y:auto;padding:20px 16px;transition:transform .3s}
-.sidebar h3{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:#64748b;margin-bottom:12px}
-.hood-list{list-style:none}
-.hood-item{padding:10px 12px;border-radius:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px;margin-bottom:2px;font-size:14px;color:#94a3b8}
+.sidebar{position:fixed;top:54px;left:0;bottom:0;width:260px;z-index:999;background:rgba(15,23,42,.92);backdrop-filter:blur(16px);border-right:1px solid rgba(255,255,255,.06);overflow-y:auto;padding:12px 14px;transition:transform .3s}
+.sidebar-section{border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px;margin-bottom:6px}
+.sidebar-section:last-child{border-bottom:none}
+.sidebar-toggle{width:100%;padding:8px 2px;text-align:left;background:none;border:none;color:#64748b;font-size:10px;text-transform:uppercase;letter-spacing:1.8px;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;transition:color .2s}
+.sidebar-toggle:hover{color:#cbd5e1}
+.toggle-icon{margin-left:auto;font-size:9px;transition:transform .2s;color:#475569}
+.sidebar-toggle.collapsed .toggle-icon{transform:rotate(-90deg)}
+.sidebar-section-content{max-height:600px;overflow:hidden;transition:max-height .3s ease-out}
+.sidebar-section-content.collapsed{max-height:0}
+.hood-list{list-style:none;margin-top:6px}
+.hood-item{padding:8px 10px;border-radius:6px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;margin-bottom:1px;font-size:13px;color:#94a3b8}
 .hood-item:hover{background:rgba(255,255,255,.05);color:#e2e8f0}
 .hood-item.active{background:rgba(214,158,46,.1);color:#d69e2e}
-.hood-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.legend{margin-top:24px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)}
-.legend-row{display:flex;align-items:center;gap:8px;font-size:12px;color:#64748b;margin-bottom:6px}
-.legend-color{width:12px;height:12px;border-radius:3px}
-.sidebar-footer{margin-top:24px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06);font-size:11px;color:#475569;line-height:1.6}
-.sidebar-footer a{color:#d69e2e;text-decoration:none}
-.layer-section{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)}
-.layer-btn{display:flex;align-items:center;gap:8px;width:100%;padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.06);background:transparent;color:#94a3b8;font-size:13px;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s;margin-bottom:4px;text-align:left}
+.hood-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ── Layer Buttons ── */
+.layer-btn-wrap{position:relative;display:flex;align-items:center;gap:0;margin-bottom:3px}
+.layer-btn-wrap .layer-btn{margin-bottom:0;flex:1}
+.layer-btn{display:flex;align-items:center;gap:8px;width:100%;padding:7px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.05);background:transparent;color:#94a3b8;font-size:12px;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s;text-align:left}
 .layer-btn:hover{background:rgba(255,255,255,.05);color:#e2e8f0}
 .layer-btn.active{background:rgba(214,158,46,.08);border-color:rgba(214,158,46,.3);color:#d69e2e}
-.layer-icon{width:8px;height:8px;border-radius:50%}
+.layer-icon{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.layer-tooltip{position:absolute;left:calc(100% + 6px);top:50%;transform:translateY(-50%);width:190px;background:rgba(15,23,42,.97);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:7px 10px;font-size:11px;color:#94a3b8;line-height:1.4;display:none;z-index:1100;pointer-events:none}
+.layer-btn-wrap:hover .layer-tooltip{display:block}
+
+/* ── Sidebar Footer Links ── */
+.sidebar-links{display:flex;gap:12px;padding:8px 2px;font-size:11px}
+.sidebar-links a{color:#475569;text-decoration:none;cursor:pointer;transition:color .2s}
+.sidebar-links a:hover{color:#d69e2e}
+
+/* ── Legend Popup ── */
+.legend-popup{position:fixed;bottom:80px;left:14px;width:230px;background:rgba(15,23,42,.97);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px;z-index:1001;display:none;backdrop-filter:blur(14px)}
+.legend-popup.visible{display:block;animation:fadeUp .2s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.legend-popup h4{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#64748b;margin-bottom:8px}
+.legend-row{display:flex;align-items:center;gap:8px;font-size:12px;color:#94a3b8;margin-bottom:5px}
+.legend-color{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+
+/* ── About Modal ── */
+.about-modal{position:fixed;inset:0;z-index:2500;background:rgba(15,23,42,.85);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center}
+.about-modal.visible{display:flex}
+.about-box{max-width:440px;background:rgba(15,23,42,.98);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:28px;position:relative}
+.about-box h3{font-family:'Playfair Display',serif;font-size:20px;color:#fff;margin-bottom:12px}
+.about-box p{font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:10px}
+.about-box a{color:#d69e2e;text-decoration:none}
+
+/* ── Insights Panel ── */
+.insights-panel{position:fixed;top:80px;left:50%;transform:translateX(-20%);z-index:996;max-width:460px;background:rgba(15,23,42,.94);backdrop-filter:blur(14px);border:1px solid rgba(214,158,46,.2);border-radius:10px;padding:12px 18px;display:none;align-items:flex-start;gap:10px;animation:fadeDown .25s ease-out}
+.insights-panel.visible{display:flex}
+@keyframes fadeDown{from{opacity:0;transform:translate(-20%,-6px)}to{opacity:1;transform:translate(-20%,0)}}
+.insights-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.insights-text{font-size:12px;color:#cbd5e1;line-height:1.5;flex:1}
+.insights-close{background:none;border:none;color:#64748b;cursor:pointer;font-size:14px;padding:0 0 0 8px;flex-shrink:0}
+.insights-close:hover{color:#fff}
 
 /* ── Detail Panel ── */
-.detail-panel{position:fixed;top:60px;right:0;bottom:0;width:420px;z-index:998;background:rgba(15,23,42,.95);backdrop-filter:blur(16px);border-left:1px solid rgba(255,255,255,.06);transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:0}
+.detail-panel{position:fixed;top:54px;right:0;bottom:0;width:400px;z-index:998;background:rgba(15,23,42,.96);backdrop-filter:blur(16px);border-left:1px solid rgba(255,255,255,.06);transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:0}
 .detail-panel.open{transform:translateX(0)}
-.detail-header{padding:24px 24px 0;position:relative}
-.detail-header h2{font-family:'Playfair Display',serif;font-size:24px;color:#fff;margin-bottom:4px}
-.detail-subtitle{font-size:13px;color:#64748b;margin-bottom:16px}
-.score-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600}
+.detail-header{padding:20px 20px 0;position:relative}
+.detail-header h2{font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:3px}
+.detail-subtitle{font-size:12px;color:#64748b;margin-bottom:12px}
+.detail-header-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.score-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:16px;font-size:11px;font-weight:600}
 .score-high{background:rgba(56,161,105,.15);color:#68d391}
 .score-mid{background:rgba(214,158,46,.15);color:#d69e2e}
 .score-low{background:rgba(229,62,62,.15);color:#fc8181}
+.btn-compare{padding:3px 10px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#64748b;font-size:11px;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s}
+.btn-compare:hover{background:rgba(214,158,46,.1);border-color:rgba(214,158,46,.3);color:#d69e2e}
 
 /* ── Tabs ── */
-.tabs{display:flex;gap:0;padding:16px 24px 0;border-bottom:1px solid rgba(255,255,255,.06);overflow-x:auto}
-.tab{padding:10px 14px;font-size:12px;font-weight:500;color:#64748b;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap}
+.tabs{display:flex;gap:0;padding:14px 20px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.tab{padding:8px 16px;font-size:12px;font-weight:500;color:#64748b;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap}
 .tab:hover{color:#cbd5e1}
 .tab.active{color:#d69e2e;border-bottom-color:#d69e2e}
-.tab-content{padding:20px 24px 24px;display:none}
+.tab-content{padding:16px 20px 20px;display:none}
 .tab-content.active{display:block}
 
-/* ── Card Components ── */
-.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
-.stat-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px}
-.stat-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:4px}
-.stat-value{font-size:22px;font-weight:700;color:#fff}
-.stat-change{font-size:12px;margin-top:2px}
+/* ── Stat Cards ── */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.stat-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:12px}
+.stat-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:3px}
+.stat-value{font-size:20px;font-weight:700;color:#fff}
+.stat-change{font-size:11px;margin-top:1px}
 .stat-change.positive{color:#68d391}
 .stat-change.negative{color:#fc8181}
-.insight-box{background:rgba(214,158,46,.08);border:1px solid rgba(214,158,46,.2);border-radius:10px;padding:14px;margin-top:16px;font-size:13px;color:#d69e2e;line-height:1.6}
-.insight-box strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;color:#b7791f}
-.chart-container{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:16px;margin-top:16px}
-.chart-container h4{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:12px}
+.insight-box{background:rgba(214,158,46,.08);border:1px solid rgba(214,158,46,.2);border-radius:8px;padding:12px;margin-top:14px;font-size:12px;color:#d69e2e;line-height:1.5}
+.insight-box strong{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;color:#b7791f}
+.chart-container{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:14px;margin-top:14px}
+.chart-container h4{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:10px}
+canvas{max-width:100%!important;max-height:180px!important}
+
+/* ── Section Headers ── */
+.section-head{font-size:12px;font-weight:600;color:#cbd5e1;margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+.section-head::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06)}
 
 /* ── Restaurant Cards ── */
-.restaurant-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px;margin-bottom:8px}
-.restaurant-name{font-weight:600;color:#fff;font-size:14px;margin-bottom:4px}
-.restaurant-meta{display:flex;gap:12px;font-size:12px;color:#64748b}
+.restaurant-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:12px;margin-bottom:6px}
+.restaurant-name{font-weight:600;color:#fff;font-size:13px;margin-bottom:3px}
+.restaurant-meta{display:flex;gap:10px;font-size:11px;color:#64748b}
 .restaurant-rating{color:#d69e2e;font-weight:600}
-.restaurant-cuisine{color:#94a3b8}
-.restaurant-price{color:#94a3b8}
-.restaurant-note{font-size:12px;color:#64748b;margin-top:6px;font-style:italic}
-.parking-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:12px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
-.parking-name{font-size:13px;color:#e2e8f0}
-.parking-info{font-size:12px;color:#64748b;text-align:right}
+.restaurant-note{font-size:11px;color:#64748b;margin-top:4px;font-style:italic}
 
-/* ── Landmark List ── */
-.landmark{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+/* ── Parking Cards ── */
+.parking-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:10px;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center}
+.parking-name{font-size:12px;color:#e2e8f0}
+.parking-info{font-size:11px;color:#64748b;text-align:right}
+
+/* ── Landmarks ── */
+.landmark{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04)}
 .landmark:last-child{border-bottom:none}
-.landmark-icon{width:36px;height:36px;border-radius:8px;background:rgba(214,158,46,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
-.landmark-name{font-size:14px;color:#e2e8f0;font-weight:500}
-.landmark-desc{font-size:12px;color:#64748b;margin-top:2px;line-height:1.5}
+.landmark-icon{width:32px;height:32px;border-radius:8px;background:rgba(214,158,46,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
+.landmark-name{font-size:13px;color:#e2e8f0;font-weight:500}
+.landmark-desc{font-size:11px;color:#64748b;margin-top:1px;line-height:1.4}
 
-/* ── Parks/Trails ── */
-.space-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.space-name{font-size:13px;color:#e2e8f0}
-.space-type{font-size:11px;color:#64748b}
-.utilization-bar{width:80px;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
+/* ── Spaces ── */
+.space-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.space-name{font-size:12px;color:#e2e8f0}
+.space-type{font-size:10px;color:#64748b}
+.utilization-bar{width:70px;height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
 .utilization-fill{height:100%;border-radius:3px;transition:width .5s}
 
-/* ── Story Overlay ── */
-.story-overlay{position:fixed;inset:0;z-index:2000;background:rgba(15,23,42,.98);backdrop-filter:blur(20px);transform:translateY(100%);transition:transform .5s cubic-bezier(.4,0,.2,1);overflow-y:auto}
-.story-overlay.open{transform:translateY(0)}
-.story-content{max-width:720px;margin:0 auto;padding:80px 32px 120px}
-.story-era{margin-bottom:64px}
-.story-era-label{font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#d69e2e;margin-bottom:8px}
-.story-era h2{font-family:'Playfair Display',serif;font-size:36px;color:#fff;margin-bottom:20px;line-height:1.2}
-.story-era p{font-size:16px;color:#94a3b8;line-height:1.8;margin-bottom:16px}
-.story-quote{border-left:3px solid #d69e2e;padding:16px 24px;margin:24px 0;font-size:18px;color:#cbd5e1;font-style:italic;line-height:1.6}
-.story-quote cite{display:block;font-size:13px;color:#64748b;margin-top:8px;font-style:normal}
-.story-landmark-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
-.story-landmark-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:16px}
-.story-landmark-card h4{font-size:14px;color:#e2e8f0;margin-bottom:4px}
-.story-landmark-card p{font-size:12px;color:#64748b;line-height:1.5}
-.story-divider{width:60px;height:2px;background:linear-gradient(90deg,#d69e2e,transparent);margin:48px 0}
-
-/* ── Perception Gap Bar ── */
-.gap-bar-container{margin-top:12px}
-.gap-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.gap-label{width:80px;font-size:12px;color:#64748b;text-align:right;flex-shrink:0}
-.gap-track{flex:1;height:20px;background:rgba(255,255,255,.04);border-radius:4px;position:relative;overflow:hidden}
-.gap-fill{height:100%;border-radius:4px;transition:width .6s ease-out;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:11px;font-weight:600;color:#fff}
+/* ── Perception Gap ── */
+.gap-bar-container{margin-top:10px}
+.gap-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.gap-label{width:70px;font-size:11px;color:#64748b;text-align:right;flex-shrink:0}
+.gap-track{flex:1;height:18px;background:rgba(255,255,255,.04);border-radius:4px;position:relative;overflow:hidden}
+.gap-fill{height:100%;border-radius:4px;transition:width .6s ease-out;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:10px;font-weight:600;color:#fff}
 .gap-fill.reality{background:linear-gradient(90deg,#276749,#38a169)}
 .gap-fill.perception{background:linear-gradient(90deg,#9b2c2c,#e53e3e)}
 .gap-fill.media{background:linear-gradient(90deg,#744210,#d69e2e)}
 
-/* ── Canvas Override ── */
-canvas{max-width:100%!important;max-height:200px!important}
-
-/* ── Custom Map Markers ── */
-.marker-icon{display:flex;align-items:center;justify-content:center;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,.4);font-size:14px;line-height:1;border:2px solid rgba(255,255,255,.8)}
-.marker-landmark{background:#d69e2e;width:28px;height:28px}
-.marker-park{background:#38a169;width:26px;height:26px}
-.marker-trail{background:#68d391;width:24px;height:24px}
-.marker-parking{background:#3182ce;width:24px;height:24px}
-.marker-restaurant{background:#e53e3e;width:24px;height:24px}
-.marker-popup{font-family:'Inter',sans-serif;font-size:13px;line-height:1.5;min-width:180px}
-.marker-popup h4{font-size:14px;font-weight:600;margin-bottom:4px}
-.marker-popup .popup-type{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:6px}
-.marker-popup p{font-size:12px;color:#4a5568}
-.marker-popup .popup-rating{color:#d69e2e;font-weight:600}
+/* ── Story Overlay ── */
+.story-overlay{position:fixed;inset:0;z-index:2000;background:rgba(15,23,42,.98);backdrop-filter:blur(20px);transform:translateY(100%);transition:transform .5s cubic-bezier(.4,0,.2,1);overflow-y:auto}
+.story-overlay.open{transform:translateY(0)}
+.story-content{max-width:700px;margin:0 auto;padding:70px 28px 100px}
+.story-era{margin-bottom:56px}
+.story-era-label{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:#d69e2e;margin-bottom:6px}
+.story-era h2{font-family:'Playfair Display',serif;font-size:32px;color:#fff;margin-bottom:16px;line-height:1.2}
+.story-era p{font-size:15px;color:#94a3b8;line-height:1.7;margin-bottom:14px}
+.story-landmark-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.story-landmark-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:14px}
+.story-landmark-card h4{font-size:13px;color:#e2e8f0;margin-bottom:3px}
+.story-landmark-card p{font-size:11px;color:#64748b;line-height:1.4}
+.story-divider{width:50px;height:2px;background:linear-gradient(90deg,#d69e2e,transparent);margin:40px 0}
+.view-on-map{color:#d69e2e;font-size:11px;cursor:pointer;text-decoration:none;display:inline-block;margin-top:6px}
+.view-on-map:hover{text-decoration:underline}
 
 /* ── POI Toggle Bar ── */
-.poi-toggle-bar{position:fixed;bottom:24px;left:300px;right:440px;z-index:1000;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px 16px;background:rgba(15,23,42,.85);backdrop-filter:blur(12px);border-radius:12px;border:1px solid rgba(255,255,255,.06);transition:right .35s}
-.poi-toggle-bar.panel-open{right:440px}
-.poi-toggle-bar.panel-closed{right:20px}
-.poi-btn{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#94a3b8;font-size:12px;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s}
-.poi-btn:hover{background:rgba(255,255,255,.1);color:#fff}
-.poi-btn.active{border-color:rgba(255,255,255,.3);color:#fff}
-.poi-btn.active[data-poi="landmarks"]{background:rgba(214,158,46,.2);border-color:#d69e2e}
-.poi-btn.active[data-poi="parks"]{background:rgba(56,161,105,.2);border-color:#38a169}
-.poi-btn.active[data-poi="trails"]{background:rgba(104,211,145,.2);border-color:#68d391}
-.poi-btn.active[data-poi="parking"]{background:rgba(49,130,206,.2);border-color:#3182ce}
-.poi-btn.active[data-poi="restaurants"]{background:rgba(229,62,62,.2);border-color:#e53e3e}
-.poi-dot{width:8px;height:8px;border-radius:50%}
+.poi-toggle-bar{position:fixed;bottom:16px;left:280px;right:420px;z-index:1000;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:8px 12px;background:rgba(15,23,42,.88);backdrop-filter:blur(12px);border-radius:10px;border:1px solid rgba(255,255,255,.06);transition:right .35s}
+.poi-toggle-bar.panel-open{right:420px}
+.poi-toggle-bar.panel-closed{right:16px}
+.poi-btn{display:flex;align-items:center;gap:4px;padding:5px 10px;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:#64748b;font-size:11px;font-family:'Inter',sans-serif;cursor:pointer;transition:all .25s}
+.poi-btn:hover{background:rgba(255,255,255,.08);color:#94a3b8}
+.poi-btn.active{color:#fff}
+.poi-btn.active[data-poi="landmarks"]{background:rgba(212,160,23,.2);border-color:#d4a017}
+.poi-btn.active[data-poi="parks"]{background:rgba(13,148,136,.2);border-color:#0d9488}
+.poi-btn.active[data-poi="trails"]{background:rgba(6,182,212,.2);border-color:#06b6d4}
+.poi-btn.active[data-poi="parking"]{background:rgba(99,102,241,.2);border-color:#6366f1}
+.poi-btn.active[data-poi="restaurants"]{background:rgba(225,29,72,.2);border-color:#e11d48}
+.poi-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+/* ── Custom Map Markers (new distinct palette) ── */
+.marker-icon{display:flex;align-items:center;justify-content:center;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,.4);font-size:13px;line-height:1;border:2px solid rgba(255,255,255,.8);transition:opacity .3s}
+.marker-landmark{background:#d4a017;width:26px;height:26px}
+.marker-park{background:#0d9488;width:24px;height:24px}
+.marker-trail{background:#06b6d4;width:22px;height:22px}
+.marker-parking{background:#6366f1;width:22px;height:22px}
+.marker-restaurant{background:#e11d48;width:22px;height:22px}
+.marker-popup{font-family:'Inter',sans-serif;font-size:12px;line-height:1.4;min-width:170px}
+.marker-popup h4{font-size:13px;font-weight:600;margin-bottom:3px}
+.marker-popup .popup-type{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:4px}
+.marker-popup p{font-size:11px;color:#4a5568}
+.marker-popup .popup-rating{color:#d69e2e;font-weight:600}
+
+/* ── Comparison Bar ── */
+.comparison-bar{position:fixed;bottom:60px;left:280px;right:420px;z-index:999;background:rgba(15,23,42,.96);border:1px solid rgba(214,158,46,.2);border-radius:10px;padding:12px 14px;backdrop-filter:blur(14px);display:none;transition:right .35s}
+.comparison-bar.visible{display:block}
+.comparison-bar.panel-open{right:420px}
+.comparison-bar.panel-closed{right:16px}
+.comparison-header{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#64748b;margin-bottom:8px}
+.btn-compare-reset{background:none;border:none;color:#d69e2e;font-size:10px;cursor:pointer;font-family:'Inter',sans-serif}
+.comparison-hoods{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.comparison-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:8px 10px;font-size:10px;color:#94a3b8;position:relative}
+.comparison-card-name{font-weight:600;color:#e2e8f0;font-size:12px;margin-bottom:4px}
+.comparison-stat{display:flex;justify-content:space-between;padding:2px 0}
+.comparison-stat strong{color:#cbd5e1}
+.btn-compare-remove{position:absolute;top:4px;right:6px;background:none;border:none;color:#475569;cursor:pointer;font-size:11px}
+.btn-compare-remove:hover{color:#fc8181}
 
 /* ── Loading Screen ── */
 .loading-screen{position:fixed;inset:0;z-index:9999;background:#0f172a;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s}
 .loading-screen.hide{opacity:0;pointer-events:none}
-.loading-spinner{width:32px;height:32px;border:3px solid rgba(214,158,46,.2);border-top-color:#d69e2e;border-radius:50%;animation:spin .8s linear infinite;margin-bottom:16px}
+.loading-spinner{width:28px;height:28px;border:3px solid rgba(214,158,46,.2);border-top-color:#d69e2e;border-radius:50%;animation:spin .8s linear infinite;margin-bottom:14px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.loading-screen p{font-size:14px;color:#94a3b8}
-.loading-screen small{font-size:12px;color:#475569;margin-top:4px}
+.loading-screen p{font-size:13px;color:#94a3b8}
+.loading-screen small{font-size:11px;color:#475569;margin-top:3px}
 
-/* ── Hero Overlay ── */
-.hero-overlay{position:fixed;inset:0;z-index:3000;background:rgba(15,23,42,.88);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .5s;pointer-events:none}
+/* ── Hero / Intent Overlay ── */
+.hero-overlay{position:fixed;inset:0;z-index:3000;background:rgba(15,23,42,.9);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .5s;pointer-events:none}
 .hero-overlay.visible{opacity:1;pointer-events:auto}
 .hero-overlay.hiding{opacity:0;pointer-events:none}
-.hero-box{max-width:640px;text-align:center;padding:40px 32px}
-.hero-box h1{font-family:'Playfair Display',serif;font-size:34px;color:#fff;line-height:1.25;margin-bottom:12px}
-.hero-box .hero-sub{font-size:15px;color:#94a3b8;line-height:1.7;margin-bottom:32px}
-.how-to-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:24px 28px;text-align:left;margin-bottom:28px}
-.how-to-card h3{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:#d69e2e;margin-bottom:16px}
-.how-to-step{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
-.how-to-step:last-child{margin-bottom:0}
-.how-to-num{width:24px;height:24px;border-radius:50%;background:rgba(214,158,46,.15);color:#d69e2e;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.how-to-step p{font-size:13px;color:#cbd5e1;line-height:1.5}
-.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn-start{padding:12px 32px;border-radius:10px;background:linear-gradient(135deg,#d69e2e,#b7791f);color:#fff;font-size:15px;font-weight:600;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
-.btn-start:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(214,158,46,.3)}
-.btn-story-link{padding:12px 24px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,.15);color:#94a3b8;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
-.btn-story-link:hover{background:rgba(255,255,255,.05);color:#fff}
+.hero-box{max-width:580px;text-align:center;padding:32px 28px}
+.hero-box h1{font-family:'Playfair Display',serif;font-size:30px;color:#fff;line-height:1.25;margin-bottom:10px}
+.hero-box .hero-sub{font-size:14px;color:#94a3b8;line-height:1.6;margin-bottom:28px}
+.intent-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.intent-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px 14px;text-align:center;cursor:pointer;transition:all .25s}
+.intent-card:hover{background:rgba(214,158,46,.08);border-color:rgba(214,158,46,.3);transform:translateY(-2px)}
+.intent-card-icon{font-size:28px;margin-bottom:8px}
+.intent-card h3{font-size:14px;color:#fff;margin-bottom:4px;font-weight:600}
+.intent-card p{font-size:11px;color:#94a3b8;line-height:1.4}
+.hero-skip{font-size:12px;color:#475569;cursor:pointer;transition:color .2s}
+.hero-skip:hover{color:#d69e2e}
+.hero-skip a{color:#64748b;text-decoration:none}
+.hero-skip a:hover{color:#d69e2e}
 
-/* ── Question Chips Bar ── */
-.question-bar{position:fixed;top:60px;left:280px;right:0;z-index:997;padding:10px 20px;display:flex;gap:8px;align-items:center;flex-wrap:nowrap;overflow-x:auto;background:linear-gradient(180deg,rgba(15,23,42,.85) 0%,rgba(15,23,42,.5) 80%,transparent 100%);backdrop-filter:blur(8px)}
-.question-bar-label{font-size:11px;color:#64748b;white-space:nowrap;margin-right:4px}
-.q-chip{padding:7px 16px;border-radius:20px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#94a3b8;font-size:12px;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap}
-.q-chip:hover{background:rgba(255,255,255,.08);color:#e2e8f0;border-color:rgba(255,255,255,.2)}
-.q-chip.active{background:rgba(214,158,46,.12);border-color:rgba(214,158,46,.4);color:#d69e2e}
-
-/* ── Insights Panel ── */
-.insights-panel{position:fixed;top:106px;left:50%;transform:translateX(-30%);z-index:996;max-width:480px;background:rgba(15,23,42,.92);backdrop-filter:blur(14px);border:1px solid rgba(214,158,46,.2);border-radius:12px;padding:14px 20px;display:none;align-items:flex-start;gap:10px;animation:fadeDown .3s ease-out}
-.insights-panel.visible{display:flex}
-@keyframes fadeDown{from{opacity:0;transform:translate(-30%,-8px)}to{opacity:1;transform:translate(-30%,0)}}
-.insights-icon{font-size:18px;flex-shrink:0;margin-top:1px}
-.insights-text{font-size:13px;color:#cbd5e1;line-height:1.5;flex:1}
-.insights-close{background:none;border:none;color:#64748b;cursor:pointer;font-size:16px;padding:0 0 0 8px;flex-shrink:0}
-.insights-close:hover{color:#fff}
-
-/* ── Map Info Button ── */
-.map-info-btn{position:fixed;top:70px;right:16px;z-index:998;width:32px;height:32px;border-radius:50%;background:rgba(15,23,42,.8);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1);color:#94a3b8;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:'Inter',sans-serif}
-.map-info-btn:hover{background:rgba(15,23,42,.95);color:#fff}
-.map-info-card{position:fixed;top:108px;right:16px;z-index:998;width:300px;background:rgba(15,23,42,.95);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;display:none;font-size:13px;color:#94a3b8;line-height:1.6}
-.map-info-card.visible{display:block;animation:fadeDown2 .2s ease-out}
-@keyframes fadeDown2{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.map-info-card strong{color:#e2e8f0}
-.map-info-card a{color:#d69e2e;text-decoration:none;cursor:pointer}
-
-/* ── Sidebar Help ── */
-.sidebar-help{font-size:11px;color:#475569;line-height:1.5;margin-bottom:10px;padding:0 2px}
-
-/* ── Layer Tooltips ── */
-.layer-btn-wrap{position:relative;display:flex;align-items:center;gap:0;margin-bottom:4px}
-.layer-btn-wrap .layer-btn{margin-bottom:0;flex:1}
-.layer-tip-icon{width:20px;height:20px;border-radius:50%;background:transparent;border:none;color:#475569;font-size:12px;cursor:help;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:color .2s;font-family:'Inter',sans-serif}
-.layer-tip-icon:hover{color:#94a3b8}
-.layer-tooltip{position:absolute;left:100%;top:50%;transform:translateY(-50%);margin-left:8px;width:200px;background:rgba(15,23,42,.95);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 12px;font-size:11px;color:#94a3b8;line-height:1.5;display:none;z-index:1100;pointer-events:none}
-.layer-tip-icon:hover+.layer-tooltip{display:block}
+/* ── Coach Mark ── */
+.coach-mark{position:fixed;bottom:60px;left:290px;background:rgba(15,23,42,.97);border:1px solid rgba(214,158,46,.3);border-radius:8px;padding:12px 14px;max-width:260px;font-size:12px;color:#cbd5e1;line-height:1.5;z-index:3001;display:none;animation:slideUp .4s ease-out}
+.coach-mark.visible{display:block}
+@keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.coach-mark-dismiss{background:rgba(214,158,46,.15);border:1px solid rgba(214,158,46,.3);color:#d69e2e;padding:4px 10px;border-radius:5px;font-size:10px;cursor:pointer;margin-top:8px;font-family:'Inter',sans-serif;display:inline-block}
 
 /* ── Attention Pulse ── */
 @keyframes pulse-glow{0%,100%{box-shadow:none}50%{box-shadow:0 0 0 3px rgba(214,158,46,.2)}}
 .pulse{animation:pulse-glow 1.5s ease-in-out 3}
 
-/* ── Section Headers ── */
-.section-head{font-size:13px;font-weight:600;color:#cbd5e1;margin:20px 0 10px;display:flex;align-items:center;gap:8px}
-.section-head::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06)}
+/* ── Map Info ── */
+.map-info-btn{position:fixed;top:62px;right:12px;z-index:998;width:28px;height:28px;border-radius:50%;background:rgba(15,23,42,.8);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1);color:#64748b;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:'Inter',sans-serif}
+.map-info-btn:hover{background:rgba(15,23,42,.95);color:#fff}
+.map-info-card{position:fixed;top:96px;right:12px;z-index:998;width:280px;background:rgba(15,23,42,.97);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px;display:none;font-size:12px;color:#94a3b8;line-height:1.5}
+.map-info-card.visible{display:block;animation:fadeDown .2s ease-out}
 
 /* ── Scrollbar ── */
-::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
-::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.2)}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.15)}
 </style>
 </head>
 <body>
 
-<!-- ========== HEADER ========== -->
+<!-- ═══ HEADER ═══ -->
 <header class="header">
   <div class="header-brand">
     <h1>Discover Montgomery</h1>
-    <span>Civic Intelligence Platform</span>
+    <span>Civic Intelligence</span>
+  </div>
+  <div class="search-wrap">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" id="searchInput" placeholder="Search neighborhoods, ask a question..." autocomplete="off">
+    <div class="search-dropdown" id="searchDropdown"></div>
   </div>
   <div class="header-actions">
-    <button class="btn active" data-layer="vitality" onclick="setLayer('vitality')">Business</button>
-    <button class="btn" data-layer="safety" onclick="setLayer('safety')">Safety</button>
-    <button class="btn" data-layer="spaces" onclick="setLayer('spaces')">Parks & Spaces</button>
-    <button class="btn" data-layer="development" onclick="setLayer('development')">Development</button>
-    <button class="btn btn-story" onclick="toggleStory()">Montgomery Story</button>
+    <button class="story-icon-btn" onclick="toggleStory()" title="Montgomery Story">&#128214;<span class="btn-tooltip">Montgomery Story</span></button>
   </div>
 </header>
 
-<!-- ========== SIDEBAR ========== -->
-<aside class="sidebar">
-  <h3>Neighborhoods</h3>
-  <p class="sidebar-help">Click a neighborhood to see its stats, history, and dining.</p>
-  <ul class="hood-list" id="hoodList"></ul>
+<!-- ═══ STATE BREADCRUMB ═══ -->
+<div class="state-bar" id="stateBar">
+  <span class="state-dot" id="stateDot" style="background:#3182ce"></span>
+  <span>Layer:</span> <strong id="stateLayer">Business Vitality</strong>
+  <span style="margin:0 4px;color:#334155">·</span>
+  <span id="stateHood" style="color:#475569">No neighborhood selected</span>
+</div>
 
-  <div class="layer-section">
-    <h3>Data Layers</h3>
-    <p class="sidebar-help">Switch layers to color the map by different metrics.</p>
-    <div class="layer-btn-wrap">
-      <button class="layer-btn active" data-layer="vitality" onclick="setLayer('vitality')">
-        <span class="layer-icon" style="background:#3182ce"></span> Business Vitality
-      </button>
-      <button class="layer-tip-icon">&#9432;</button>
-      <div class="layer-tooltip">New business openings vs. closures and average Yelp ratings by neighborhood.</div>
-    </div>
-    <div class="layer-btn-wrap">
-      <button class="layer-btn" data-layer="safety" onclick="setLayer('safety')">
-        <span class="layer-icon" style="background:#38a169"></span> Safety Profile
-      </button>
-      <button class="layer-tip-icon">&#9432;</button>
-      <div class="layer-tooltip">Crime rates compared with media coverage and public perception.</div>
-    </div>
-    <div class="layer-btn-wrap">
-      <button class="layer-btn" data-layer="spaces" onclick="setLayer('spaces')">
-        <span class="layer-icon" style="background:#68d391"></span> Parks &amp; Trails
-      </button>
-      <button class="layer-tip-icon">&#9432;</button>
-      <div class="layer-tooltip">Park and trail utilization rates across the city.</div>
-    </div>
-    <div class="layer-btn-wrap">
-      <button class="layer-btn" data-layer="development" onclick="setLayer('development')">
-        <span class="layer-icon" style="background:#dd6b20"></span> Development
-      </button>
-      <button class="layer-tip-icon">&#9432;</button>
-      <div class="layer-tooltip">Active construction permits and major infrastructure projects.</div>
-    </div>
-    <div class="layer-btn-wrap">
-      <button class="layer-btn" data-layer="civic" onclick="setLayer('civic')">
-        <span class="layer-icon" style="background:#805ad5"></span> 311 Civic
-      </button>
-      <button class="layer-tip-icon">&#9432;</button>
-      <div class="layer-tooltip">Average city response time to resident 311 service requests.</div>
+<!-- ═══ SIDEBAR ═══ -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <button class="sidebar-toggle" onclick="toggleSidebarSection('hoods')">Neighborhoods <span class="toggle-icon">&#9660;</span></button>
+    <div class="sidebar-section-content" id="hoods-content">
+      <ul class="hood-list" id="hoodList"></ul>
     </div>
   </div>
 
-  <div class="legend" id="legend"></div>
+  <div class="sidebar-section">
+    <button class="sidebar-toggle" onclick="toggleSidebarSection('layers')">Data Layers <span class="toggle-icon">&#9660;</span></button>
+    <div class="sidebar-section-content" id="layers-content">
+      <div class="layer-btn-wrap">
+        <button class="layer-btn active" data-layer="vitality" onclick="setLayer('vitality')">
+          <span class="layer-icon" style="background:#3182ce"></span> Business Vitality
+        </button>
+        <div class="layer-tooltip">New business openings vs. closures and average Yelp ratings by neighborhood.</div>
+      </div>
+      <div class="layer-btn-wrap">
+        <button class="layer-btn" data-layer="safety" onclick="setLayer('safety')">
+          <span class="layer-icon" style="background:#38a169"></span> Safety Profile
+        </button>
+        <div class="layer-tooltip">Crime rates compared with media coverage and public perception.</div>
+      </div>
+      <div class="layer-btn-wrap">
+        <button class="layer-btn" data-layer="spaces" onclick="setLayer('spaces')">
+          <span class="layer-icon" style="background:#68d391"></span> Parks &amp; Trails
+        </button>
+        <div class="layer-tooltip">Park and trail utilization rates across the city.</div>
+      </div>
+      <div class="layer-btn-wrap">
+        <button class="layer-btn" data-layer="development" onclick="setLayer('development')">
+          <span class="layer-icon" style="background:#dd6b20"></span> Development
+        </button>
+        <div class="layer-tooltip">Active construction permits and major infrastructure projects.</div>
+      </div>
+      <div class="layer-btn-wrap">
+        <button class="layer-btn" data-layer="civic" onclick="setLayer('civic')">
+          <span class="layer-icon" style="background:#805ad5"></span> 311 Civic
+        </button>
+        <div class="layer-tooltip">Average city response time to resident 311 service requests.</div>
+      </div>
+    </div>
+  </div>
 
-  <div class="sidebar-footer">
-    <strong style="color:#cbd5e1">Data Sources</strong><br>
-    <a href="https://opendata.montgomeryal.gov/" target="_blank">City of Montgomery Open Data Portal</a><br>
-    Restaurant &amp; review data via <a href="https://brightdata.com" target="_blank">Bright Data</a> web scraping API
+  <div class="sidebar-links">
+    <a onclick="toggleLegend()">Legend</a>
+    <a onclick="toggleAbout()">About &amp; Sources</a>
   </div>
 </aside>
 
-<!-- ========== QUESTION CHIPS ========== -->
-<div class="question-bar" id="questionBar">
-  <span class="question-bar-label">Ask:</span>
-  <button class="q-chip" data-q="business" onclick="selectQuestion('business')">Where are new businesses opening?</button>
-  <button class="q-chip" data-q="perception" onclick="selectQuestion('perception')">Which areas are safer than people think?</button>
-  <button class="q-chip" data-q="parks" onclick="selectQuestion('parks')">Where are parks and trails?</button>
-  <button class="q-chip" data-q="investment" onclick="selectQuestion('investment')">Which areas are ripe for investment?</button>
-  <button class="q-chip" data-q="responsive" onclick="selectQuestion('responsive')">How responsive is the city?</button>
+<!-- ═══ LEGEND POPUP ═══ -->
+<div class="legend-popup" id="legendPopup">
+  <h4 id="legendTitle">Legend</h4>
+  <div id="legendContent"></div>
 </div>
 
-<!-- ========== INSIGHTS PANEL ========== -->
+<!-- ═══ ABOUT MODAL ═══ -->
+<div class="about-modal" id="aboutModal">
+  <div class="about-box">
+    <button class="btn-close" onclick="toggleAbout()" style="top:12px;right:12px">&times;</button>
+    <h3>About Discover Montgomery</h3>
+    <p>A civic intelligence platform that combines city open data with web-scraped insights to help residents, visitors, investors, and explorers understand Montgomery's neighborhoods.</p>
+    <p><strong style="color:#cbd5e1">Data Sources</strong></p>
+    <p><a href="https://opendata.montgomeryal.gov/" target="_blank">City of Montgomery Open Data Portal</a> — business licenses, crime mapping, 311 requests, permits, recreation data.</p>
+    <p>Restaurant, review &amp; sentiment data via <a href="https://brightdata.com" target="_blank">Bright Data</a> web scraping API (Yelp, Google, news sources).</p>
+    <p style="font-size:11px;color:#475569;margin-top:16px">Built for the Montgomery Civic Tech Hackathon.</p>
+  </div>
+</div>
+
+<!-- ═══ INSIGHTS PANEL ═══ -->
 <div class="insights-panel" id="insightsPanel">
   <span class="insights-icon">&#128161;</span>
   <div class="insights-text" id="insightsText"></div>
   <button class="insights-close" onclick="hideInsights()">&times;</button>
 </div>
 
-<!-- ========== MAP INFO BUTTON ========== -->
+<!-- ═══ MAP INFO ═══ -->
 <button class="map-info-btn" id="mapInfoBtn" onclick="toggleMapInfo()">&#9432;</button>
 <div class="map-info-card" id="mapInfoCard">
-  Each neighborhood is shaded by the selected data layer. <strong>Darker color = stronger signal.</strong> For example, on the Safety layer, green means lower crime. Click any neighborhood for full details. Data covers the last 12 months.<br><br>
-  <a onclick="document.getElementById('legend').scrollIntoView({behavior:'smooth'})">View legend &darr;</a>
+  Each neighborhood is shaded by the selected data layer. <strong style="color:#e2e8f0">Darker color = stronger signal.</strong> For example, on the Safety layer, green means lower crime. Click any neighborhood for full details.<br><br>
+  <a style="color:#d69e2e;cursor:pointer" onclick="toggleLegend()">View legend</a>
 </div>
 
-<!-- ========== MAP ========== -->
+<!-- ═══ MAP ═══ -->
 <div id="map"></div>
 
-<!-- ========== DETAIL PANEL ========== -->
+<!-- ═══ DETAIL PANEL ═══ -->
 <div class="detail-panel" id="detailPanel">
   <button class="btn-close" onclick="closePanel()">&times;</button>
   <div class="detail-header" id="detailHeader"></div>
@@ -348,12 +413,12 @@ canvas{max-width:100%!important;max-height:200px!important}
   <div id="tabContent"></div>
 </div>
 
-<!-- ========== STORY OVERLAY ========== -->
+<!-- ═══ STORY OVERLAY ═══ -->
 <div class="story-overlay" id="storyOverlay">
   <button class="btn-close" onclick="toggleStory()" style="z-index:2001">&times;</button>
   <div class="story-content">
-    <div style="background:rgba(214,158,46,.06);border:1px solid rgba(214,158,46,.15);border-radius:10px;padding:14px 18px;margin-bottom:40px;font-size:13px;color:#94a3b8;line-height:1.6">
-      The map above shows what's happening now. The stories below explain how we got here &mdash; and why certain neighborhoods matter in the history of civil rights and civic change.
+    <div style="background:rgba(214,158,46,.06);border:1px solid rgba(214,158,46,.15);border-radius:8px;padding:12px 16px;margin-bottom:36px;font-size:12px;color:#94a3b8;line-height:1.5">
+      The map shows what's happening now. The stories below explain how we got here &mdash; and why certain neighborhoods matter in the history of civil rights and civic change.
     </div>
     <div class="story-era">
       <div class="story-era-label">Welcome</div>
@@ -366,35 +431,20 @@ canvas{max-width:100%!important;max-height:200px!important}
       <div class="story-era-label">1955 &ndash; 1956</div>
       <h2>The Montgomery Bus Boycott</h2>
       <p>On December 1, 1955, Rosa Parks refused to give up her seat on a Montgomery city bus. What followed was a 381-day boycott that galvanized the nation and launched a 26-year-old pastor named Martin Luther King Jr. into the national spotlight.</p>
-      <p>The boycott wasn't spontaneous. It was organized, strategic, and sustained by tens of thousands of ordinary people who walked to work, carpooled, and sacrificed for over a year. It ended when the Supreme Court ruled that segregated buses were unconstitutional.</p>
+      <p>The boycott wasn't spontaneous. It was organized, strategic, and sustained by tens of thousands of ordinary people who walked to work, carpooled, and sacrificed for over a year.</p>
       <div class="story-landmark-grid">
-        <div class="story-landmark-card">
-          <h4>Rosa Parks Museum</h4>
-          <p>Located at the site where Rosa Parks was arrested. Interactive exhibits tell the full story of the boycott.</p>
-          <a style="color:#d69e2e;font-size:12px;cursor:pointer;text-decoration:none" onclick="viewOnMap(32.3810,-86.3120,'Rosa Parks Museum')">View on map &rarr;</a>
-        </div>
-        <div class="story-landmark-card">
-          <h4>Dexter Avenue King Memorial Baptist Church</h4>
-          <p>Where Dr. King served as pastor and helped organize the boycott. A National Historic Landmark.</p>
-          <a style="color:#d69e2e;font-size:12px;cursor:pointer;text-decoration:none" onclick="viewOnMap(32.3773,-86.3065,'Dexter Ave King Memorial Baptist Church')">View on map &rarr;</a>
-        </div>
+        <div class="story-landmark-card"><h4>Rosa Parks Museum</h4><p>Located at the site where Rosa Parks was arrested. Interactive exhibits tell the full story of the boycott.</p><a class="view-on-map" onclick="viewOnMap(32.3810,-86.3120,'Rosa Parks Museum')">View on map &rarr;</a></div>
+        <div class="story-landmark-card"><h4>Dexter Ave King Memorial Church</h4><p>Where Dr. King served as pastor and helped organize the boycott.</p><a class="view-on-map" onclick="viewOnMap(32.3773,-86.3065,'Dexter Ave King Memorial Baptist Church')">View on map &rarr;</a></div>
       </div>
     </div>
     <div class="story-divider"></div>
     <div class="story-era">
       <div class="story-era-label">1961</div>
       <h2>The Freedom Riders</h2>
-      <p>In May 1961, Freedom Riders arrived at Montgomery's Greyhound bus station, testing the Supreme Court's ruling against segregated interstate travel. They were met with violence, but they didn't stop. The Riders' courage forced the federal government to enforce desegregation.</p>
+      <p>In May 1961, Freedom Riders arrived at Montgomery's Greyhound bus station, testing the Supreme Court's ruling against segregated interstate travel. They were met with violence, but they didn't stop.</p>
       <div class="story-landmark-grid">
-        <div class="story-landmark-card">
-          <h4>Freedom Rides Museum</h4>
-          <p>The restored Greyhound station where the Riders arrived. Now a museum documenting their courage.</p>
-          <a style="color:#d69e2e;font-size:12px;cursor:pointer;text-decoration:none" onclick="viewOnMap(32.3818,-86.3105,'Freedom Rides Museum')">View on map &rarr;</a>
-        </div>
-        <div class="story-landmark-card">
-          <h4>First Baptist Church</h4>
-          <p>Where 1,500 people gathered with Dr. King as a mob surrounded the church. U.S. Marshals intervened.</p>
-        </div>
+        <div class="story-landmark-card"><h4>Freedom Rides Museum</h4><p>The restored Greyhound station where the Riders arrived.</p><a class="view-on-map" onclick="viewOnMap(32.3818,-86.3105,'Freedom Rides Museum')">View on map &rarr;</a></div>
+        <div class="story-landmark-card"><h4>First Baptist Church</h4><p>Where 1,500 people gathered with Dr. King as a mob surrounded the church.</p></div>
       </div>
     </div>
     <div class="story-divider"></div>
@@ -403,86 +453,84 @@ canvas{max-width:100%!important;max-height:200px!important}
       <h2>Selma to Montgomery Marches</h2>
       <p>The 54-mile march from Selma to Montgomery for voting rights ended on the steps of the Alabama State Capitol on March 25, 1965. Dr. King addressed 25,000 marchers. Five months later, President Johnson signed the Voting Rights Act.</p>
       <div class="story-landmark-grid">
-        <div class="story-landmark-card">
-          <h4>Alabama State Capitol</h4>
-          <p>The endpoint of the march. The bronze star on the steps marks where Jefferson Davis stood, and where King triumphed.</p>
-          <a style="color:#d69e2e;font-size:12px;cursor:pointer;text-decoration:none" onclick="viewOnMap(32.3770,-86.3003,'Alabama State Capitol')">View on map &rarr;</a>
-        </div>
-        <div class="story-landmark-card">
-          <h4>Civil Rights Memorial</h4>
-          <p>Designed by Maya Lin (who designed the Vietnam Veterans Memorial). Water flows over the names of 40 martyrs.</p>
-        </div>
+        <div class="story-landmark-card"><h4>Alabama State Capitol</h4><p>The endpoint of the march. The bronze star marks where Jefferson Davis stood, and where King triumphed.</p><a class="view-on-map" onclick="viewOnMap(32.3770,-86.3003,'Alabama State Capitol')">View on map &rarr;</a></div>
+        <div class="story-landmark-card"><h4>Civil Rights Memorial</h4><p>Designed by Maya Lin. Water flows over the names of 40 martyrs.</p></div>
       </div>
     </div>
     <div class="story-divider"></div>
     <div class="story-era">
       <div class="story-era-label">Today</div>
       <h2>Montgomery Now</h2>
-      <p>Montgomery is a city in motion. Downtown is experiencing a renaissance, with new restaurants, businesses, and cultural venues transforming historic buildings. The National Memorial for Peace and Justice, opened in 2018, confronts the legacy of racial terror and has drawn visitors from around the world.</p>
-      <p>The city's data tells a story of growth: new business licenses are outpacing closures in key corridors, construction permits are up, and 311 responsiveness is improving. But the data also reveals work still to be done: perception gaps between how safe neighborhoods actually are and how they're portrayed, underutilized public spaces, and corridors waiting for investment.</p>
-      <p>Discover Montgomery was built to make that data visible, accessible, and human. Because a city isn't just its numbers. It's its story.</p>
+      <p>Montgomery is a city in motion. Downtown is experiencing a renaissance. The National Memorial for Peace and Justice, opened in 2018, confronts the legacy of racial terror and has drawn visitors from around the world.</p>
+      <p>Discover Montgomery was built to make the city's data visible, accessible, and human. Because a city isn't just its numbers. It's its story.</p>
       <div class="story-landmark-grid">
-        <div class="story-landmark-card">
-          <h4>National Memorial for Peace and Justice</h4>
-          <p>The nation's first memorial dedicated to victims of lynching. A profound and essential experience.</p>
-          <a style="color:#d69e2e;font-size:12px;cursor:pointer;text-decoration:none" onclick="viewOnMap(32.3722,-86.3145,'National Memorial for Peace and Justice')">View on map &rarr;</a>
-        </div>
-        <div class="story-landmark-card">
-          <h4>Legacy Museum</h4>
-          <p>From enslavement to mass incarceration. A companion to the Memorial, tracing the through-line of racial injustice.</p>
-          <a style="color:#d69e2e;font-size:12px;cursor:pointer;text-decoration:none" onclick="viewOnMap(32.3795,-86.3100,'Legacy Museum')">View on map &rarr;</a>
-        </div>
+        <div class="story-landmark-card"><h4>National Memorial for Peace and Justice</h4><p>The nation's first memorial dedicated to victims of lynching.</p><a class="view-on-map" onclick="viewOnMap(32.3722,-86.3145,'National Memorial for Peace and Justice')">View on map &rarr;</a></div>
+        <div class="story-landmark-card"><h4>Legacy Museum</h4><p>From enslavement to mass incarceration. Tracing the through-line of racial injustice.</p><a class="view-on-map" onclick="viewOnMap(32.3795,-86.3100,'Legacy Museum')">View on map &rarr;</a></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ========== POI TOGGLE BAR ========== -->
+<!-- ═══ POI TOGGLE BAR ═══ -->
 <div class="poi-toggle-bar panel-closed" id="poiBar">
-  <button class="poi-btn active" data-poi="landmarks" onclick="togglePOI('landmarks')">
-    <span class="poi-dot" style="background:#d69e2e"></span> Landmarks
-  </button>
-  <button class="poi-btn active" data-poi="parks" onclick="togglePOI('parks')">
-    <span class="poi-dot" style="background:#38a169"></span> Parks
-  </button>
-  <button class="poi-btn active" data-poi="trails" onclick="togglePOI('trails')">
-    <span class="poi-dot" style="background:#68d391"></span> Trails
-  </button>
-  <button class="poi-btn" data-poi="parking" onclick="togglePOI('parking')">
-    <span class="poi-dot" style="background:#3182ce"></span> Parking
-  </button>
-  <button class="poi-btn" data-poi="restaurants" onclick="togglePOI('restaurants')">
-    <span class="poi-dot" style="background:#e53e3e"></span> Restaurants
-  </button>
+  <button class="poi-btn active" data-poi="landmarks" onclick="togglePOI('landmarks')" title="Historic Landmarks"><span class="poi-dot" style="background:#d4a017"></span> Landmarks</button>
+  <button class="poi-btn active" data-poi="parks" onclick="togglePOI('parks')" title="Parks"><span class="poi-dot" style="background:#0d9488"></span> Parks</button>
+  <button class="poi-btn active" data-poi="trails" onclick="togglePOI('trails')" title="Trails"><span class="poi-dot" style="background:#06b6d4"></span> Trails</button>
+  <button class="poi-btn" data-poi="parking" onclick="togglePOI('parking')" title="Parking"><span class="poi-dot" style="background:#6366f1"></span> Parking</button>
+  <button class="poi-btn" data-poi="restaurants" onclick="togglePOI('restaurants')" title="Restaurants"><span class="poi-dot" style="background:#e11d48"></span> Dining</button>
 </div>
 
-<!-- ========== LOADING SCREEN ========== -->
+<!-- ═══ COMPARISON BAR ═══ -->
+<div class="comparison-bar panel-closed" id="comparisonBar">
+  <div class="comparison-header"><span>Comparing Neighborhoods</span><button class="btn-compare-reset" onclick="clearComparison()">Clear all</button></div>
+  <div class="comparison-hoods" id="comparisonHoods"></div>
+</div>
+
+<!-- ═══ COACH MARK ═══ -->
+<div class="coach-mark" id="coachMark">
+  <div id="coachMarkText"></div>
+  <button class="coach-mark-dismiss" onclick="dismissCoachMark()">Got it</button>
+</div>
+
+<!-- ═══ LOADING SCREEN ═══ -->
 <div class="loading-screen" id="loadingScreen">
   <div class="loading-spinner"></div>
   <p>Loading Montgomery's data...</p>
-  <small>Pulling from the City of Montgomery Open Data Portal &amp; Bright Data</small>
+  <small>City of Montgomery Open Data Portal &amp; Bright Data</small>
 </div>
 
-<!-- ========== HERO OVERLAY ========== -->
+<!-- ═══ HERO / INTENT OVERLAY ═══ -->
 <div class="hero-overlay" id="heroOverlay">
   <div class="hero-box">
-    <h1>Discover where Montgomery is thriving &mdash; past, present, and future.</h1>
-    <p class="hero-sub">Use real city and web data to explore business growth, safety, parks, and development across Montgomery's neighborhoods.</p>
-    <div class="how-to-card">
-      <h3>How to use this tool</h3>
-      <div class="how-to-step"><span class="how-to-num">1</span><p>Pick a question below &mdash; or choose a data layer (business, safety, parks, development, 311).</p></div>
-      <div class="how-to-step"><span class="how-to-num">2</span><p>Click a neighborhood on the map or sidebar to see its story and key metrics.</p></div>
-      <div class="how-to-step"><span class="how-to-num">3</span><p>Toggle map markers (landmarks, parks, restaurants, parking) at the bottom of the screen.</p></div>
-      <div class="how-to-step"><span class="how-to-num">4</span><p>Open <strong>Montgomery Story</strong> to see how civil rights history connects to today's data.</p></div>
+    <h1>What brings you to Montgomery?</h1>
+    <p class="hero-sub">We'll tailor the experience to show you what matters most.</p>
+    <div class="intent-grid">
+      <div class="intent-card" onclick="selectIntent('exploring')">
+        <div class="intent-card-icon">&#129517;</div>
+        <h3>Exploring</h3>
+        <p>See all neighborhoods, data layers, and points of interest</p>
+      </div>
+      <div class="intent-card" onclick="selectIntent('visiting')">
+        <div class="intent-card-icon">&#127915;</div>
+        <h3>Visiting</h3>
+        <p>Find landmarks, parks, trails, and restaurants</p>
+      </div>
+      <div class="intent-card" onclick="selectIntent('investing')">
+        <div class="intent-card-icon">&#128200;</div>
+        <h3>Investing</h3>
+        <p>Analyze business growth, permits, and development</p>
+      </div>
+      <div class="intent-card" onclick="selectIntent('resident')">
+        <div class="intent-card-icon">&#127968;</div>
+        <h3>I Live Here</h3>
+        <p>Track safety, city services, and community data</p>
+      </div>
     </div>
-    <div class="hero-actions">
-      <button class="btn-start" onclick="dismissHero()">Start Exploring</button>
-      <button class="btn-story-link" onclick="dismissHero();setTimeout(toggleStory,400)">Read Montgomery's Story</button>
-    </div>
+    <p class="hero-skip"><a onclick="selectIntent('exploring')">or explore everything &rarr;</a></p>
   </div>
 </div>
 
-<!-- ========== SCRIPTS ========== -->
+<!-- ═══ SCRIPTS ═══ -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <script>
@@ -501,647 +549,146 @@ const NEIGHBORHOODS = [
     spaces:{list:[{name:"Riverwalk Park",type:"Park",util:82},{name:"Court Square Fountain",type:"Historic Plaza",util:65},{name:"Union Station Train Shed",type:"Venue",util:58},{name:"Riverfront Trail",type:"Trail - 2.5mi",util:71}]},
     development:{permits:28,avgDays:34,projects:["Riverfront Mixed-Use Development — $4.2M","Commerce St Streetscape — $1.8M","Historic Kress Building Renovation"]},
     civic:{open311:23,avgResDays:4.2,topIssues:["Street Lighting","Sidewalk Repair","Parking Meters"],grade:"B+"},
-    history:{title:"Where a Nation Changed Course",text:"Nearly every block downtown holds a piece of American history. Dexter Avenue alone connects the Alabama State Capitol — where Jefferson Davis took the oath as Confederate president — to the church where Dr. Martin Luther King Jr. organized the Montgomery Bus Boycott. The Civil Rights Memorial, designed by Maya Lin, sits just steps away.",
-      landmarks:[{icon:"&#9851;",name:"Dexter Ave King Memorial Baptist Church",desc:"Where Dr. King served as pastor and launched the boycott movement"},{icon:"&#9733;",name:"Alabama State Capitol",desc:"Endpoint of the Selma to Montgomery marches, a National Historic Landmark"},{icon:"&#10047;",name:"Civil Rights Memorial Center",desc:"Maya Lin-designed memorial honoring 40 martyrs of the movement"},{icon:"&#9962;",name:"Rosa Parks Museum",desc:"Interactive museum at the site of her arrest on Cleveland Avenue"}]},
+    history:{title:"Where a Nation Changed Course",text:"Nearly every block downtown holds a piece of American history. Dexter Avenue connects the Alabama State Capitol — where Jefferson Davis took the oath as Confederate president — to the church where Dr. King organized the Montgomery Bus Boycott.",
+      landmarks:[{icon:"&#9851;",name:"Dexter Ave King Memorial Baptist Church",desc:"Where Dr. King served as pastor and launched the boycott movement"},{icon:"&#9733;",name:"Alabama State Capitol",desc:"Endpoint of the Selma to Montgomery marches"},{icon:"&#10047;",name:"Civil Rights Memorial Center",desc:"Maya Lin-designed memorial honoring 40 martyrs"},{icon:"&#9962;",name:"Rosa Parks Museum",desc:"Interactive museum at the site of her arrest"}]},
     restaurants:[
-      {name:"Central",cuisine:"Southern Fine Dining",rating:4.5,price:"$$$",note:"Chef-driven seasonal menus in a beautifully restored downtown space"},
-      {name:"Chris' Hot Dogs",cuisine:"American Classic",rating:4.3,price:"$",note:"A Montgomery institution since 1917 — get the secret sauce"},
-      {name:"Cahawba House",cuisine:"Southern Comfort",rating:4.2,price:"$$",note:"Farm-to-table with Alabama craft beer on tap"},
-      {name:"Sa-Za",cuisine:"Italian",rating:4.4,price:"$$",note:"Wood-fired pizzas and house-made pasta in a lively atmosphere"}
+      {name:"Central",cuisine:"Southern Fine Dining",rating:4.5,price:"$$$",note:"Chef-driven seasonal menus in a beautifully restored space"},
+      {name:"Chris' Hot Dogs",cuisine:"American Classic",rating:4.3,price:"$",note:"A Montgomery institution since 1917"},
+      {name:"Cahawba House",cuisine:"Southern Comfort",rating:4.2,price:"$$",note:"Farm-to-table with Alabama craft beer"},
+      {name:"Sa-Za",cuisine:"Italian",rating:4.4,price:"$$",note:"Wood-fired pizzas and house-made pasta"}
     ],
-    parking:[
-      {name:"Commerce St Garage",type:"Garage",spots:450,rate:"$1/hr"},
-      {name:"Tallapoosa St Lot",type:"Surface Lot",spots:120,rate:"$0.75/hr"},
-      {name:"Dexter Ave Metered",type:"Street",spots:85,rate:"$0.50/hr"},
-      {name:"RSA Tower Garage",type:"Garage",spots:300,rate:"$1.25/hr"}
-    ]
+    parking:[{name:"Commerce St Garage",type:"Garage",spots:450,rate:"$1/hr"},{name:"Tallapoosa St Lot",type:"Surface Lot",spots:120,rate:"$0.75/hr"},{name:"Dexter Ave Metered",type:"Street",spots:85,rate:"$0.50/hr"},{name:"RSA Tower Garage",type:"Garage",spots:300,rate:"$1.25/hr"}]
   },
   {
     id:"old-cloverdale", name:"Old Cloverdale", center:[32.3520,-86.3130], radius:700, color:"#805ad5",
-    description:"Montgomery's most charming neighborhood — tree-lined streets, historic homes, and a thriving local food scene.",
-    business:{total:86,newOpen:12,closed:4,netGrowth:9.3,avgRating:4.3,footTraffic:62,
-      topCats:["Restaurants","Boutiques","Art Galleries","Cafes"],
-      insight:"Highest average Yelp rating in the city. Google reviews frequently mention 'walkable' and 'hidden gem.' Bright Data sentiment score: 91/100."},
-    safety:{crimeRate:14,crimeChange:-8,perception:22,mediaIndex:12,gap:"Accurate",trend:"Stable",
-      insight:"One of the safest neighborhoods in Montgomery with perception closely matching reality. Minimal media coverage of incidents."},
+    description:"Tree-lined streets, historic homes, and a thriving local food scene.",
+    business:{total:86,newOpen:12,closed:4,netGrowth:9.3,avgRating:4.3,footTraffic:62,topCats:["Restaurants","Boutiques","Art Galleries","Cafes"],insight:"Highest average Yelp rating in the city. Google reviews frequently mention 'walkable' and 'hidden gem.' Bright Data sentiment score: 91/100."},
+    safety:{crimeRate:14,crimeChange:-8,perception:22,mediaIndex:12,gap:"Accurate",trend:"Stable",insight:"One of the safest neighborhoods. Perception closely matches reality."},
     spaces:{list:[{name:"Cloverdale Park",type:"Neighborhood Park",util:78},{name:"Cloverdale Playhouse",type:"Community Theater",util:68}]},
     development:{permits:8,avgDays:28,projects:["Cloverdale Bottom Mixed-Use Infill","Historic Home Restoration Grants"]},
     civic:{open311:7,avgResDays:3.1,topIssues:["Tree Trimming","Storm Drain Clearing"],grade:"A"},
-    history:{title:"Literary Montgomery",text:"F. Scott Fitzgerald and Zelda Sayre lived in Old Cloverdale in the 1930s. The neighborhood retains its early 20th-century charm with bungalows, mature oaks, and a tight-knit community. The Cloverdale Playhouse has been a cultural anchor for decades.",
-      landmarks:[{icon:"&#9998;",name:"Fitzgerald Museum",desc:"The only museum dedicated to F. Scott and Zelda Fitzgerald in the world"},{icon:"&#127917;",name:"Cloverdale Playhouse",desc:"Community theater in the heart of the neighborhood since 1958"}]},
-    restaurants:[
-      {name:"Vintage Year",cuisine:"Upscale American",rating:4.6,price:"$$$",note:"Montgomery's top-rated fine dining — worth the splurge"},
-      {name:"El Rey Burrito Lounge",cuisine:"Mexican Fusion",rating:4.4,price:"$",note:"Beloved local spot with a fun, casual vibe"},
-      {name:"Leroy",cuisine:"Craft Cocktails & Small Plates",rating:4.3,price:"$$",note:"Date night favorite in Cloverdale Bottom"}
-    ],
-    parking:[
-      {name:"Cloverdale Bottom Lot",type:"Surface Lot",spots:40,rate:"Free"},
-      {name:"Fairview Ave Street",type:"Street",spots:60,rate:"Free"}
-    ]
+    history:{title:"Literary Montgomery",text:"F. Scott Fitzgerald and Zelda Sayre lived here in the 1930s. The neighborhood retains its early 20th-century charm.",landmarks:[{icon:"&#9998;",name:"Fitzgerald Museum",desc:"The only museum dedicated to F. Scott and Zelda Fitzgerald"},{icon:"&#127917;",name:"Cloverdale Playhouse",desc:"Community theater since 1958"}]},
+    restaurants:[{name:"Vintage Year",cuisine:"Upscale American",rating:4.6,price:"$$$",note:"Montgomery's top-rated fine dining"},{name:"El Rey Burrito Lounge",cuisine:"Mexican Fusion",rating:4.4,price:"$",note:"Beloved local spot"},{name:"Leroy",cuisine:"Craft Cocktails",rating:4.3,price:"$$",note:"Date night favorite"}],
+    parking:[{name:"Cloverdale Bottom Lot",type:"Surface Lot",spots:40,rate:"Free"},{name:"Fairview Ave Street",type:"Street",spots:60,rate:"Free"}]
   },
   {
     id:"midtown", name:"Midtown", center:[32.3650,-86.3050], radius:750, color:"#d69e2e",
     description:"Montgomery's cultural center — museums, galleries, and a growing creative economy.",
-    business:{total:158,newOpen:22,closed:12,netGrowth:6.3,avgRating:4.0,footTraffic:55,
-      topCats:["Arts & Culture","Healthcare","Professional Services","Dining"],
-      insight:"Creative economy growing. Bright Data shows 34% increase in event-related check-ins year-over-year."},
-    safety:{crimeRate:28,crimeChange:-6,perception:38,mediaIndex:30,gap:"Slight over-report",trend:"Improving",
-      insight:"Moderate crime rate trending downward. Perception slightly elevated due to proximity to higher-crime areas in media coverage."},
+    business:{total:158,newOpen:22,closed:12,netGrowth:6.3,avgRating:4.0,footTraffic:55,topCats:["Arts & Culture","Healthcare","Professional Services","Dining"],insight:"Creative economy growing. Bright Data shows 34% increase in event-related check-ins year-over-year."},
+    safety:{crimeRate:28,crimeChange:-6,perception:38,mediaIndex:30,gap:"Slight over-report",trend:"Improving",insight:"Moderate crime rate trending downward. Perception slightly elevated due to proximity to higher-crime areas in media coverage."},
     spaces:{list:[{name:"Montgomery Museum of Fine Arts",type:"Museum",util:72},{name:"Blount Cultural Park",type:"Park - 250 acres",util:68},{name:"Shakespeare Garden",type:"Garden",util:45}]},
     development:{permits:15,avgDays:31,projects:["Midtown Arts District Streetscape","New mixed-use on Norman Bridge"]},
     civic:{open311:15,avgResDays:3.8,topIssues:["Pothole Repair","Street Signage"],grade:"B+"},
-    history:{title:"The Cultural Heart",text:"Midtown evolved in the mid-20th century as Montgomery expanded south. Today it's home to the Montgomery Museum of Fine Arts, Blount Cultural Park, and a growing arts district that's attracting young creatives and entrepreneurs.",
-      landmarks:[{icon:"&#127912;",name:"Montgomery Museum of Fine Arts",desc:"Free admission. American art, Southern craft, and rotating exhibitions"},{icon:"&#127795;",name:"Blount Cultural Park",desc:"250 acres of green space, trails, and the Alabama Shakespeare Festival"}]},
-    restaurants:[
-      {name:"Dreamland Bar-B-Que",cuisine:"BBQ",rating:4.1,price:"$",note:"Legendary Alabama BBQ — ribs are the move"},
-      {name:"Tomatino's Midtown",cuisine:"Pizza & Subs",rating:4.0,price:"$",note:"Solid casual lunch spot"}
-    ],
-    parking:[
-      {name:"Museum Parking",type:"Surface Lot",spots:200,rate:"Free"},
-      {name:"Woodmere Blvd Street",type:"Street",spots:40,rate:"Free"}
-    ]
+    history:{title:"The Cultural Heart",text:"Home to the Montgomery Museum of Fine Arts, Blount Cultural Park, and a growing arts district attracting young creatives.",landmarks:[{icon:"&#127912;",name:"Montgomery Museum of Fine Arts",desc:"Free admission. American art and rotating exhibitions"},{icon:"&#127795;",name:"Blount Cultural Park",desc:"250 acres of green space and the Alabama Shakespeare Festival"}]},
+    restaurants:[{name:"Dreamland Bar-B-Que",cuisine:"BBQ",rating:4.1,price:"$",note:"Legendary Alabama BBQ"},{name:"Tomatino's Midtown",cuisine:"Pizza",rating:4.0,price:"$",note:"Solid casual lunch spot"}],
+    parking:[{name:"Museum Parking",type:"Surface Lot",spots:200,rate:"Free"},{name:"Woodmere Blvd Street",type:"Street",spots:40,rate:"Free"}]
   },
   {
     id:"capitol-heights", name:"Capitol Heights", center:[32.3700,-86.2880], radius:650, color:"#dd6b20",
     description:"An emerging neighborhood east of downtown with deep roots and growing investment.",
-    business:{total:64,newOpen:15,closed:8,netGrowth:10.9,avgRating:3.6,footTraffic:35,
-      topCats:["Auto Services","Food & Beverage","Retail","Churches"],
-      insight:"Highest net business growth rate in the city. Bright Data shows new Google Business listings up 28% this year."},
-    safety:{crimeRate:52,crimeChange:-5,perception:74,mediaIndex:65,gap:"Over-reported",trend:"Improving",
-      insight:"Crime declining but still above city average. Media coverage remains disproportionate — 1.4x the coverage per incident vs. citywide average."},
+    business:{total:64,newOpen:15,closed:8,netGrowth:10.9,avgRating:3.6,footTraffic:35,topCats:["Auto Services","Food & Beverage","Retail","Churches"],insight:"Highest net business growth rate in the city. Bright Data shows new Google Business listings up 28% this year."},
+    safety:{crimeRate:52,crimeChange:-5,perception:74,mediaIndex:65,gap:"Over-reported",trend:"Improving",insight:"Crime declining but still above city average. Media coverage 1.4x per incident vs. citywide average."},
     spaces:{list:[{name:"Oak Park",type:"Neighborhood Park",util:42},{name:"Capitol Heights Community Center",type:"Community Center",util:55}]},
     development:{permits:18,avgDays:29,projects:["Capitol Heights Revitalization Phase II","New affordable housing on Holt St","Streetlight modernization"]},
     civic:{open311:32,avgResDays:5.1,topIssues:["Vacant Property Complaints","Street Lighting","Illegal Dumping"],grade:"B-"},
-    history:{title:"The Heart of the Boycott",text:"Capitol Heights is where the Montgomery Bus Boycott lived. Holt Street Baptist Church, where thousands gathered for the first mass meeting, is here. This is a working-class neighborhood with a legacy of resilience that's now seeing new investment after decades of disinvestment.",
-      landmarks:[{icon:"&#9851;",name:"Holt Street Baptist Church",desc:"Site of the first mass meeting of the bus boycott — Dec 5, 1955"},{icon:"&#127960;",name:"Holt Street Fountain",desc:"Memorial marker at the historic boycott meeting site"}]},
-    restaurants:[
-      {name:"Martin's Restaurant",cuisine:"Southern Soul Food",rating:4.2,price:"$",note:"Best fried catfish in Montgomery — cash only"},
-      {name:"Capitol Heights Diner",cuisine:"Breakfast & Lunch",rating:3.9,price:"$",note:"No-frills, big portions, friendly service"}
-    ],
+    history:{title:"The Heart of the Boycott",text:"Capitol Heights is where the Montgomery Bus Boycott lived. Holt Street Baptist Church, where thousands gathered for the first mass meeting, is here.",landmarks:[{icon:"&#9851;",name:"Holt Street Baptist Church",desc:"Site of the first mass meeting — Dec 5, 1955"},{icon:"&#127960;",name:"Holt Street Fountain",desc:"Memorial marker at the historic site"}]},
+    restaurants:[{name:"Martin's Restaurant",cuisine:"Southern Soul Food",rating:4.2,price:"$",note:"Best fried catfish — cash only"},{name:"Capitol Heights Diner",cuisine:"Breakfast & Lunch",rating:3.9,price:"$",note:"No-frills, big portions"}],
     parking:[{name:"Street parking",type:"Street",spots:100,rate:"Free"}]
   },
   {
     id:"garden-district", name:"Garden District", center:[32.3570,-86.3250], radius:650, color:"#38a169",
     description:"A leafy residential area with parks, local shops, and a strong sense of community.",
-    business:{total:52,newOpen:8,closed:3,netGrowth:9.6,avgRating:4.1,footTraffic:38,
-      topCats:["Lawn & Garden","Home Services","Cafes","Pet Services"],
-      insight:"Small but growing. Bright Data shows neighborhood mentions in real estate listings up 45% — 'Garden District' is becoming a selling point."},
-    safety:{crimeRate:18,crimeChange:-10,perception:25,mediaIndex:10,gap:"Accurate",trend:"Improving",
-      insight:"Low crime area with accurate public perception. Residents report feeling very safe in community surveys."},
+    business:{total:52,newOpen:8,closed:3,netGrowth:9.6,avgRating:4.1,footTraffic:38,topCats:["Lawn & Garden","Home Services","Cafes","Pet Services"],insight:"Bright Data shows neighborhood mentions in real estate listings up 45%."},
+    safety:{crimeRate:18,crimeChange:-10,perception:25,mediaIndex:10,gap:"Accurate",trend:"Improving",insight:"Low crime area with accurate public perception."},
     spaces:{list:[{name:"Gateway Park",type:"Park",util:70},{name:"Garden District Walking Trail",type:"Trail - 1.2mi",util:65},{name:"Fairview Community Garden",type:"Garden",util:50}]},
     development:{permits:6,avgDays:25,projects:["Pocket park expansion","Sidewalk connectivity improvements"]},
     civic:{open311:9,avgResDays:2.8,topIssues:["Tree Debris","Stormwater","Animal Control"],grade:"A"},
-    history:{title:"The Garden Suburb",text:"Developed in the 1920s-1940s as one of Montgomery's first planned residential areas. The Garden District was designed around green space and walkability — values that feel remarkably forward-thinking today. The neighborhood's mature tree canopy and community gardens continue that tradition.",
-      landmarks:[{icon:"&#127793;",name:"Community Victory Garden",desc:"Revival of WWII-era community gardening tradition"},{icon:"&#127968;",name:"Garden District Historic Homes",desc:"Well-preserved 1930s bungalows and cottages"}]},
-    restaurants:[
-      {name:"The Greenhouse",cuisine:"Coffee & Pastries",rating:4.4,price:"$",note:"Neighborhood coffee shop with a devoted following"}
-    ],
+    history:{title:"The Garden Suburb",text:"Developed in the 1920s-1940s as one of Montgomery's first planned residential areas, designed around green space and walkability.",landmarks:[{icon:"&#127793;",name:"Community Victory Garden",desc:"Revival of WWII-era community gardening"},{icon:"&#127968;",name:"Garden District Historic Homes",desc:"Well-preserved 1930s bungalows"}]},
+    restaurants:[{name:"The Greenhouse",cuisine:"Coffee & Pastries",rating:4.4,price:"$",note:"Neighborhood coffee shop with a devoted following"}],
     parking:[{name:"Street parking",type:"Street",spots:80,rate:"Free"}]
   },
   {
     id:"dalraida", name:"Dalraida", center:[32.4050,-86.2700], radius:800, color:"#e53e3e",
-    description:"A large suburban neighborhood in north Montgomery — diverse, family-oriented, and commercially active.",
-    business:{total:210,newOpen:18,closed:14,netGrowth:1.9,avgRating:3.7,footTraffic:60,
-      topCats:["Retail","Healthcare","Fast Food","Auto Services"],
-      insight:"Stable but competitive. Bright Data shows high search volume for 'Dalraida restaurants' — demand may outstrip current dining options."},
-    safety:{crimeRate:38,crimeChange:-3,perception:45,mediaIndex:35,gap:"Slight over-report",trend:"Stable",
-      insight:"Mid-range crime rate with slow improvement. Property crime is the main driver. Perception slightly elevated."},
+    description:"A large suburban neighborhood — diverse, family-oriented, and commercially active.",
+    business:{total:210,newOpen:18,closed:14,netGrowth:1.9,avgRating:3.7,footTraffic:60,topCats:["Retail","Healthcare","Fast Food","Auto Services"],insight:"Bright Data shows high search volume for 'Dalraida restaurants' — demand may outstrip options."},
+    safety:{crimeRate:38,crimeChange:-3,perception:45,mediaIndex:35,gap:"Slight over-report",trend:"Stable",insight:"Mid-range crime rate. Property crime is the main driver."},
     spaces:{list:[{name:"Lagoon Park",type:"Park & Golf Course",util:75},{name:"Dalraida Community Center",type:"Community Center",util:60},{name:"Lagoon Park Trail",type:"Trail - 1.8mi",util:55}]},
     development:{permits:12,avgDays:32,projects:["Wares Ferry Road widening","New retail pad site on Eastern Blvd"]},
     civic:{open311:28,avgResDays:4.5,topIssues:["Road Maintenance","Traffic Signals","Drainage"],grade:"B"},
-    history:{title:"Suburban Expansion",text:"Dalraida grew rapidly in the 1960s-1980s as Montgomery expanded north. Named after a Scottish-Irish kingdom, the neighborhood became one of the city's most diverse areas. Its commercial corridors along Eastern Blvd serve a wide community.",
-      landmarks:[{icon:"&#9971;",name:"Lagoon Park Golf Course",desc:"Public 18-hole course, one of the city's best outdoor amenities"},{icon:"&#127963;",name:"Eastern Blvd Commercial Corridor",desc:"The neighborhood's main commercial strip with national and local retailers"}]},
-    restaurants:[
-      {name:"Capitol Oyster Bar",cuisine:"Seafood",rating:4.3,price:"$$",note:"Fresh Gulf oysters in a relaxed setting — a Montgomery favorite"},
-      {name:"Taste of Bangkok",cuisine:"Thai",rating:4.1,price:"$$",note:"Authentic Thai with generous portions"}
-    ],
+    history:{title:"Suburban Expansion",text:"Dalraida grew rapidly in the 1960s-1980s. Named after a Scottish-Irish kingdom, it became one of the city's most diverse areas.",landmarks:[{icon:"&#9971;",name:"Lagoon Park Golf Course",desc:"Public 18-hole course"},{icon:"&#127963;",name:"Eastern Blvd Corridor",desc:"Main commercial strip"}]},
+    restaurants:[{name:"Capitol Oyster Bar",cuisine:"Seafood",rating:4.3,price:"$$",note:"Fresh Gulf oysters — a Montgomery favorite"},{name:"Taste of Bangkok",cuisine:"Thai",rating:4.1,price:"$$",note:"Authentic Thai with generous portions"}],
     parking:[{name:"Business lot parking",type:"Surface Lots",spots:300,rate:"Free"}]
   },
   {
     id:"eastdale", name:"Eastdale", center:[32.3780,-86.2550], radius:700, color:"#4fd1c5",
-    description:"East Montgomery's growing commercial hub with new development and suburban convenience.",
-    business:{total:175,newOpen:25,closed:10,netGrowth:8.6,avgRating:3.8,footTraffic:68,
-      topCats:["Retail","Restaurants","Healthcare","Fitness"],
-      insight:"Eastdale Mall area reinventing itself. Bright Data shows 'Eastdale Montgomery' Google searches up 40%. New tenant mix is driving renewed interest."},
-    safety:{crimeRate:32,crimeChange:-9,perception:48,mediaIndex:42,gap:"Over-reported",trend:"Improving",
-      insight:"Significant safety improvement. Crime down 9% but media narrative hasn't caught up. Scraped Reddit threads still reference outdated crime perceptions."},
+    description:"East Montgomery's growing commercial hub with new development.",
+    business:{total:175,newOpen:25,closed:10,netGrowth:8.6,avgRating:3.8,footTraffic:68,topCats:["Retail","Restaurants","Healthcare","Fitness"],insight:"Eastdale Mall area reinventing itself. Bright Data shows Google searches up 40%."},
+    safety:{crimeRate:32,crimeChange:-9,perception:48,mediaIndex:42,gap:"Over-reported",trend:"Improving",insight:"Crime down 9% but media narrative hasn't caught up. Scraped Reddit threads still reference outdated perceptions."},
     spaces:{list:[{name:"Eastdale Park",type:"Park",util:48},{name:"Vaughn Road Trail",type:"Trail - 2.0mi",util:52}]},
     development:{permits:22,avgDays:30,projects:["Eastdale Town Center Redevelopment","New medical office complex","Taylor Road corridor improvements"]},
     civic:{open311:19,avgResDays:4.0,topIssues:["Road Resurfacing","Traffic Flow","Commercial Signage"],grade:"B"},
-    history:{title:"East Side Rising",text:"Eastdale emerged as a commercial center in the 1970s-1980s. After a period of transition, the area is now experiencing a second wave of investment. The Eastdale Mall area is being reimagined as a mixed-use town center — a story of suburban reinvention playing out across America.",
-      landmarks:[{icon:"&#127963;",name:"Eastdale Town Center",desc:"Former mall site being transformed into a modern mixed-use destination"},{icon:"&#128137;",name:"Baptist Health Campus",desc:"Major medical complex serving east Montgomery"}]},
-    restaurants:[
-      {name:"Filet & Vine",cuisine:"Steakhouse",rating:4.2,price:"$$$",note:"Upscale dining that surprised everyone when it chose Eastdale — a sign of the area's rise"},
-      {name:"Maki Fresh",cuisine:"Sushi & Poke",rating:4.0,price:"$$",note:"Fast-casual sushi that's actually good"}
-    ],
+    history:{title:"East Side Rising",text:"Eastdale emerged as a commercial center in the 1970s-1980s. The area is now experiencing a second wave of investment.",landmarks:[{icon:"&#127963;",name:"Eastdale Town Center",desc:"Former mall becoming mixed-use destination"},{icon:"&#128137;",name:"Baptist Health Campus",desc:"Major medical complex"}]},
+    restaurants:[{name:"Filet & Vine",cuisine:"Steakhouse",rating:4.2,price:"$$$",note:"Upscale dining — a sign of the area's rise"},{name:"Maki Fresh",cuisine:"Sushi & Poke",rating:4.0,price:"$$",note:"Fast-casual sushi that's actually good"}],
     parking:[{name:"Town Center lots",type:"Surface Lots",spots:500,rate:"Free"}]
   },
   {
     id:"woodley-park", name:"Woodley Park", center:[32.3920,-86.2850], radius:600, color:"#667eea",
-    description:"An established residential neighborhood with good schools and quiet, tree-lined streets.",
-    business:{total:38,newOpen:5,closed:2,netGrowth:7.9,avgRating:4.2,footTraffic:25,
-      topCats:["Home Services","Tutoring","Lawn Care","Childcare"],
-      insight:"Primarily residential with service businesses. Bright Data school rating data shows above-average elementary school scores — a driver of home values."},
-    safety:{crimeRate:12,crimeChange:-15,perception:15,mediaIndex:5,gap:"Accurate",trend:"Improving",
-      insight:"One of the safest areas in Montgomery. Very low media coverage. Perception and reality closely aligned."},
+    description:"An established residential neighborhood with good schools and quiet streets.",
+    business:{total:38,newOpen:5,closed:2,netGrowth:7.9,avgRating:4.2,footTraffic:25,topCats:["Home Services","Tutoring","Lawn Care","Childcare"],insight:"Bright Data school rating data shows above-average elementary school scores — a driver of home values."},
+    safety:{crimeRate:12,crimeChange:-15,perception:15,mediaIndex:5,gap:"Accurate",trend:"Improving",insight:"One of the safest areas. Very low media coverage. Perception and reality aligned."},
     spaces:{list:[{name:"Woodley Park",type:"Neighborhood Park",util:70},{name:"Woodley Walking Path",type:"Trail - 0.8mi",util:62}]},
     development:{permits:4,avgDays:22,projects:["Residential lot development","Sidewalk ADA improvements"]},
     civic:{open311:5,avgResDays:2.5,topIssues:["Yard Waste Collection","Speed Humps"],grade:"A+"},
-    history:{title:"The Quiet Backbone",text:"Woodley Park represents the suburban dream that drew families to Montgomery's north side in the 1970s and 1980s. It doesn't make headlines, but neighborhoods like this are the stable backbone of any city — places where civic engagement happens through PTAs, neighborhood watches, and weekend cookouts.",
-      landmarks:[{icon:"&#127968;",name:"Woodley Park Neighborhood",desc:"Well-maintained 1970s-80s homes with strong community bonds"},{icon:"&#127891;",name:"Top-Rated Elementary Schools",desc:"Above-average school ratings drive family demand for the area"}]},
-    restaurants:[
-      {name:"Neighborhood Deli & Grill",cuisine:"American",rating:4.0,price:"$",note:"The kind of place where everyone knows your name"}
-    ],
+    history:{title:"The Quiet Backbone",text:"Woodley Park represents the suburban dream of Montgomery's north side. Neighborhoods like this are the stable backbone of any city.",landmarks:[{icon:"&#127968;",name:"Woodley Park Neighborhood",desc:"Well-maintained 1970s-80s homes"},{icon:"&#127891;",name:"Top-Rated Elementary Schools",desc:"Above-average school ratings"}]},
+    restaurants:[{name:"Neighborhood Deli & Grill",cuisine:"American",rating:4.0,price:"$",note:"The kind of place where everyone knows your name"}],
     parking:[{name:"Street parking",type:"Street",spots:50,rate:"Free"}]
   }
 ];
 
-/* ═══════════════════════════════════════════════════
-   MAP INITIALIZATION
-   ═══════════════════════════════════════════════════ */
-const map = L.map('map',{zoomControl:false,attributionControl:true}).setView([32.375,-86.295],13);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
-  attribution:'&copy; OpenStreetMap &copy; CARTO',maxZoom:18
-}).addTo(map);
-L.control.zoom({position:'bottomleft'}).addTo(map);
-
-let circles = [];
-let activeHood = null;
-let activeLayer = 'vitality';
-let charts = {};
-
-/* ═══════════════════════════════════════════════════
-   COLOR SCALES
-   ═══════════════════════════════════════════════════ */
-function getLayerColor(hood, layer) {
-  switch(layer) {
-    case 'vitality': {
-      const v = hood.business.netGrowth;
-      if (v >= 8) return '#38a169';
-      if (v >= 5) return '#d69e2e';
-      return '#e53e3e';
-    }
-    case 'safety': {
-      const c = hood.safety.crimeRate;
-      if (c <= 20) return '#38a169';
-      if (c <= 35) return '#d69e2e';
-      return '#e53e3e';
-    }
-    case 'spaces': {
-      const avg = hood.spaces.list.reduce((s,x) => s+x.util, 0) / (hood.spaces.list.length||1);
-      if (avg >= 65) return '#38a169';
-      if (avg >= 45) return '#d69e2e';
-      return '#e53e3e';
-    }
-    case 'development': {
-      const p = hood.development.permits;
-      if (p >= 15) return '#dd6b20';
-      if (p >= 8) return '#d69e2e';
-      return '#718096';
-    }
-    case 'civic': {
-      const r = hood.civic.avgResDays;
-      if (r <= 3) return '#38a169';
-      if (r <= 4.5) return '#d69e2e';
-      return '#e53e3e';
-    }
-    default: return hood.color;
-  }
-}
-
-function getLayerOpacity(hood, layer) {
-  switch(layer) {
-    case 'vitality': return 0.15 + (hood.business.footTraffic / 100) * 0.35;
-    case 'safety': return 0.15 + (1 - hood.safety.crimeRate / 60) * 0.35;
-    case 'spaces': {
-      const avg = hood.spaces.list.reduce((s,x) => s+x.util, 0) / (hood.spaces.list.length||1);
-      return 0.15 + (avg / 100) * 0.35;
-    }
-    case 'development': return 0.15 + (hood.development.permits / 30) * 0.35;
-    case 'civic': return 0.15 + (1 - hood.civic.avgResDays / 6) * 0.35;
-    default: return 0.25;
-  }
-}
-
-/* ═══════════════════════════════════════════════════
-   RENDER NEIGHBORHOODS
-   ═══════════════════════════════════════════════════ */
-function renderNeighborhoods() {
-  circles.forEach(c => map.removeLayer(c));
-  circles = [];
-  NEIGHBORHOODS.forEach(hood => {
-    const color = getLayerColor(hood, activeLayer);
-    const opacity = getLayerOpacity(hood, activeLayer);
-    const c = L.circle(hood.center, {
-      radius: hood.radius,
-      color: color,
-      weight: activeHood === hood.id ? 3 : 1.5,
-      fillColor: color,
-      fillOpacity: activeHood === hood.id ? opacity + 0.15 : opacity,
-      className: 'hood-circle'
-    }).addTo(map);
-    c.bindTooltip(hood.name, {permanent: false, direction: 'top', className: 'hood-tooltip'});
-    c.on('click', () => selectNeighborhood(hood.id));
-    circles.push(c);
-  });
-}
-
-/* ═══════════════════════════════════════════════════
-   SIDEBAR LIST
-   ═══════════════════════════════════════════════════ */
-function renderSidebar() {
-  const list = document.getElementById('hoodList');
-  list.innerHTML = NEIGHBORHOODS.map(h => `
-    <li class="hood-item ${activeHood===h.id?'active':''}" onclick="selectNeighborhood('${h.id}')">
-      <span class="hood-dot" style="background:${getLayerColor(h, activeLayer)}"></span>
-      ${h.name}
-    </li>`).join('');
-}
-
-function renderLegend() {
-  const legends = {
-    vitality: [['#38a169','Growth 8%+'],['#d69e2e','Growth 5-8%'],['#e53e3e','Growth < 5%']],
-    safety: [['#38a169','Low Crime (< 20)'],['#d69e2e','Moderate (20-35)'],['#e53e3e','Elevated (35+)']],
-    spaces: [['#38a169','Well-Utilized (65%+)'],['#d69e2e','Moderate (45-65%)'],['#e53e3e','Under-Utilized']],
-    development: [['#dd6b20','Active (15+ permits)'],['#d69e2e','Moderate (8-15)'],['#718096','Low Activity']],
-    civic: [['#38a169','Fast Response (< 3d)'],['#d69e2e','Average (3-4.5d)'],['#e53e3e','Slow (4.5d+)']]
-  };
-  const rows = legends[activeLayer] || [];
-  document.getElementById('legend').innerHTML = '<h3>Legend</h3>' + rows.map(([c,l]) =>
-    `<div class="legend-row"><span class="legend-color" style="background:${c}"></span>${l}</div>`
-  ).join('');
-}
-
-/* ═══════════════════════════════════════════════════
-   LAYER SWITCHING
-   ═══════════════════════════════════════════════════ */
-function setLayer(layer) {
-  activeLayer = layer;
-  document.querySelectorAll('[data-layer]').forEach(b => b.classList.toggle('active', b.dataset.layer === layer));
-  renderNeighborhoods();
-  renderSidebar();
-  renderLegend();
-  if (activeHood) {
-    const hood = NEIGHBORHOODS.find(h => h.id === activeHood);
-    if (hood) openPanel(hood);
-  }
-}
-
-/* ═══════════════════════════════════════════════════
-   SELECT NEIGHBORHOOD
-   ═══════════════════════════════════════════════════ */
-function selectNeighborhood(id) {
-  activeHood = id;
-  const hood = NEIGHBORHOODS.find(h => h.id === id);
-  if (!hood) return;
-  renderNeighborhoods();
-  renderSidebar();
-  openPanel(hood);
-  map.flyTo(hood.center, 14, {duration: 0.5});
-  dismissWelcome();
-}
-
-function dismissWelcome() {
-  // Legacy — no-op, replaced by hero overlay
-}
-
-/* ═══════════════════════════════════════════════════
-   DETAIL PANEL
-   ═══════════════════════════════════════════════════ */
-function openPanel(hood) {
-  const panel = document.getElementById('detailPanel');
-  panel.classList.add('open');
-
-  // Destroy existing charts
-  Object.values(charts).forEach(c => c.destroy());
-  charts = {};
-
-  // Header
-  const scoreClass = hood.business.netGrowth >= 8 ? 'score-high' : hood.business.netGrowth >= 5 ? 'score-mid' : 'score-low';
-  document.getElementById('detailHeader').innerHTML = `
-    <h2>${hood.name}</h2>
-    <div class="detail-subtitle">${hood.description}</div>
-    <span class="score-badge ${scoreClass}">Growth: +${hood.business.netGrowth}%</span>
-  `;
-
-  // Tabs
-  const tabs = ['Overview','Business','Safety','Spaces','History','Dining'];
-  document.getElementById('tabBar').innerHTML = tabs.map((t,i) =>
-    `<div class="tab ${i===0?'active':''}" onclick="switchTab(${i},'${hood.id}')">${t}</div>`
-  ).join('');
-
-  // Render all tab content
-  renderTabContent(hood);
-}
-
-function switchTab(idx, hoodId) {
-  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===idx));
-  document.querySelectorAll('.tab-content').forEach((c,i) => c.classList.toggle('active', i===idx));
-  const hood = NEIGHBORHOODS.find(h => h.id === hoodId);
-  if (idx === 2 && hood) setTimeout(() => renderSafetyChart(hood), 50);
-  if (idx === 1 && hood) setTimeout(() => renderBusinessChart(hood), 50);
-}
-
-function renderTabContent(hood) {
-  const tc = document.getElementById('tabContent');
-  tc.innerHTML = `
-    <!-- Overview -->
-    <div class="tab-content active">
-      <div class="stat-grid">
-        <div class="stat-card">
-          <div class="stat-label">Active Businesses</div>
-          <div class="stat-value">${hood.business.total}</div>
-          <div class="stat-change positive">+${hood.business.newOpen} new this year</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Crime Rate</div>
-          <div class="stat-value">${hood.safety.crimeRate}<small style="font-size:12px;color:#64748b">/1k</small></div>
-          <div class="stat-change ${hood.safety.crimeChange<0?'positive':'negative'}">${hood.safety.crimeChange}% YoY</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">311 Response</div>
-          <div class="stat-value">${hood.civic.avgResDays}d</div>
-          <div class="stat-change">Grade: ${hood.civic.grade}</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Active Permits</div>
-          <div class="stat-value">${hood.development.permits}</div>
-          <div class="stat-change positive">${hood.development.projects.length} major projects</div>
-        </div>
-      </div>
-      <div class="section-head">Top 311 Issues</div>
-      ${hood.civic.topIssues.map(i => `<div style="font-size:13px;color:#94a3b8;padding:4px 0">&#8226; ${i}</div>`).join('')}
-      <div class="section-head">Major Development Projects</div>
-      ${hood.development.projects.map(p => `<div style="font-size:13px;color:#94a3b8;padding:4px 0">&#8226; ${p}</div>`).join('')}
-    </div>
-
-    <!-- Business -->
-    <div class="tab-content">
-      <div class="stat-grid">
-        <div class="stat-card">
-          <div class="stat-label">New Openings</div>
-          <div class="stat-value" style="color:#68d391">${hood.business.newOpen}</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Closures</div>
-          <div class="stat-value" style="color:#fc8181">${hood.business.closed}</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Avg Yelp Rating</div>
-          <div class="stat-value" style="color:#d69e2e">${hood.business.avgRating} &#9733;</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Foot Traffic Index</div>
-          <div class="stat-value">${hood.business.footTraffic}<small style="font-size:12px;color:#64748b">/100</small></div>
-        </div>
-      </div>
-      <div class="section-head">Top Business Categories</div>
-      ${hood.business.topCats.map((c,i) => `<div style="font-size:13px;color:#94a3b8;padding:4px 0">${i+1}. ${c}</div>`).join('')}
-      <div class="chart-container">
-        <h4>Business Activity</h4>
-        <canvas id="chartBusiness" height="180"></canvas>
-      </div>
-      <div class="insight-box">
-        <strong>Bright Data Insight</strong>
-        ${hood.business.insight}
-      </div>
-    </div>
-
-    <!-- Safety -->
-    <div class="tab-content">
-      <div class="stat-grid">
-        <div class="stat-card">
-          <div class="stat-label">Crime Rate</div>
-          <div class="stat-value">${hood.safety.crimeRate}<small style="font-size:12px;color:#64748b">/1k</small></div>
-          <div class="stat-change ${hood.safety.crimeChange<0?'positive':'negative'}">${hood.safety.crimeChange}% YoY</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Perception Index</div>
-          <div class="stat-value">${hood.safety.perception}<small style="font-size:12px;color:#64748b">/100</small></div>
-          <div class="stat-change ${hood.safety.gap==='Over-reported'?'negative':'positive'}">${hood.safety.gap}</div>
-        </div>
-      </div>
-      <div class="section-head">Perception vs. Reality</div>
-      <div class="gap-bar-container">
-        <div class="gap-row">
-          <span class="gap-label">Actual Crime</span>
-          <div class="gap-track"><div class="gap-fill reality" style="width:${hood.safety.crimeRate}%">${hood.safety.crimeRate}</div></div>
-        </div>
-        <div class="gap-row">
-          <span class="gap-label">Perception</span>
-          <div class="gap-track"><div class="gap-fill perception" style="width:${hood.safety.perception}%">${hood.safety.perception}</div></div>
-        </div>
-        <div class="gap-row">
-          <span class="gap-label">Media Index</span>
-          <div class="gap-track"><div class="gap-fill media" style="width:${hood.safety.mediaIndex}%">${hood.safety.mediaIndex}</div></div>
-        </div>
-      </div>
-      <div class="chart-container">
-        <h4>Crime vs. Perception vs. Media Coverage</h4>
-        <canvas id="chartSafety" height="180"></canvas>
-      </div>
-      <div class="insight-box">
-        <strong>Bright Data Insight</strong>
-        ${hood.safety.insight}
-      </div>
-    </div>
-
-    <!-- Spaces -->
-    <div class="tab-content">
-      <div class="section-head">Parks, Trails &amp; Community Spaces</div>
-      ${hood.spaces.list.map(s => `
-        <div class="space-item">
-          <div><div class="space-name">${s.name}</div><div class="space-type">${s.type}</div></div>
-          <div style="text-align:right">
-            <div style="font-size:12px;color:#64748b;margin-bottom:4px">${s.util}% utilized</div>
-            <div class="utilization-bar"><div class="utilization-fill" style="width:${s.util}%;background:${s.util>=65?'#38a169':s.util>=45?'#d69e2e':'#e53e3e'}"></div></div>
-          </div>
-        </div>
-      `).join('')}
-      <div class="insight-box" style="margin-top:20px">
-        <strong>Opportunity</strong>
-        ${hood.spaces.list.filter(s=>s.util<50).length > 0
-          ? `${hood.spaces.list.filter(s=>s.util<50).map(s=>s.name).join(', ')} ${hood.spaces.list.filter(s=>s.util<50).length===1?'is':'are'} under-utilized — programming more community events could increase engagement.`
-          : 'Public spaces in this neighborhood are well-utilized. Focus on maintenance and quality improvements.'}
-      </div>
-    </div>
-
-    <!-- History -->
-    <div class="tab-content">
-      <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#fff;margin-bottom:12px">${hood.history.title}</h3>
-      <p style="font-size:14px;color:#94a3b8;line-height:1.7;margin-bottom:20px">${hood.history.text}</p>
-      <div class="section-head">Notable Landmarks</div>
-      ${hood.history.landmarks.map(l => `
-        <div class="landmark">
-          <div class="landmark-icon">${l.icon}</div>
-          <div><div class="landmark-name">${l.name}</div><div class="landmark-desc">${l.desc}</div></div>
-        </div>
-      `).join('')}
-    </div>
-
-    <!-- Dining & Parking -->
-    <div class="tab-content">
-      <div class="section-head">Restaurants (via Bright Data / Yelp)</div>
-      ${hood.restaurants.map(r => `
-        <div class="restaurant-card">
-          <div class="restaurant-name">${r.name}</div>
-          <div class="restaurant-meta">
-            <span class="restaurant-rating">${r.rating} &#9733;</span>
-            <span class="restaurant-cuisine">${r.cuisine}</span>
-            <span class="restaurant-price">${r.price}</span>
-          </div>
-          <div class="restaurant-note">${r.note}</div>
-        </div>
-      `).join('')}
-      <div class="section-head" style="margin-top:20px">Parking</div>
-      ${hood.parking.map(p => `
-        <div class="parking-card">
-          <div><div class="parking-name">${p.name}</div><div style="font-size:11px;color:#64748b">${p.type}</div></div>
-          <div class="parking-info"><div>${p.spots} spots</div><div>${p.rate}</div></div>
-        </div>
-      `).join('')}
-    </div>
-  `;
-
-  // Auto-render first chart
-  setTimeout(() => {
-    // No chart on overview tab
-  }, 100);
-}
-
-/* ═══════════════════════════════════════════════════
-   CHARTS
-   ═══════════════════════════════════════════════════ */
-function renderBusinessChart(hood) {
-  if (charts.business) charts.business.destroy();
-  const ctx = document.getElementById('chartBusiness');
-  if (!ctx) return;
-  charts.business = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['New Openings', 'Closures', 'Net Growth'],
-      datasets: [{
-        data: [hood.business.newOpen, hood.business.closed, hood.business.newOpen - hood.business.closed],
-        backgroundColor: ['rgba(104,211,145,0.7)', 'rgba(252,129,129,0.7)', 'rgba(214,158,46,0.7)'],
-        borderColor: ['#68d391', '#fc8181', '#d69e2e'],
-        borderWidth: 1,
-        borderRadius: 6
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {legend:{display:false}},
-      scales: {
-        y: {beginAtZero:true, grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#64748b',font:{size:11}}},
-        x: {grid:{display:false}, ticks:{color:'#64748b',font:{size:11}}}
-      }
-    }
-  });
-}
-
-function renderSafetyChart(hood) {
-  if (charts.safety) charts.safety.destroy();
-  const ctx = document.getElementById('chartSafety');
-  if (!ctx) return;
-  charts.safety = new Chart(ctx, {
-    type: 'radar',
-    data: {
-      labels: ['Crime Rate', 'Perception', 'Media Coverage', 'YoY Change', 'Safety Trend'],
-      datasets: [{
-        label: 'Actual',
-        data: [hood.safety.crimeRate, hood.safety.crimeRate * 0.9, hood.safety.crimeRate * 0.8, Math.abs(hood.safety.crimeChange) * 2, (100 - hood.safety.crimeRate)],
-        borderColor: '#38a169',
-        backgroundColor: 'rgba(56,161,105,0.1)',
-        pointBackgroundColor: '#38a169'
-      },{
-        label: 'Perceived',
-        data: [hood.safety.perception, hood.safety.perception, hood.safety.mediaIndex, hood.safety.mediaIndex * 0.6, (100 - hood.safety.perception)],
-        borderColor: '#e53e3e',
-        backgroundColor: 'rgba(229,62,62,0.1)',
-        pointBackgroundColor: '#e53e3e'
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {legend:{labels:{color:'#94a3b8',font:{size:11}}}},
-      scales: {
-        r: {
-          beginAtZero: true,
-          grid: {color:'rgba(255,255,255,0.06)'},
-          pointLabels: {color:'#64748b',font:{size:10}},
-          ticks: {display:false}
-        }
-      }
-    }
-  });
-}
-
-/* ═══════════════════════════════════════════════════
-   PANEL CONTROLS
-   ═══════════════════════════════════════════════════ */
-function closePanel() {
-  document.getElementById('detailPanel').classList.remove('open');
-  activeHood = null;
-  renderNeighborhoods();
-  renderSidebar();
-  map.flyTo([32.375, -86.295], 13, {duration: 0.5});
-}
-
-/* ═══════════════════════════════════════════════════
-   STORY MODE
-   ═══════════════════════════════════════════════════ */
-function toggleStory() {
-  document.getElementById('storyOverlay').classList.toggle('open');
-  dismissWelcome();
-}
-
-/* ═══════════════════════════════════════════════════
-   POINTS OF INTEREST DATA
-   ═══════════════════════════════════════════════════ */
 const POI_DATA = {
   landmarks: [
     {name:"Dexter Ave King Memorial Baptist Church",coords:[32.3773,-86.3065],desc:"Where Dr. King organized the Montgomery Bus Boycott. National Historic Landmark."},
-    {name:"Alabama State Capitol",coords:[32.3770,-86.3003],desc:"Endpoint of the Selma-to-Montgomery marches. Where Jefferson Davis was inaugurated."},
+    {name:"Alabama State Capitol",coords:[32.3770,-86.3003],desc:"Endpoint of the Selma-to-Montgomery marches."},
     {name:"Rosa Parks Museum",coords:[32.3810,-86.3120],desc:"Interactive museum at the site where Rosa Parks was arrested in 1955."},
-    {name:"Civil Rights Memorial Center",coords:[32.3762,-86.3085],desc:"Maya Lin-designed memorial honoring 40 martyrs of the Civil Rights Movement."},
+    {name:"Civil Rights Memorial Center",coords:[32.3762,-86.3085],desc:"Maya Lin-designed memorial honoring 40 martyrs."},
     {name:"National Memorial for Peace and Justice",coords:[32.3722,-86.3145],desc:"The nation's first memorial dedicated to victims of lynching."},
-    {name:"Legacy Museum",coords:[32.3795,-86.3100],desc:"From Enslavement to Mass Incarceration. Companion to the Peace & Justice Memorial."},
+    {name:"Legacy Museum",coords:[32.3795,-86.3100],desc:"From Enslavement to Mass Incarceration."},
     {name:"Freedom Rides Museum",coords:[32.3818,-86.3105],desc:"The restored Greyhound station where Freedom Riders arrived in 1961."},
-    {name:"Holt Street Baptist Church",coords:[32.3690,-86.2895],desc:"Site of the first mass meeting of the Montgomery Bus Boycott, Dec 5, 1955."},
-    {name:"First White House of the Confederacy",coords:[32.3778,-86.3030],desc:"Historic house where Jefferson Davis lived as Confederate president."},
-    {name:"F. Scott Fitzgerald Museum",coords:[32.3530,-86.3120],desc:"The only museum in the world dedicated to F. Scott and Zelda Fitzgerald."},
-    {name:"Montgomery Performing Arts Centre",coords:[32.3805,-86.3075],desc:"Premier performing arts venue in the heart of downtown."},
-    {name:"Alabama Shakespeare Festival",coords:[32.3590,-86.2960],desc:"One of the world's largest Shakespeare festivals, in Blount Cultural Park."}
+    {name:"Holt Street Baptist Church",coords:[32.3690,-86.2895],desc:"Site of the first mass meeting of the Montgomery Bus Boycott."},
+    {name:"First White House of the Confederacy",coords:[32.3778,-86.3030],desc:"Historic house where Jefferson Davis lived."},
+    {name:"F. Scott Fitzgerald Museum",coords:[32.3530,-86.3120],desc:"The only museum dedicated to F. Scott and Zelda Fitzgerald."},
+    {name:"Montgomery Performing Arts Centre",coords:[32.3805,-86.3075],desc:"Premier performing arts venue."},
+    {name:"Alabama Shakespeare Festival",coords:[32.3590,-86.2960],desc:"One of the world's largest Shakespeare festivals."}
   ],
   parks: [
-    {name:"Riverwalk Park",coords:[32.3830,-86.3130],desc:"Scenic park along the Alabama River with walking paths and river views.",acres:20},
-    {name:"Blount Cultural Park",coords:[32.3595,-86.2955],desc:"250-acre park home to the Museum of Fine Arts and Shakespeare Festival.",acres:250},
-    {name:"Cloverdale Park",coords:[32.3510,-86.3140],desc:"Charming neighborhood park in the heart of Old Cloverdale.",acres:5},
-    {name:"Lagoon Park",coords:[32.4060,-86.2680],desc:"Large park with 18-hole golf course, fishing lagoon, and picnic areas.",acres:200},
-    {name:"Gateway Park",coords:[32.3575,-86.3240],desc:"Community park in the Garden District with playground and picnic shelters.",acres:8},
-    {name:"Oak Park",coords:[32.3710,-86.2870],desc:"Neighborhood green space in Capitol Heights with basketball courts.",acres:6},
-    {name:"Eastdale Park",coords:[32.3795,-86.2535],desc:"Growing park in east Montgomery with sports fields and walking paths.",acres:15},
-    {name:"Woodley Park",coords:[32.3925,-86.2840],desc:"Quiet neighborhood park with playground and walking paths.",acres:4},
-    {name:"Court Square Fountain",coords:[32.3775,-86.3095],desc:"Historic plaza with the iconic 1885 fountain at the heart of downtown.",acres:1},
-    {name:"Union Station Train Shed",coords:[32.3825,-86.3095],desc:"Restored 1898 train shed, now an event venue and gathering space.",acres:2}
+    {name:"Riverwalk Park",coords:[32.3830,-86.3130],desc:"Scenic park along the Alabama River.",acres:20},
+    {name:"Blount Cultural Park",coords:[32.3595,-86.2955],desc:"250-acre park with Museum and Shakespeare Festival.",acres:250},
+    {name:"Cloverdale Park",coords:[32.3510,-86.3140],desc:"Charming neighborhood park.",acres:5},
+    {name:"Lagoon Park",coords:[32.4060,-86.2680],desc:"Large park with golf course and fishing lagoon.",acres:200},
+    {name:"Gateway Park",coords:[32.3575,-86.3240],desc:"Community park with playground.",acres:8},
+    {name:"Oak Park",coords:[32.3710,-86.2870],desc:"Neighborhood green space with basketball courts.",acres:6},
+    {name:"Eastdale Park",coords:[32.3795,-86.2535],desc:"Growing park with sports fields.",acres:15},
+    {name:"Woodley Park",coords:[32.3925,-86.2840],desc:"Quiet neighborhood park.",acres:4},
+    {name:"Court Square Fountain",coords:[32.3775,-86.3095],desc:"Historic 1885 fountain downtown.",acres:1},
+    {name:"Union Station Train Shed",coords:[32.3825,-86.3095],desc:"Restored 1898 train shed.",acres:2}
   ],
   trails: [
-    {name:"Riverwalk Trail",coords:[32.3840,-86.3150],desc:"Paved multi-use trail along the Alabama River — great for running and cycling.",miles:2.5,surface:"Paved"},
-    {name:"Blount Cultural Park Trail",coords:[32.3580,-86.2980],desc:"Winding nature trail through 250 acres of woods and meadows.",miles:3.2,surface:"Natural"},
-    {name:"Lagoon Park Trail",coords:[32.4050,-86.2695],desc:"Loop trail around the lagoon — flat, family-friendly, and scenic.",miles:1.8,surface:"Paved"},
-    {name:"Garden District Walking Trail",coords:[32.3560,-86.3260],desc:"Neighborhood walking loop through tree-lined residential streets.",miles:1.2,surface:"Sidewalk"},
-    {name:"Vaughn Road Trail",coords:[32.3770,-86.2560],desc:"Multi-use path connecting east Montgomery neighborhoods.",miles:2.0,surface:"Paved"},
-    {name:"Woodley Walking Path",coords:[32.3910,-86.2855],desc:"Short neighborhood walking path through Woodley Park.",miles:0.8,surface:"Paved"}
+    {name:"Riverwalk Trail",coords:[32.3840,-86.3150],desc:"Paved trail along the Alabama River.",miles:2.5,surface:"Paved"},
+    {name:"Blount Cultural Park Trail",coords:[32.3580,-86.2980],desc:"Nature trail through woods and meadows.",miles:3.2,surface:"Natural"},
+    {name:"Lagoon Park Trail",coords:[32.4050,-86.2695],desc:"Loop trail around the lagoon.",miles:1.8,surface:"Paved"},
+    {name:"Garden District Walking Trail",coords:[32.3560,-86.3260],desc:"Neighborhood walking loop.",miles:1.2,surface:"Sidewalk"},
+    {name:"Vaughn Road Trail",coords:[32.3770,-86.2560],desc:"Multi-use path connecting east neighborhoods.",miles:2.0,surface:"Paved"},
+    {name:"Woodley Walking Path",coords:[32.3910,-86.2855],desc:"Short neighborhood walking path.",miles:0.8,surface:"Paved"}
   ],
   parking: [
-    {name:"Commerce St Garage",coords:[32.3785,-86.3110],desc:"Multi-level garage near Dexter Ave. $1/hr.",spots:450,rate:"$1/hr"},
-    {name:"RSA Tower Garage",coords:[32.3765,-86.3120],desc:"Covered parking near government buildings. $1.25/hr.",spots:300,rate:"$1.25/hr"},
-    {name:"Tallapoosa St Lot",coords:[32.3790,-86.3080],desc:"Open surface lot near Court Square. $0.75/hr.",spots:120,rate:"$0.75/hr"},
-    {name:"Dexter Ave Metered",coords:[32.3775,-86.3050],desc:"Street metered parking along Dexter Avenue.",spots:85,rate:"$0.50/hr"},
-    {name:"Riverwalk Parking",coords:[32.3835,-86.3125],desc:"Free surface lot at the Riverwalk entrance.",spots:60,rate:"Free"},
-    {name:"Cloverdale Bottom Lot",coords:[32.3515,-86.3125],desc:"Free lot serving Cloverdale Bottom restaurants and shops.",spots:40,rate:"Free"},
-    {name:"Museum Parking",coords:[32.3600,-86.2965],desc:"Free lot at the Montgomery Museum of Fine Arts.",spots:200,rate:"Free"},
-    {name:"Eastdale Town Center",coords:[32.3785,-86.2545],desc:"Large free lot at the shopping center.",spots:500,rate:"Free"}
+    {name:"Commerce St Garage",coords:[32.3785,-86.3110],desc:"Multi-level garage near Dexter Ave.",spots:450,rate:"$1/hr"},
+    {name:"RSA Tower Garage",coords:[32.3765,-86.3120],desc:"Covered parking near government buildings.",spots:300,rate:"$1.25/hr"},
+    {name:"Tallapoosa St Lot",coords:[32.3790,-86.3080],desc:"Open surface lot near Court Square.",spots:120,rate:"$0.75/hr"},
+    {name:"Dexter Ave Metered",coords:[32.3775,-86.3050],desc:"Street metered parking.",spots:85,rate:"$0.50/hr"},
+    {name:"Riverwalk Parking",coords:[32.3835,-86.3125],desc:"Free lot at the Riverwalk.",spots:60,rate:"Free"},
+    {name:"Cloverdale Bottom Lot",coords:[32.3515,-86.3125],desc:"Free lot for Cloverdale shops.",spots:40,rate:"Free"},
+    {name:"Museum Parking",coords:[32.3600,-86.2965],desc:"Free lot at Fine Arts Museum.",spots:200,rate:"Free"},
+    {name:"Eastdale Town Center",coords:[32.3785,-86.2545],desc:"Large free shopping center lot.",spots:500,rate:"Free"}
   ],
   restaurants: [
     {name:"Central",coords:[32.3782,-86.3100],cuisine:"Southern Fine Dining",rating:4.5,price:"$$$"},
@@ -1150,7 +697,7 @@ const POI_DATA = {
     {name:"Sa-Za",coords:[32.3788,-86.3090],cuisine:"Italian",rating:4.4,price:"$$"},
     {name:"Vintage Year",coords:[32.3525,-86.3135],cuisine:"Upscale American",rating:4.6,price:"$$$"},
     {name:"El Rey Burrito Lounge",coords:[32.3518,-86.3128],cuisine:"Mexican Fusion",rating:4.4,price:"$"},
-    {name:"Leroy",coords:[32.3512,-86.3122],cuisine:"Craft Cocktails & Small Plates",rating:4.3,price:"$$"},
+    {name:"Leroy",coords:[32.3512,-86.3122],cuisine:"Craft Cocktails",rating:4.3,price:"$$"},
     {name:"Capitol Oyster Bar",coords:[32.4045,-86.2710],cuisine:"Seafood",rating:4.3,price:"$$"},
     {name:"Dreamland Bar-B-Que",coords:[32.3645,-86.3060],cuisine:"BBQ",rating:4.1,price:"$"},
     {name:"Filet & Vine",coords:[32.3775,-86.2555],cuisine:"Steakhouse",rating:4.2,price:"$$$"},
@@ -1162,278 +709,359 @@ const POI_DATA = {
 };
 
 /* ═══════════════════════════════════════════════════
-   POI MARKER LAYERS
+   MAP INIT
    ═══════════════════════════════════════════════════ */
-const poiLayers = {
-  landmarks: L.layerGroup(),
-  parks: L.layerGroup(),
-  trails: L.layerGroup(),
-  parking: L.layerGroup(),
-  restaurants: L.layerGroup()
-};
+const map = L.map('map',{zoomControl:false,attributionControl:true}).setView([32.375,-86.295],13);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'&copy; OpenStreetMap &copy; CARTO',maxZoom:18}).addTo(map);
+L.control.zoom({position:'bottomleft'}).addTo(map);
 
-const poiState = {
-  landmarks: true,
-  parks: true,
-  trails: true,
-  parking: false,
-  restaurants: false
-};
+let circles=[], activeHood=null, activeLayer='vitality', charts={}, activeQuestion=null;
+const comparisonHoods = new Set();
 
-function createMarkerIcon(type) {
-  const config = {
-    landmarks:   {css:'marker-landmark', icon:'&#9733;', size:[28,28]},
-    parks:       {css:'marker-park', icon:'&#127795;', size:[26,26]},
-    trails:      {css:'marker-trail', icon:'&#128694;', size:[24,24]},
-    parking:     {css:'marker-parking', icon:'&#127359;', size:[24,24]},
-    restaurants: {css:'marker-restaurant', icon:'&#127860;', size:[24,24]}
-  };
-  const c = config[type];
-  return L.divIcon({
-    className: '',
-    html: `<div class="marker-icon ${c.css}">${c.icon}</div>`,
-    iconSize: c.size,
-    iconAnchor: [c.size[0]/2, c.size[1]/2],
-    popupAnchor: [0, -c.size[1]/2 - 4]
-  });
+/* ═══════════════════════════════════════════════════
+   COLOR SCALES (data layers — traffic light)
+   ═══════════════════════════════════════════════════ */
+const LAYER_NAMES = {vitality:'Business Vitality',safety:'Safety Profile',spaces:'Parks & Trails',development:'Development',civic:'311 Civic'};
+
+function getLayerColor(hood, layer) {
+  switch(layer) {
+    case 'vitality': return hood.business.netGrowth>=8?'#38a169':hood.business.netGrowth>=5?'#d69e2e':'#e53e3e';
+    case 'safety': return hood.safety.crimeRate<=20?'#38a169':hood.safety.crimeRate<=35?'#d69e2e':'#e53e3e';
+    case 'spaces': { const a=hood.spaces.list.reduce((s,x)=>s+x.util,0)/(hood.spaces.list.length||1); return a>=65?'#38a169':a>=45?'#d69e2e':'#e53e3e'; }
+    case 'development': return hood.development.permits>=15?'#dd6b20':hood.development.permits>=8?'#d69e2e':'#718096';
+    case 'civic': return hood.civic.avgResDays<=3?'#38a169':hood.civic.avgResDays<=4.5?'#d69e2e':'#e53e3e';
+    default: return hood.color;
+  }
 }
-
-function buildPOIMarkers() {
-  // Landmarks
-  POI_DATA.landmarks.forEach(poi => {
-    const m = L.marker(poi.coords, {icon: createMarkerIcon('landmarks')});
-    m.bindPopup(`<div class="marker-popup"><h4>${poi.name}</h4><div class="popup-type">Historic Landmark</div><p>${poi.desc}</p></div>`, {maxWidth:250});
-    poiLayers.landmarks.addLayer(m);
-  });
-
-  // Parks
-  POI_DATA.parks.forEach(poi => {
-    const m = L.marker(poi.coords, {icon: createMarkerIcon('parks')});
-    m.bindPopup(`<div class="marker-popup"><h4>${poi.name}</h4><div class="popup-type">Park &bull; ${poi.acres} acres</div><p>${poi.desc}</p></div>`, {maxWidth:250});
-    poiLayers.parks.addLayer(m);
-  });
-
-  // Trails
-  POI_DATA.trails.forEach(poi => {
-    const m = L.marker(poi.coords, {icon: createMarkerIcon('trails')});
-    m.bindPopup(`<div class="marker-popup"><h4>${poi.name}</h4><div class="popup-type">Trail &bull; ${poi.miles} mi &bull; ${poi.surface}</div><p>${poi.desc}</p></div>`, {maxWidth:250});
-    poiLayers.trails.addLayer(m);
-  });
-
-  // Parking
-  POI_DATA.parking.forEach(poi => {
-    const m = L.marker(poi.coords, {icon: createMarkerIcon('parking')});
-    m.bindPopup(`<div class="marker-popup"><h4>${poi.name}</h4><div class="popup-type">Parking &bull; ${poi.spots} spots &bull; ${poi.rate}</div><p>${poi.desc}</p></div>`, {maxWidth:250});
-    poiLayers.parking.addLayer(m);
-  });
-
-  // Restaurants
-  POI_DATA.restaurants.forEach(poi => {
-    const m = L.marker(poi.coords, {icon: createMarkerIcon('restaurants')});
-    m.bindPopup(`<div class="marker-popup"><h4>${poi.name}</h4><div class="popup-type">${poi.cuisine} &bull; ${poi.price}</div><p><span class="popup-rating">${poi.rating} &#9733;</span> on Yelp (via Bright Data)</p></div>`, {maxWidth:250});
-    poiLayers.restaurants.addLayer(m);
-  });
-
-  // Add active layers to map
-  Object.keys(poiState).forEach(key => {
-    if (poiState[key]) poiLayers[key].addTo(map);
-  });
-}
-
-function togglePOI(type) {
-  poiState[type] = !poiState[type];
-  const btn = document.querySelector(`.poi-btn[data-poi="${type}"]`);
-  if (poiState[type]) {
-    poiLayers[type].addTo(map);
-    btn.classList.add('active');
-  } else {
-    map.removeLayer(poiLayers[type]);
-    btn.classList.remove('active');
+function getLayerOpacity(hood, layer) {
+  switch(layer) {
+    case 'vitality': return .15+(hood.business.footTraffic/100)*.35;
+    case 'safety': return .15+(1-hood.safety.crimeRate/60)*.35;
+    case 'spaces': { const a=hood.spaces.list.reduce((s,x)=>s+x.util,0)/(hood.spaces.list.length||1); return .15+(a/100)*.35; }
+    case 'development': return .15+(hood.development.permits/30)*.35;
+    case 'civic': return .15+(1-hood.civic.avgResDays/6)*.35;
+    default: return .25;
   }
 }
 
 /* ═══════════════════════════════════════════════════
-   PANEL OPEN/CLOSE: UPDATE POI BAR POSITION
+   RENDER
    ═══════════════════════════════════════════════════ */
-const origOpenPanel = openPanel;
-openPanel = function(hood) {
-  origOpenPanel(hood);
-  document.getElementById('poiBar').classList.remove('panel-closed');
-  document.getElementById('poiBar').classList.add('panel-open');
+function renderNeighborhoods() {
+  circles.forEach(c=>map.removeLayer(c)); circles=[];
+  NEIGHBORHOODS.forEach(hood=>{
+    const color=getLayerColor(hood,activeLayer), opacity=getLayerOpacity(hood,activeLayer);
+    const c=L.circle(hood.center,{radius:hood.radius,color,weight:activeHood===hood.id?3:1.5,fillColor:color,fillOpacity:activeHood===hood.id?opacity+.15:opacity}).addTo(map);
+    c.bindTooltip(hood.name,{permanent:false,direction:'top'});
+    c.on('click',()=>selectNeighborhood(hood.id));
+    circles.push(c);
+  });
+}
+function renderSidebar() {
+  document.getElementById('hoodList').innerHTML=NEIGHBORHOODS.map(h=>`<li class="hood-item ${activeHood===h.id?'active':''}" onclick="selectNeighborhood('${h.id}')"><span class="hood-dot" style="background:${getLayerColor(h,activeLayer)}"></span>${h.name}</li>`).join('');
+}
+function renderLegendContent() {
+  const legends={vitality:[['#38a169','Growth 8%+'],['#d69e2e','Growth 5-8%'],['#e53e3e','Growth < 5%']],safety:[['#38a169','Low Crime (< 20)'],['#d69e2e','Moderate (20-35)'],['#e53e3e','Elevated (35+)']],spaces:[['#38a169','Well-Utilized (65%+)'],['#d69e2e','Moderate (45-65%)'],['#e53e3e','Under-Utilized']],development:[['#dd6b20','Active (15+ permits)'],['#d69e2e','Moderate (8-15)'],['#718096','Low Activity']],civic:[['#38a169','Fast (< 3 days)'],['#d69e2e','Average (3-4.5d)'],['#e53e3e','Slow (4.5d+)']]};
+  const rows=legends[activeLayer]||[];
+  document.getElementById('legendTitle').textContent=LAYER_NAMES[activeLayer]+' Legend';
+  document.getElementById('legendContent').innerHTML=rows.map(([c,l])=>`<div class="legend-row"><span class="legend-color" style="background:${c}"></span>${l}</div>`).join('');
+}
+function updateStatebar() {
+  document.getElementById('stateLayer').textContent=LAYER_NAMES[activeLayer]||activeLayer;
+  const hood=NEIGHBORHOODS.find(h=>h.id===activeHood);
+  document.getElementById('stateHood').innerHTML=hood?`<strong style="color:#94a3b8">${hood.name}</strong>`:'<span style="color:#475569">No neighborhood selected</span>';
+  document.getElementById('stateDot').style.background=hood?getLayerColor(hood,activeLayer):'#64748b';
+}
+
+/* ═══════════════════════════════════════════════════
+   LAYER SWITCHING
+   ═══════════════════════════════════════════════════ */
+function setLayer(layer) {
+  activeLayer=layer;
+  document.querySelectorAll('[data-layer]').forEach(b=>b.classList.toggle('active',b.dataset.layer===layer));
+  renderNeighborhoods(); renderSidebar(); renderLegendContent(); updateStatebar();
+  if(activeHood){const hood=NEIGHBORHOODS.find(h=>h.id===activeHood); if(hood) openPanel(hood);}
+  if(!activeQuestion){
+    const desc={vitality:'Business Vitality — new openings vs. closures by neighborhood.',safety:'Safety Profile — actual crime rates vs. public perception.',spaces:'Parks & Trails — utilization rates across the city.',development:'Development — active construction permits and projects.',civic:'311 Civic — city response times to service requests.'};
+    if(desc[layer]) showInsights('Viewing: '+desc[layer]);
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   SELECT NEIGHBORHOOD
+   ═══════════════════════════════════════════════════ */
+function selectNeighborhood(id) {
+  activeHood=id;
+  const hood=NEIGHBORHOODS.find(h=>h.id===id);
+  if(!hood) return;
+  renderNeighborhoods(); renderSidebar(); updateStatebar();
+  openPanel(hood);
+  map.flyTo(hood.center,14,{duration:.5});
+}
+
+/* ═══════════════════════════════════════════════════
+   DETAIL PANEL — 3 TABS
+   ═══════════════════════════════════════════════════ */
+function openPanel(hood) {
+  const panel=document.getElementById('detailPanel'); panel.classList.add('open');
+  Object.values(charts).forEach(c=>c.destroy()); charts={};
+  const sc=hood.business.netGrowth>=8?'score-high':hood.business.netGrowth>=5?'score-mid':'score-low';
+  document.getElementById('detailHeader').innerHTML=`
+    <h2>${hood.name}</h2>
+    <div class="detail-subtitle">${hood.description}</div>
+    <div class="detail-header-row">
+      <span class="score-badge ${sc}">Growth: +${hood.business.netGrowth}%</span>
+      <button class="btn-compare" onclick="addToComparison('${hood.id}')">+ Compare</button>
+    </div>`;
+  const tabs=['Snapshot','Explore','Data'];
+  document.getElementById('tabBar').innerHTML=tabs.map((t,i)=>`<div class="tab ${i===0?'active':''}" onclick="switchTab(${i},'${hood.id}')">${t}</div>`).join('');
+  renderTabContent(hood);
+  document.getElementById('poiBar').className='poi-toggle-bar panel-open';
+  document.getElementById('comparisonBar').classList.add('panel-open');
+  document.getElementById('comparisonBar').classList.remove('panel-closed');
   hideInsights();
-};
-
-const origClosePanel = closePanel;
-closePanel = function() {
-  origClosePanel();
-  document.getElementById('poiBar').classList.remove('panel-open');
-  document.getElementById('poiBar').classList.add('panel-closed');
-};
-
-/* ═══════════════════════════════════════════════════
-   HERO OVERLAY
-   ═══════════════════════════════════════════════════ */
-function dismissHero() {
-  const hero = document.getElementById('heroOverlay');
-  hero.classList.add('hiding');
-  setTimeout(function() { hero.remove(); }, 500);
-  // Start attention pulse after 10s if no neighborhood selected
-  setTimeout(function() {
-    if (!activeHood) {
-      document.querySelectorAll('.hood-item').forEach(function(el) { el.classList.add('pulse'); });
-      setTimeout(function() {
-        document.querySelectorAll('.hood-item').forEach(function(el) { el.classList.remove('pulse'); });
-      }, 5000);
-    }
-  }, 10000);
+}
+function switchTab(idx,hoodId) {
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  document.querySelectorAll('.tab-content').forEach((c,i)=>c.classList.toggle('active',i===idx));
+  const hood=NEIGHBORHOODS.find(h=>h.id===hoodId);
+  if(idx===2&&hood) setTimeout(()=>renderSafetyChart(hood),50);
+}
+function renderTabContent(hood) {
+  document.getElementById('tabContent').innerHTML=`
+    <!-- SNAPSHOT -->
+    <div class="tab-content active">
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Businesses</div><div class="stat-value">${hood.business.total}</div><div class="stat-change positive">+${hood.business.newOpen} new</div></div>
+        <div class="stat-card"><div class="stat-label">Crime Rate</div><div class="stat-value">${hood.safety.crimeRate}<small style="font-size:11px;color:#64748b">/1k</small></div><div class="stat-change ${hood.safety.crimeChange<0?'positive':'negative'}">${hood.safety.crimeChange}% YoY</div></div>
+        <div class="stat-card"><div class="stat-label">311 Response</div><div class="stat-value">${hood.civic.avgResDays}d</div><div class="stat-change">Grade: ${hood.civic.grade}</div></div>
+        <div class="stat-card"><div class="stat-label">Permits</div><div class="stat-value">${hood.development.permits}</div><div class="stat-change positive">${hood.development.projects.length} projects</div></div>
+      </div>
+      <div class="section-head">Top Business Categories</div>
+      ${hood.business.topCats.map((c,i)=>`<div style="font-size:12px;color:#94a3b8;padding:3px 0">${i+1}. ${c}</div>`).join('')}
+      <div class="insight-box"><strong>Bright Data Insight</strong>${hood.business.insight}</div>
+    </div>
+    <!-- EXPLORE -->
+    <div class="tab-content">
+      <div class="section-head">Parks &amp; Spaces</div>
+      ${hood.spaces.list.map(s=>`<div class="space-item"><div><div class="space-name">${s.name}</div><div class="space-type">${s.type}</div></div><div style="text-align:right"><div style="font-size:11px;color:#64748b;margin-bottom:3px">${s.util}%</div><div class="utilization-bar"><div class="utilization-fill" style="width:${s.util}%;background:${s.util>=65?'#38a169':s.util>=45?'#d69e2e':'#e53e3e'}"></div></div></div></div>`).join('')}
+      <div class="section-head" style="margin-top:16px">Restaurants (via Bright Data / Yelp)</div>
+      ${hood.restaurants.map(r=>`<div class="restaurant-card"><div class="restaurant-name">${r.name}</div><div class="restaurant-meta"><span class="restaurant-rating">${r.rating} &#9733;</span><span>${r.cuisine}</span><span>${r.price}</span></div><div class="restaurant-note">${r.note}</div></div>`).join('')}
+      <div class="section-head" style="margin-top:16px">Parking</div>
+      ${hood.parking.map(p=>`<div class="parking-card"><div><div class="parking-name">${p.name}</div><div style="font-size:10px;color:#64748b">${p.type}</div></div><div class="parking-info"><div>${p.spots} spots</div><div>${p.rate}</div></div></div>`).join('')}
+      <div class="section-head" style="margin-top:16px">History</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:17px;color:#fff;margin-bottom:6px">${hood.history.title}</h3>
+      <p style="font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:14px">${hood.history.text}</p>
+      ${hood.history.landmarks.map(l=>`<div class="landmark"><div class="landmark-icon">${l.icon}</div><div><div class="landmark-name">${l.name}</div><div class="landmark-desc">${l.desc}</div></div></div>`).join('')}
+    </div>
+    <!-- DATA -->
+    <div class="tab-content">
+      <div class="section-head">Safety: Perception vs. Reality</div>
+      <div class="gap-bar-container">
+        <div class="gap-row"><span class="gap-label">Actual</span><div class="gap-track"><div class="gap-fill reality" style="width:${hood.safety.crimeRate}%">${hood.safety.crimeRate}</div></div></div>
+        <div class="gap-row"><span class="gap-label">Perception</span><div class="gap-track"><div class="gap-fill perception" style="width:${hood.safety.perception}%">${hood.safety.perception}</div></div></div>
+        <div class="gap-row"><span class="gap-label">Media</span><div class="gap-track"><div class="gap-fill media" style="width:${hood.safety.mediaIndex}%">${hood.safety.mediaIndex}</div></div></div>
+      </div>
+      <div class="chart-container"><h4>Crime vs. Perception</h4><canvas id="chartSafety" height="180"></canvas></div>
+      <div class="insight-box"><strong>Bright Data Insight</strong>${hood.safety.insight}</div>
+      <div class="section-head" style="margin-top:16px">Development Projects</div>
+      ${hood.development.projects.map(p=>`<div style="font-size:12px;color:#94a3b8;padding:4px 0">&#9656; ${p}</div>`).join('')}
+      <div class="section-head" style="margin-top:16px">Top 311 Issues</div>
+      ${hood.civic.topIssues.map(i=>`<div style="font-size:12px;color:#94a3b8;padding:3px 0">&#8226; ${i}</div>`).join('')}
+    </div>`;
+}
+function renderSafetyChart(hood) {
+  if(charts.safety) charts.safety.destroy();
+  const ctx=document.getElementById('chartSafety'); if(!ctx) return;
+  charts.safety=new Chart(ctx,{type:'radar',data:{labels:['Crime Rate','Perception','Media','YoY Change','Safety Trend'],datasets:[{label:'Actual',data:[hood.safety.crimeRate,hood.safety.crimeRate*.9,hood.safety.crimeRate*.8,Math.abs(hood.safety.crimeChange)*2,(100-hood.safety.crimeRate)],borderColor:'#38a169',backgroundColor:'rgba(56,161,105,0.1)',pointBackgroundColor:'#38a169'},{label:'Perceived',data:[hood.safety.perception,hood.safety.perception,hood.safety.mediaIndex,hood.safety.mediaIndex*.6,(100-hood.safety.perception)],borderColor:'#e53e3e',backgroundColor:'rgba(229,62,62,0.1)',pointBackgroundColor:'#e53e3e'}]},options:{responsive:true,plugins:{legend:{labels:{color:'#94a3b8',font:{size:10}}}},scales:{r:{beginAtZero:true,grid:{color:'rgba(255,255,255,0.06)'},pointLabels:{color:'#64748b',font:{size:9}},ticks:{display:false}}}}});
+}
+function closePanel() {
+  document.getElementById('detailPanel').classList.remove('open');
+  activeHood=null; renderNeighborhoods(); renderSidebar(); updateStatebar();
+  map.flyTo([32.375,-86.295],13,{duration:.5});
+  document.getElementById('poiBar').className='poi-toggle-bar panel-closed';
+  document.getElementById('comparisonBar').classList.remove('panel-open');
+  document.getElementById('comparisonBar').classList.add('panel-closed');
 }
 
 /* ═══════════════════════════════════════════════════
-   QUESTION CHIPS
+   STORY
    ═══════════════════════════════════════════════════ */
-const QUESTIONS = {
-  business: {
-    layer: 'vitality',
-    sort: function(a,b) { return b.business.netGrowth - a.business.netGrowth; },
-    insight: 'Showing neighborhoods where new business licenses and Yelp review activity are growing fastest. Brighter areas have the highest net business growth rate.',
-    count: 3
-  },
-  perception: {
-    layer: 'safety',
-    sort: function(a,b) { return (b.safety.perception - b.safety.crimeRate) - (a.safety.perception - a.safety.crimeRate); },
-    insight: 'These neighborhoods have significantly lower crime than public perception suggests. The gap between media coverage and actual data is widest here.',
-    count: 3
-  },
-  parks: {
-    layer: 'spaces',
-    sort: function(a,b) {
-      var aAvg = a.spaces.list.reduce(function(s,x){return s+x.util;},0) / (a.spaces.list.length||1);
-      var bAvg = b.spaces.list.reduce(function(s,x){return s+x.util;},0) / (b.spaces.list.length||1);
-      return bAvg - aAvg;
-    },
-    insight: 'Highlighting neighborhoods with the most accessible and actively used public parks, trails, and community spaces.',
-    count: 3
-  },
-  investment: {
-    layer: 'development',
-    sort: function(a,b) { return b.development.permits - a.development.permits; },
-    insight: 'These areas have the most active construction permits and development projects. High permit activity signals growth momentum and investment confidence.',
-    count: 3
-  },
-  responsive: {
-    layer: 'civic',
-    sort: function(a,b) { return a.civic.avgResDays - b.civic.avgResDays; },
-    insight: 'Showing 311 service responsiveness by neighborhood. Greener areas mean faster city response times to resident service requests.',
-    count: 3
-  }
-};
-
-let activeQuestion = null;
-
-function selectQuestion(qKey) {
-  // Toggle off if already selected
-  if (activeQuestion === qKey) {
-    activeQuestion = null;
-    document.querySelectorAll('.q-chip').forEach(function(c) { c.classList.remove('active'); });
-    hideInsights();
-    return;
-  }
-  activeQuestion = qKey;
-  var q = QUESTIONS[qKey];
-
-  // Highlight chip
-  document.querySelectorAll('.q-chip').forEach(function(c) {
-    c.classList.toggle('active', c.dataset.q === qKey);
-  });
-
-  // Set the layer
-  setLayer(q.layer);
-
-  // Show insights
-  showInsights(q.insight);
-
-  // Zoom to fit top neighborhoods
-  var sorted = NEIGHBORHOODS.slice().sort(q.sort);
-  var topIds = sorted.slice(0, q.count).map(function(h) { return h.id; });
-  var bounds = L.latLngBounds(sorted.slice(0, q.count).map(function(h) { return h.center; }));
-  map.flyToBounds(bounds.pad(0.3), { duration: 0.6 });
+function toggleStory(){document.getElementById('storyOverlay').classList.toggle('open')}
+function viewOnMap(lat,lng,name){
+  document.getElementById('storyOverlay').classList.remove('open');
+  setTimeout(()=>{map.flyTo([lat,lng],16,{duration:.6});poiLayers.landmarks.eachLayer(m=>{if(m.getPopup&&m.getPopup()&&m.getPopup().getContent().indexOf(name)!==-1)setTimeout(()=>m.openPopup(),700)})},300);
 }
 
 /* ═══════════════════════════════════════════════════
-   INSIGHTS PANEL
+   POI MARKERS
    ═══════════════════════════════════════════════════ */
-function showInsights(text) {
-  var panel = document.getElementById('insightsPanel');
-  document.getElementById('insightsText').textContent = text;
-  panel.classList.add('visible');
+const poiLayers={landmarks:L.layerGroup(),parks:L.layerGroup(),trails:L.layerGroup(),parking:L.layerGroup(),restaurants:L.layerGroup()};
+const poiState={landmarks:true,parks:true,trails:true,parking:false,restaurants:false};
+function createMarkerIcon(type){
+  const c={landmarks:{css:'marker-landmark',icon:'&#9733;',size:[26,26]},parks:{css:'marker-park',icon:'&#127795;',size:[24,24]},trails:{css:'marker-trail',icon:'&#128694;',size:[22,22]},parking:{css:'marker-parking',icon:'&#127359;',size:[22,22]},restaurants:{css:'marker-restaurant',icon:'&#127860;',size:[22,22]}}[type];
+  return L.divIcon({className:'',html:`<div class="marker-icon ${c.css}">${c.icon}</div>`,iconSize:c.size,iconAnchor:[c.size[0]/2,c.size[1]/2],popupAnchor:[0,-c.size[1]/2-4]});
 }
-
-function hideInsights() {
-  document.getElementById('insightsPanel').classList.remove('visible');
+function buildPOIMarkers(){
+  POI_DATA.landmarks.forEach(p=>{const m=L.marker(p.coords,{icon:createMarkerIcon('landmarks')});m.bindPopup(`<div class="marker-popup"><h4>${p.name}</h4><div class="popup-type">Landmark</div><p>${p.desc}</p></div>`,{maxWidth:240});poiLayers.landmarks.addLayer(m)});
+  POI_DATA.parks.forEach(p=>{const m=L.marker(p.coords,{icon:createMarkerIcon('parks')});m.bindPopup(`<div class="marker-popup"><h4>${p.name}</h4><div class="popup-type">Park &bull; ${p.acres} acres</div><p>${p.desc}</p></div>`,{maxWidth:240});poiLayers.parks.addLayer(m)});
+  POI_DATA.trails.forEach(p=>{const m=L.marker(p.coords,{icon:createMarkerIcon('trails')});m.bindPopup(`<div class="marker-popup"><h4>${p.name}</h4><div class="popup-type">Trail &bull; ${p.miles}mi &bull; ${p.surface}</div><p>${p.desc}</p></div>`,{maxWidth:240});poiLayers.trails.addLayer(m)});
+  POI_DATA.parking.forEach(p=>{const m=L.marker(p.coords,{icon:createMarkerIcon('parking')});m.bindPopup(`<div class="marker-popup"><h4>${p.name}</h4><div class="popup-type">Parking &bull; ${p.spots} spots &bull; ${p.rate}</div><p>${p.desc}</p></div>`,{maxWidth:240});poiLayers.parking.addLayer(m)});
+  POI_DATA.restaurants.forEach(p=>{const m=L.marker(p.coords,{icon:createMarkerIcon('restaurants')});m.bindPopup(`<div class="marker-popup"><h4>${p.name}</h4><div class="popup-type">${p.cuisine} &bull; ${p.price}</div><p><span class="popup-rating">${p.rating} &#9733;</span> on Yelp (via Bright Data)</p></div>`,{maxWidth:240});poiLayers.restaurants.addLayer(m)});
+  Object.keys(poiState).forEach(k=>{if(poiState[k])poiLayers[k].addTo(map)});
 }
-
-// Also show a brief insight when a layer is toggled manually
-var origSetLayer = setLayer;
-setLayer = function(layer) {
-  origSetLayer(layer);
-  if (!activeQuestion) {
-    var layerDesc = {
-      vitality: 'Viewing: Business Vitality \u2014 new openings vs. closures by neighborhood.',
-      safety: 'Viewing: Safety Profile \u2014 actual crime rates vs. public perception.',
-      spaces: 'Viewing: Parks & Trails \u2014 utilization rates across the city.',
-      development: 'Viewing: Development \u2014 active construction permits and projects.',
-      civic: 'Viewing: 311 Civic \u2014 city response times to service requests.'
-    };
-    if (layerDesc[layer]) showInsights(layerDesc[layer]);
-  }
-};
+function togglePOI(type){
+  poiState[type]=!poiState[type];
+  const btn=document.querySelector(`.poi-btn[data-poi="${type}"]`);
+  if(poiState[type]){poiLayers[type].addTo(map);btn.classList.add('active')}
+  else{map.removeLayer(poiLayers[type]);btn.classList.remove('active')}
+}
 
 /* ═══════════════════════════════════════════════════
-   MAP INFO BUTTON
+   SEARCH
    ═══════════════════════════════════════════════════ */
-function toggleMapInfo() {
-  document.getElementById('mapInfoCard').classList.toggle('visible');
+const QUESTION_LABELS={business:'Where are new businesses opening?',perception:'Which areas are safer than people think?',parks:'Where are parks and trails?',investment:'Which areas are ripe for investment?',responsive:'How responsive is the city?'};
+const QUESTIONS={
+  business:{layer:'vitality',sort:(a,b)=>b.business.netGrowth-a.business.netGrowth,insight:'Showing neighborhoods where new business licenses and Yelp review activity are growing fastest.',count:3},
+  perception:{layer:'safety',sort:(a,b)=>(b.safety.perception-b.safety.crimeRate)-(a.safety.perception-a.safety.crimeRate),insight:'These neighborhoods have significantly lower crime than public perception suggests.',count:3},
+  parks:{layer:'spaces',sort:(a,b)=>{const aa=a.spaces.list.reduce((s,x)=>s+x.util,0)/(a.spaces.list.length||1),bb=b.spaces.list.reduce((s,x)=>s+x.util,0)/(b.spaces.list.length||1);return bb-aa},insight:'Highlighting neighborhoods with the most accessible and active public spaces.',count:3},
+  investment:{layer:'development',sort:(a,b)=>b.development.permits-a.development.permits,insight:'These areas have the most active construction permits — signs of growth momentum.',count:3},
+  responsive:{layer:'civic',sort:(a,b)=>a.civic.avgResDays-b.civic.avgResDays,insight:'Showing 311 responsiveness. Greener areas = faster city response.',count:3}
+};
+
+function initSearch(){
+  const input=document.getElementById('searchInput'),dd=document.getElementById('searchDropdown');
+  let timeout;
+  input.addEventListener('focus',()=>{if(!input.value.trim()) showDefaultQuestions()});
+  input.addEventListener('input',()=>{clearTimeout(timeout);const q=input.value.toLowerCase().trim();if(!q){showDefaultQuestions();return}timeout=setTimeout(()=>renderSearchResults(performSearch(q)),150)});
+  input.addEventListener('keydown',e=>{if(e.key==='Escape'){dd.classList.remove('visible');input.blur()}});
+  document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))dd.classList.remove('visible')});
+}
+function performSearch(q){
+  const results=[];
+  Object.entries(QUESTION_LABELS).forEach(([k,label])=>{if(label.toLowerCase().includes(q))results.push({type:'question',key:k,label,icon:'&#10067;'})});
+  NEIGHBORHOODS.forEach(h=>{if(h.name.toLowerCase().includes(q)||h.description.toLowerCase().includes(q))results.push({type:'neighborhood',id:h.id,label:h.name,sub:h.description.slice(0,40)+'...',icon:'&#128205;'})});
+  ['landmarks','parks','trails','parking','restaurants'].forEach(t=>{if(t.includes(q))results.push({type:'poi',poi:t,label:t.charAt(0).toUpperCase()+t.slice(1),icon:'&#128204;'})});
+  return results.slice(0,8);
+}
+function showDefaultQuestions(){
+  const dd=document.getElementById('searchDropdown');
+  dd.innerHTML='<div class="search-section-label">Suggested questions</div>'+Object.entries(QUESTION_LABELS).map(([k,l])=>`<div class="search-result" onmousedown="handleSearchResult('question','${k}')""><span class="search-result-icon">&#10067;</span><span>${l}</span></div>`).join('');
+  dd.classList.add('visible');
+}
+function renderSearchResults(results){
+  const dd=document.getElementById('searchDropdown');
+  if(!results.length){dd.innerHTML='<div style="padding:12px;text-align:center;color:#475569;font-size:12px">No results</div>';dd.classList.add('visible');return}
+  dd.innerHTML=results.map(r=>{
+    if(r.type==='question') return `<div class="search-result" onmousedown="handleSearchResult('question','${r.key}')"><span class="search-result-icon">${r.icon}</span><span>${r.label}</span></div>`;
+    if(r.type==='neighborhood') return `<div class="search-result" onmousedown="handleSearchResult('neighborhood','${r.id}')"><span class="search-result-icon">${r.icon}</span><span>${r.label}</span><span class="search-result-sub">${r.sub||''}</span></div>`;
+    return `<div class="search-result" onmousedown="handleSearchResult('poi','${r.poi}')"><span class="search-result-icon">${r.icon}</span><span>Show ${r.label}</span></div>`;
+  }).join('');
+  dd.classList.add('visible');
+}
+function handleSearchResult(type,key){
+  const input=document.getElementById('searchInput'),dd=document.getElementById('searchDropdown');
+  input.value=''; dd.classList.remove('visible');
+  if(type==='question') selectQuestion(key);
+  else if(type==='neighborhood') selectNeighborhood(key);
+  else if(type==='poi'){if(!poiState[key])togglePOI(key)}
+}
+function selectQuestion(qKey){
+  if(activeQuestion===qKey){activeQuestion=null;hideInsights();return}
+  activeQuestion=qKey; const q=QUESTIONS[qKey];
+  setLayer(q.layer); showInsights(q.insight);
+  const sorted=NEIGHBORHOODS.slice().sort(q.sort);
+  const bounds=L.latLngBounds(sorted.slice(0,q.count).map(h=>h.center));
+  map.flyToBounds(bounds.pad(.3),{duration:.6});
 }
 
-// Close map info when clicking elsewhere
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('#mapInfoBtn') && !e.target.closest('#mapInfoCard')) {
-    document.getElementById('mapInfoCard').classList.remove('visible');
-  }
+/* ═══════════════════════════════════════════════════
+   INSIGHTS
+   ═══════════════════════════════════════════════════ */
+function showInsights(text){document.getElementById('insightsText').textContent=text;document.getElementById('insightsPanel').classList.add('visible')}
+function hideInsights(){document.getElementById('insightsPanel').classList.remove('visible')}
+
+/* ═══════════════════════════════════════════════════
+   COMPARE
+   ═══════════════════════════════════════════════════ */
+function addToComparison(id){
+  if(comparisonHoods.has(id))return;
+  if(comparisonHoods.size>=3){const first=[...comparisonHoods][0];comparisonHoods.delete(first)}
+  comparisonHoods.add(id); renderComparison();
+}
+function removeFromComparison(id){comparisonHoods.delete(id);renderComparison()}
+function clearComparison(){comparisonHoods.clear();renderComparison()}
+function renderComparison(){
+  const bar=document.getElementById('comparisonBar'),container=document.getElementById('comparisonHoods');
+  if(!comparisonHoods.size){bar.classList.remove('visible');return}
+  bar.classList.add('visible');
+  container.innerHTML=[...comparisonHoods].map(id=>{const h=NEIGHBORHOODS.find(n=>n.id===id);return`<div class="comparison-card"><button class="btn-compare-remove" onclick="removeFromComparison('${id}')">&times;</button><div class="comparison-card-name">${h.name}</div><div class="comparison-stat"><span>Growth</span><strong style="color:${h.business.netGrowth>=8?'#68d391':'#d69e2e'}">${h.business.netGrowth}%</strong></div><div class="comparison-stat"><span>Crime</span><strong>${h.safety.crimeRate}</strong></div><div class="comparison-stat"><span>311</span><strong>${h.civic.avgResDays}d</strong></div><div class="comparison-stat"><span>Permits</span><strong>${h.development.permits}</strong></div></div>`}).join('');
+}
+
+/* ═══════════════════════════════════════════════════
+   SIDEBAR TOGGLE
+   ═══════════════════════════════════════════════════ */
+function toggleSidebarSection(section){
+  const btn=event.target.closest('.sidebar-toggle'),content=document.getElementById(section+'-content');
+  btn.classList.toggle('collapsed'); content.classList.toggle('collapsed');
+}
+
+/* ═══════════════════════════════════════════════════
+   LEGEND / ABOUT / MAP INFO
+   ═══════════════════════════════════════════════════ */
+function toggleLegend(){renderLegendContent();document.getElementById('legendPopup').classList.toggle('visible')}
+function toggleAbout(){document.getElementById('aboutModal').classList.toggle('visible')}
+function toggleMapInfo(){document.getElementById('mapInfoCard').classList.toggle('visible')}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('#mapInfoBtn')&&!e.target.closest('#mapInfoCard'))document.getElementById('mapInfoCard').classList.remove('visible');
+  if(!e.target.closest('.legend-popup')&&!e.target.closest('.sidebar-links'))document.getElementById('legendPopup').classList.remove('visible');
 });
 
 /* ═══════════════════════════════════════════════════
-   VIEW ON MAP (from Story overlay)
+   INTENT SYSTEM
    ═══════════════════════════════════════════════════ */
-function viewOnMap(lat, lng, name) {
-  // Close story overlay
-  document.getElementById('storyOverlay').classList.remove('open');
-  // Fly to location
-  setTimeout(function() {
-    map.flyTo([lat, lng], 16, { duration: 0.6 });
-    // Find and open the POI popup
-    poiLayers.landmarks.eachLayer(function(marker) {
-      if (marker.getPopup && marker.getPopup()) {
-        var content = marker.getPopup().getContent();
-        if (content.indexOf(name) !== -1) {
-          setTimeout(function() { marker.openPopup(); }, 700);
-        }
-      }
-    });
-  }, 300);
+const INTENTS={
+  exploring:{layer:'vitality',neighborhood:'downtown',pois:['landmarks','parks','trails'],coach:'Neighborhoods are colored by the active data layer. Green = positive, red = needs attention. Click any circle for details.'},
+  visiting:{layer:'vitality',neighborhood:'downtown',pois:['landmarks','parks','trails','restaurants'],coach:'Landmarks, parks, and restaurants are marked on the map. Click any marker for details. Switch to the Explore tab for dining reviews.'},
+  investing:{layer:'development',neighborhood:null,pois:['landmarks'],coach:'Orange = most active development. Click a neighborhood to see permits, business growth, and investment signals.'},
+  resident:{layer:'safety',neighborhood:null,pois:['landmarks','parks'],coach:'Green = safer than average. The Data tab shows how actual crime compares to media perception — many areas are safer than people think.'}
+};
+function selectIntent(intent){
+  const cfg=INTENTS[intent];
+  // Set layer
+  setLayer(cfg.layer);
+  // Configure POIs
+  Object.keys(poiState).forEach(poi=>{
+    const shouldBeOn=cfg.pois.includes(poi);
+    if(shouldBeOn!==poiState[poi]) togglePOI(poi);
+  });
+  // Select neighborhood
+  let hoodId=cfg.neighborhood;
+  if(!hoodId){
+    if(intent==='investing') hoodId=NEIGHBORHOODS.slice().sort((a,b)=>b.business.netGrowth-a.business.netGrowth)[0].id;
+    else if(intent==='resident') hoodId=NEIGHBORHOODS.slice().sort((a,b)=>(b.safety.perception-b.safety.crimeRate)-(a.safety.perception-a.safety.crimeRate))[0].id;
+    else hoodId='downtown';
+  }
+  selectNeighborhood(hoodId);
+  // Fade hero
+  const hero=document.getElementById('heroOverlay');
+  hero.classList.add('hiding');
+  setTimeout(()=>hero.remove(),500);
+  // Show coach mark
+  setTimeout(()=>{
+    document.getElementById('coachMarkText').textContent=cfg.coach;
+    document.getElementById('coachMark').classList.add('visible');
+  },800);
 }
+function dismissCoachMark(){document.getElementById('coachMark').classList.remove('visible')}
 
 /* ═══════════════════════════════════════════════════
-   LOADING SCREEN
+   LOADING
    ═══════════════════════════════════════════════════ */
-function hideLoading() {
-  var ls = document.getElementById('loadingScreen');
+function hideLoading(){
+  const ls=document.getElementById('loadingScreen');
   ls.classList.add('hide');
-  setTimeout(function() {
-    ls.remove();
-    // Show hero overlay
-    document.getElementById('heroOverlay').classList.add('visible');
-  }, 500);
+  setTimeout(()=>{ls.remove();document.getElementById('heroOverlay').classList.add('visible')},500);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -1441,13 +1069,11 @@ function hideLoading() {
    ═══════════════════════════════════════════════════ */
 renderNeighborhoods();
 renderSidebar();
-renderLegend();
+renderLegendContent();
 buildPOIMarkers();
-
-// Wait for map tiles to load, then show hero
-map.whenReady(function() {
-  setTimeout(hideLoading, 600);
-});
+updateStatebar();
+initSearch();
+map.whenReady(()=>setTimeout(hideLoading,600));
 </script>
 </body>
 </html>
