@@ -282,6 +282,61 @@ canvas{max-width:100%!important;max-height:180px!important}
 @keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .coach-mark-dismiss{background:rgba(214,158,46,.15);border:1px solid rgba(214,158,46,.3);color:#d69e2e;padding:4px 10px;border-radius:5px;font-size:10px;cursor:pointer;margin-top:8px;font-family:'Inter',sans-serif;display:inline-block}
 
+/* ── Narrative Text ── */
+.neighborhood-narrative{font-size:14px;color:rgba(255,255,255,.88);line-height:1.75;margin-bottom:18px;font-style:normal}
+
+/* ── Voice Cards ── */
+.voice-card{border-left:3px solid rgba(214,158,46,.4);padding:10px 14px;margin-bottom:10px;background:rgba(255,255,255,.02);border-radius:0 8px 8px 0}
+.voice-card blockquote{font-size:13px;color:#cbd5e1;line-height:1.6;font-style:italic;margin:0 0 6px 0}
+.voice-card cite{font-size:11px;color:#64748b;font-style:normal}
+
+/* ── Era Badges ── */
+.era-timeline{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.era-badge{display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(214,158,46,.06);border:1px solid rgba(214,158,46,.12);border-radius:8px;font-size:12px;color:#94a3b8;line-height:1.4}
+.era-badge-year{font-weight:700;color:#d69e2e;font-size:11px;text-transform:uppercase;letter-spacing:1px;flex-shrink:0;width:60px}
+
+/* ── Tomorrow Tab ── */
+.tomorrow-intro{font-size:14px;color:rgba(255,255,255,.85);line-height:1.7;margin-bottom:16px}
+.participation-counter{display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(56,161,105,.08);border:1px solid rgba(56,161,105,.15);border-radius:8px;margin-bottom:16px;font-size:12px;color:#68d391}
+
+/* ── Story Form ── */
+.story-form{margin-bottom:20px}
+.story-form-trigger{display:flex;align-items:center;gap:8px;width:100%;padding:12px 14px;border-radius:8px;border:1px dashed rgba(214,158,46,.3);background:rgba(214,158,46,.04);color:#d69e2e;font-size:13px;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s;text-align:left}
+.story-form-trigger:hover{background:rgba(214,158,46,.08);border-color:rgba(214,158,46,.5)}
+.story-form-fields{display:none;margin-top:12px;padding:14px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:8px}
+.story-form-fields.visible{display:block}
+.story-form-fields select,.story-form-fields textarea,.story-form-fields input[type="text"]{width:100%;padding:8px 10px;margin-bottom:10px;border-radius:6px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#e2e8f0;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s}
+.story-form-fields select:focus,.story-form-fields textarea:focus,.story-form-fields input[type="text"]:focus{border-color:rgba(214,158,46,.4)}
+.story-form-fields textarea{min-height:80px;resize:vertical}
+.story-form-fields label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#64748b;margin-bottom:5px}
+.story-form-submit{padding:8px 20px;border-radius:6px;border:none;background:#d69e2e;color:#0f172a;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s}
+.story-form-submit:hover{background:#e8b84a}
+
+/* ── Submitted Story Cards ── */
+.submitted-story{border-left:3px solid rgba(232,138,58,.4);padding:10px 14px;margin-bottom:8px;background:rgba(255,255,255,.02);border-radius:0 8px 8px 0}
+.submitted-story p{font-size:12px;color:#cbd5e1;line-height:1.5;font-style:italic;margin:0 0 4px 0}
+.submitted-story cite{font-size:10px;color:#64748b;font-style:normal}
+
+/* ── Wish Cards ── */
+.wish-card{display:flex;align-items:center;gap:10px;padding:8px 10px;margin-bottom:6px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:8px;transition:all .15s}
+.wish-card:hover{background:rgba(255,255,255,.04)}
+.wish-vote-btn{display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:5px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#64748b;font-size:11px;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s;flex-shrink:0}
+.wish-vote-btn:hover{background:rgba(56,161,105,.1);border-color:rgba(56,161,105,.3);color:#68d391}
+.wish-vote-btn.voted{background:rgba(56,161,105,.1);border-color:rgba(56,161,105,.3);color:#68d391}
+.wish-text{font-size:12px;color:#94a3b8;flex:1}
+
+/* ── Toast ── */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(56,161,105,.95);color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-family:'Inter',sans-serif;z-index:9999;opacity:0;transition:all .3s;pointer-events:none}
+.toast.visible{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ── Collapsible Data ── */
+.data-toggle{width:100%;padding:10px 0;background:none;border:none;border-top:1px solid rgba(255,255,255,.05);color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;cursor:pointer;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:6px;transition:color .2s;margin-top:14px}
+.data-toggle:hover{color:#cbd5e1}
+.data-toggle .toggle-arrow{transition:transform .2s;font-size:9px}
+.data-toggle.open .toggle-arrow{transform:rotate(90deg)}
+.data-collapsible{max-height:0;overflow:hidden;transition:max-height .3s ease-out}
+.data-collapsible.open{max-height:2000px}
+
 /* ── Attention Pulse ── */
 @keyframes pulse-glow{0%,100%{box-shadow:none}50%{box-shadow:0 0 0 3px rgba(214,158,46,.2)}}
 .pulse{animation:pulse-glow 1.5s ease-in-out 3}
@@ -305,7 +360,7 @@ canvas{max-width:100%!important;max-height:180px!important}
 <header class="header">
   <div class="header-brand">
     <h1>Discover Montgomery</h1>
-    <span>Civic Intelligence</span>
+    <span>Civic Journey</span>
   </div>
   <div class="search-wrap">
     <span class="search-icon">&#128269;</span>
@@ -497,31 +552,33 @@ canvas{max-width:100%!important;max-height:180px!important}
 <!-- ═══ COACH MARK ═══ -->
 <div class="coach-mark" id="coachMark">
   <div id="coachMarkText"></div>
+<div class="toast" id="toast"></div>
+
   <button class="coach-mark-dismiss" onclick="dismissCoachMark()">Got it</button>
 </div>
 
 <!-- ═══ LOADING SCREEN ═══ -->
 <div class="loading-screen" id="loadingScreen">
   <div class="loading-spinner"></div>
-  <p>Loading Montgomery's data...</p>
+  <p>Loading Montgomery's stories...</p>
   <small>City of Montgomery Open Data Portal &amp; Bright Data</small>
 </div>
 
 <!-- ═══ HERO / INTENT OVERLAY ═══ -->
 <div class="hero-overlay" id="heroOverlay">
   <div class="hero-box">
-    <h1>What brings you to Montgomery?</h1>
-    <p class="hero-sub">We'll tailor the experience to show you what matters most.</p>
+    <h1>Discover Montgomery</h1>
+    <p class="hero-sub">More than data — a city of stories. From the courage of 1955 to the new businesses opening today. How would you like to explore?</p>
     <div class="intent-grid">
       <div class="intent-card" onclick="selectIntent('exploring')">
         <div class="intent-card-icon">&#129517;</div>
         <h3>Exploring</h3>
-        <p>See all neighborhoods, data layers, and points of interest</p>
+        <p>Discover the stories behind every neighborhood</p>
       </div>
       <div class="intent-card" onclick="selectIntent('visiting')">
         <div class="intent-card-icon">&#127915;</div>
         <h3>Visiting</h3>
-        <p>Find landmarks, parks, trails, and restaurants</p>
+        <p>Find hidden gems, landmarks, and the best local spots</p>
       </div>
       <div class="intent-card" onclick="selectIntent('investing')">
         <div class="intent-card-icon">&#128200;</div>
@@ -565,7 +622,12 @@ const NEIGHBORHOODS = [
       {name:"Cahawba House",cuisine:"Southern Comfort",rating:4.2,price:"$$",note:"Farm-to-table with Alabama craft beer"},
       {name:"Sa-Za",cuisine:"Italian",rating:4.4,price:"$$",note:"Wood-fired pizzas and house-made pasta"}
     ],
-    parking:[{name:"Commerce St Garage",type:"Garage",spots:450,rate:"$1/hr"},{name:"Tallapoosa St Lot",type:"Surface Lot",spots:120,rate:"$0.75/hr"},{name:"Dexter Ave Metered",type:"Street",spots:85,rate:"$0.50/hr"},{name:"RSA Tower Garage",type:"Garage",spots:300,rate:"$1.25/hr"}]
+    parking:[{name:"Commerce St Garage",type:"Garage",spots:450,rate:"$1/hr"},{name:"Tallapoosa St Lot",type:"Surface Lot",spots:120,rate:"$0.75/hr"},{name:"Dexter Ave Metered",type:"Street",spots:85,rate:"$0.50/hr"},{name:"RSA Tower Garage",type:"Garage",spots:300,rate:"$1.25/hr"}],
+    narrative:"Downtown is buzzing. Forty-seven new businesses opened this year \u2014 restaurants, legal offices, creative spaces. Crime dropped 12%, though residents say street lighting still needs work. City services respond to 311 requests in about 4 days. The Dexter Avenue corridor, once a symbol of division, is now the heart of Montgomery\u2019s renaissance.",
+    voices:[{author:"Sarah J.",role:"Resident since 2018",quote:"I moved here for the history and stayed for the energy. Dexter Ave on a Saturday morning is a completely different city from five years ago."},{author:"Marcus W.",role:"Business owner",quote:"We opened our restaurant here because we believe in downtown. Foot traffic is up, and people are starting to see what we see."},{author:"Rev. Tanya H.",role:"Dexter Ave church member",quote:"This street carries so much history. It\u2019s good to see new life here \u2014 as long as we remember what this ground means."}],
+    eras:[{year:"1955",title:"Bus Boycott",connection:"The boycott was organized from Dexter Ave King Memorial Church, just blocks from the Capitol."},{year:"1961",title:"Freedom Riders",connection:"Freedom Riders arrived at the Greyhound station on Court Street, in the heart of downtown."},{year:"1965",title:"Selma to Montgomery",connection:"The 54-mile march ended on the steps of the Alabama State Capitol on Dexter Avenue."},{year:"2018",title:"Memorial Opens",connection:"The National Memorial for Peace and Justice opened just west of downtown, drawing global attention."}],
+    wishes:[{id:1,text:"Better street lighting on Dexter Ave after dark",votes:47},{id:2,text:"More affordable housing options downtown",votes:38},{id:3,text:"Weekend farmer\u2019s market at Court Square",votes:31},{id:4,text:"Public art installations celebrating civil rights history",votes:28}],
+    communityStories:[{author:"James T.",role:"History teacher",quote:"I bring my students downtown every semester. Walking from the church to the Capitol, you can feel the weight of what happened here. It\u2019s the most powerful classroom in America."}]
   },
   {
     id:"old-cloverdale", name:"Old Cloverdale", center:[32.3520,-86.3130], radius:700, color:"#805ad5",
@@ -577,7 +639,12 @@ const NEIGHBORHOODS = [
     civic:{open311:7,avgResDays:3.1,topIssues:["Tree Trimming","Storm Drain Clearing"],grade:"A"},
     history:{title:"Literary Montgomery",text:"F. Scott Fitzgerald and Zelda Sayre lived here in the 1930s. The neighborhood retains its early 20th-century charm.",landmarks:[{icon:"&#9998;",name:"Fitzgerald Museum",desc:"The only museum dedicated to F. Scott and Zelda Fitzgerald"},{icon:"&#127917;",name:"Cloverdale Playhouse",desc:"Community theater since 1958"}]},
     restaurants:[{name:"Vintage Year",cuisine:"Upscale American",rating:4.6,price:"$$$",note:"Montgomery's top-rated fine dining"},{name:"El Rey Burrito Lounge",cuisine:"Mexican Fusion",rating:4.4,price:"$",note:"Beloved local spot"},{name:"Leroy",cuisine:"Craft Cocktails",rating:4.3,price:"$$",note:"Date night favorite"}],
-    parking:[{name:"Cloverdale Bottom Lot",type:"Surface Lot",spots:40,rate:"Free"},{name:"Fairview Ave Street",type:"Street",spots:60,rate:"Free"}]
+    parking:[{name:"Cloverdale Bottom Lot",type:"Surface Lot",spots:40,rate:"Free"},{name:"Fairview Ave Street",type:"Street",spots:60,rate:"Free"}],
+    narrative:"Old Cloverdale is Montgomery\u2019s walkable gem. Twelve new businesses opened this year \u2014 mostly boutiques and cafes \u2014 pushing growth to nearly 10%. With the city\u2019s highest Yelp ratings and one of its lowest crime rates, this neighborhood proves that character and safety can coexist. The Fitzgerald Museum keeps its literary legacy alive.",
+    voices:[{author:"Diana K.",role:"20-year resident",quote:"Cloverdale hasn\u2019t lost its soul. The old homes, the trees, the Playhouse \u2014 it still feels like a neighborhood, not a development."},{author:"Chef Miguel R.",role:"Restaurant owner",quote:"People drive across town to eat here. The walkability and the vibe \u2014 that\u2019s what makes our restaurants work."}],
+    eras:[{year:"1930s",title:"Literary Heritage",connection:"F. Scott and Zelda Fitzgerald lived here, writing some of America\u2019s most celebrated fiction in these tree-lined streets."}],
+    wishes:[{id:1,text:"Protect historic homes from demolition for new builds",votes:52},{id:2,text:"More sidewalk repairs for walkability",votes:34},{id:3,text:"Community garden on the Cloverdale Bottom lot",votes:27}],
+    communityStories:[{author:"Emma L.",role:"Cloverdale Playhouse volunteer",quote:"The Playhouse is the heartbeat of this neighborhood. Every show brings people together \u2014 from teenagers to grandparents \u2014 and reminds us why small communities matter."}]
   },
   {
     id:"midtown", name:"Midtown", center:[32.3650,-86.3050], radius:750, color:"#d69e2e",
@@ -589,7 +656,12 @@ const NEIGHBORHOODS = [
     civic:{open311:15,avgResDays:3.8,topIssues:["Pothole Repair","Street Signage"],grade:"B+"},
     history:{title:"The Cultural Heart",text:"Home to the Montgomery Museum of Fine Arts, Blount Cultural Park, and a growing arts district attracting young creatives.",landmarks:[{icon:"&#127912;",name:"Montgomery Museum of Fine Arts",desc:"Free admission. American art and rotating exhibitions"},{icon:"&#127795;",name:"Blount Cultural Park",desc:"250 acres of green space and the Alabama Shakespeare Festival"}]},
     restaurants:[{name:"Dreamland Bar-B-Que",cuisine:"BBQ",rating:4.1,price:"$",note:"Legendary Alabama BBQ"},{name:"Tomatino's Midtown",cuisine:"Pizza",rating:4.0,price:"$",note:"Solid casual lunch spot"}],
-    parking:[{name:"Museum Parking",type:"Surface Lot",spots:200,rate:"Free"},{name:"Woodmere Blvd Street",type:"Street",spots:40,rate:"Free"}]
+    parking:[{name:"Museum Parking",type:"Surface Lot",spots:200,rate:"Free"},{name:"Woodmere Blvd Street",type:"Street",spots:40,rate:"Free"}],
+    narrative:"Midtown is where Montgomery\u2019s creative energy lives. Home to the Museum of Fine Arts and the Alabama Shakespeare Festival, this neighborhood sees growing cultural investment. Twenty-two new businesses opened this year, many in the arts. Crime is moderate but trending down, and the city responds quickly to 311 requests.",
+    voices:[{author:"Alicia M.",role:"Artist & gallery owner",quote:"The arts district is real. It\u2019s not just marketing \u2014 there are actual studios, actual artists, actual foot traffic now."},{author:"Dr. Howard P.",role:"Museum volunteer",quote:"Free admission at the museum means everyone can participate in culture. That\u2019s rare and worth protecting."}],
+    eras:[{year:"1960s\u201380s",title:"Cultural Investment",connection:"Post-civil rights Montgomery invested in cultural institutions, leading to the Museum of Fine Arts and Blount Cultural Park."}],
+    wishes:[{id:1,text:"Extended museum hours on weekends",votes:41},{id:2,text:"Better public transit connecting Midtown to Downtown",votes:35},{id:3,text:"More public murals and street art",votes:30}],
+    communityStories:[{author:"Kwame S.",role:"Local musician",quote:"I play at venues here every week. The audience is growing \u2014 younger, more diverse. Midtown feels like it\u2019s on the edge of something big."}]
   },
   {
     id:"capitol-heights", name:"Capitol Heights", center:[32.3700,-86.2880], radius:650, color:"#dd6b20",
@@ -601,7 +673,12 @@ const NEIGHBORHOODS = [
     civic:{open311:32,avgResDays:5.1,topIssues:["Vacant Property Complaints","Street Lighting","Illegal Dumping"],grade:"B-"},
     history:{title:"The Heart of the Boycott",text:"Capitol Heights is where the Montgomery Bus Boycott lived. Holt Street Baptist Church, where thousands gathered for the first mass meeting, is here.",landmarks:[{icon:"&#9851;",name:"Holt Street Baptist Church",desc:"Site of the first mass meeting — Dec 5, 1955"},{icon:"&#127960;",name:"Holt Street Fountain",desc:"Memorial marker at the historic site"}]},
     restaurants:[{name:"Martin's Restaurant",cuisine:"Southern Soul Food",rating:4.2,price:"$",note:"Best fried catfish — cash only"},{name:"Capitol Heights Diner",cuisine:"Breakfast & Lunch",rating:3.9,price:"$",note:"No-frills, big portions"}],
-    parking:[{name:"Street parking",type:"Street",spots:100,rate:"Free"}]
+    parking:[{name:"Street parking",type:"Street",spots:100,rate:"Free"}],
+    narrative:"Capitol Heights is where Montgomery\u2019s civil rights story lives and breathes. Holt Street Baptist Church, site of the first mass meeting of the Bus Boycott, anchors this community. It has the city\u2019s highest business growth rate \u2014 10.9% \u2014 but also faces challenges: crime is elevated, and 311 response times lag behind other neighborhoods.",
+    voices:[{author:"Deacon Willie B.",role:"Holt St. church elder",quote:"People drive past this neighborhood without knowing what happened here. December 5, 1955 \u2014 thousands gathered right here and changed America."},{author:"Keisha N.",role:"Small business owner",quote:"I opened my shop because this neighborhood deserves investment from people who actually live here, not outsiders."}],
+    eras:[{year:"1955",title:"First Mass Meeting",connection:"On December 5, 1955, thousands packed Holt Street Baptist Church and voted to continue the boycott \u2014 the movement\u2019s founding moment."},{year:"1960s",title:"Community Organizing",connection:"Capitol Heights remained a center of Black civic organizing throughout the civil rights era."}],
+    wishes:[{id:1,text:"Historical markers at all significant civil rights sites",votes:56},{id:2,text:"Faster 311 response times \u2014 we deserve equal service",votes:44},{id:3,text:"Youth job training programs in the neighborhood",votes:39},{id:4,text:"Better lighting and sidewalks on Holt Street",votes:33}],
+    communityStories:[{author:"Dorothy M.",role:"Retired teacher, lifelong resident",quote:"My grandmother walked to work during the boycott. She walked for 381 days. That\u2019s the spirit of Capitol Heights \u2014 we don\u2019t give up."}]
   },
   {
     id:"garden-district", name:"Garden District", center:[32.3570,-86.3250], radius:650, color:"#38a169",
@@ -613,7 +690,12 @@ const NEIGHBORHOODS = [
     civic:{open311:9,avgResDays:2.8,topIssues:["Tree Debris","Stormwater","Animal Control"],grade:"A"},
     history:{title:"The Garden Suburb",text:"Developed in the 1920s-1940s as one of Montgomery's first planned residential areas, designed around green space and walkability.",landmarks:[{icon:"&#127793;",name:"Community Victory Garden",desc:"Revival of WWII-era community gardening"},{icon:"&#127968;",name:"Garden District Historic Homes",desc:"Well-preserved 1930s bungalows"}]},
     restaurants:[{name:"The Greenhouse",cuisine:"Coffee & Pastries",rating:4.4,price:"$",note:"Neighborhood coffee shop with a devoted following"}],
-    parking:[{name:"Street parking",type:"Street",spots:80,rate:"Free"}]
+    parking:[{name:"Street parking",type:"Street",spots:80,rate:"Free"}],
+    narrative:"The Garden District lives up to its name \u2014 green, quiet, and close-knit. With the city\u2019s fastest 311 response time (2.8 days) and low crime, this planned 1920s neighborhood shows what intentional design creates. Eight new businesses opened this year, many home-based. Real estate listings mentioning the neighborhood are up 45%.",
+    voices:[{author:"Patricia G.",role:"30-year resident",quote:"We moved here for the sidewalks and the trees. Thirty years later, it\u2019s still the most walkable part of Montgomery."},{author:"Tom & Linda H.",role:"Retired couple",quote:"The community garden brought us together with neighbors we\u2019d never met. Now we share more than tomatoes."}],
+    eras:[{year:"1920s\u201340s",title:"Planned Community",connection:"One of Montgomery\u2019s first planned residential areas, designed around green space and pedestrian access."}],
+    wishes:[{id:1,text:"Expand the community garden to more blocks",votes:29},{id:2,text:"Traffic calming on Fairview Ave",votes:22},{id:3,text:"Dog park in Gateway Park",votes:18}],
+    communityStories:[{author:"Young J.",role:"New homeowner",quote:"We chose the Garden District over the suburbs. It\u2019s quiet, walkable, and our kids can ride their bikes safely. That\u2019s priceless."}]
   },
   {
     id:"dalraida", name:"Dalraida", center:[32.4050,-86.2700], radius:800, color:"#e53e3e",
@@ -625,7 +707,12 @@ const NEIGHBORHOODS = [
     civic:{open311:28,avgResDays:4.5,topIssues:["Road Maintenance","Traffic Signals","Drainage"],grade:"B"},
     history:{title:"Suburban Expansion",text:"Dalraida grew rapidly in the 1960s-1980s. Named after a Scottish-Irish kingdom, it became one of the city's most diverse areas.",landmarks:[{icon:"&#9971;",name:"Lagoon Park Golf Course",desc:"Public 18-hole course"},{icon:"&#127963;",name:"Eastern Blvd Corridor",desc:"Main commercial strip"}]},
     restaurants:[{name:"Capitol Oyster Bar",cuisine:"Seafood",rating:4.3,price:"$$",note:"Fresh Gulf oysters — a Montgomery favorite"},{name:"Taste of Bangkok",cuisine:"Thai",rating:4.1,price:"$$",note:"Authentic Thai with generous portions"}],
-    parking:[{name:"Business lot parking",type:"Surface Lots",spots:300,rate:"Free"}]
+    parking:[{name:"Business lot parking",type:"Surface Lots",spots:300,rate:"Free"}],
+    narrative:"Dalraida is Montgomery\u2019s most diverse large neighborhood \u2014 family-oriented, commercially active, and affordable. Growth is slow but steady at 1.9%. The area has strong community anchors like Lagoon Park and a busy commercial corridor on Eastern Blvd. Residents say they want more restaurant options and better road maintenance.",
+    voices:[{author:"Fatima A.",role:"Immigrant business owner",quote:"My family came here from Somalia. Dalraida accepted us. Our restaurant serves Somali food and soul food \u2014 that\u2019s Dalraida in one sentence."},{author:"Coach Ray D.",role:"Youth league organizer",quote:"Lagoon Park is where this community comes together. Saturdays during football season, you\u2019ll see every part of Dalraida on those fields."}],
+    eras:[{year:"1960s\u201380s",title:"Suburban Growth",connection:"Dalraida grew as Montgomery expanded eastward. It became one of the city\u2019s first truly diverse suburban neighborhoods."}],
+    wishes:[{id:1,text:"More diverse restaurant options on Eastern Blvd",votes:38},{id:2,text:"Road resurfacing on Wares Ferry Road",votes:31},{id:3,text:"After-school programs at the community center",votes:27},{id:4,text:"Better crosswalks on Eastern Blvd",votes:21}],
+    communityStories:[{author:"Maria C.",role:"Parent & PTA member",quote:"Dalraida schools are more diverse than anywhere in Montgomery. My kids\u2019 best friends come from five different countries. That\u2019s the real strength of this neighborhood."}]
   },
   {
     id:"eastdale", name:"Eastdale", center:[32.3780,-86.2550], radius:700, color:"#4fd1c5",
@@ -637,7 +724,12 @@ const NEIGHBORHOODS = [
     civic:{open311:19,avgResDays:4.0,topIssues:["Road Resurfacing","Traffic Flow","Commercial Signage"],grade:"B"},
     history:{title:"East Side Rising",text:"Eastdale emerged as a commercial center in the 1970s-1980s. The area is now experiencing a second wave of investment.",landmarks:[{icon:"&#127963;",name:"Eastdale Town Center",desc:"Former mall becoming mixed-use destination"},{icon:"&#128137;",name:"Baptist Health Campus",desc:"Major medical complex"}]},
     restaurants:[{name:"Filet & Vine",cuisine:"Steakhouse",rating:4.2,price:"$$$",note:"Upscale dining — a sign of the area's rise"},{name:"Maki Fresh",cuisine:"Sushi & Poke",rating:4.0,price:"$$",note:"Fast-casual sushi that's actually good"}],
-    parking:[{name:"Town Center lots",type:"Surface Lots",spots:500,rate:"Free"}]
+    parking:[{name:"Town Center lots",type:"Surface Lots",spots:500,rate:"Free"}],
+    narrative:"Eastdale is reinventing itself. Twenty-five new businesses opened this year, and the old Eastdale Mall area is transforming into a mixed-use center. Crime is down 9% but outdated perceptions linger \u2014 Reddit threads still reference old data. With $4M+ in development projects, this is a neighborhood betting on its future.",
+    voices:[{author:"Brandon T.",role:"Developer",quote:"We\u2019re building something new here. The old mall narrative is dead \u2014 Eastdale Town Center is going to be a real destination."},{author:"Nurse Pam S.",role:"Baptist Health employee",quote:"I work at the medical campus and I live nearby. The commute, the restaurants, the parks \u2014 it\u2019s getting better every year."}],
+    eras:[{year:"1970s\u201380s",title:"Commercial Boom",connection:"Eastdale emerged as a commercial center during Montgomery\u2019s eastward expansion, anchored by the Eastdale Mall."},{year:"2020s",title:"Reinvention",connection:"The old mall is being reimagined as mixed-use space \u2014 part of a national trend of suburban renewal."}],
+    wishes:[{id:1,text:"Better walking/biking paths connecting to downtown",votes:35},{id:2,text:"More green space in the town center redevelopment",votes:29},{id:3,text:"Outdoor dining areas at new restaurants",votes:23}],
+    communityStories:[{author:"Aisha R.",role:"High school student",quote:"Everyone says Eastdale is boring. It\u2019s not. The trail is great, the new sushi place is good, and things are actually changing. Give it time."}]
   },
   {
     id:"woodley-park", name:"Woodley Park", center:[32.3920,-86.2850], radius:600, color:"#667eea",
@@ -649,7 +741,12 @@ const NEIGHBORHOODS = [
     civic:{open311:5,avgResDays:2.5,topIssues:["Yard Waste Collection","Speed Humps"],grade:"A+"},
     history:{title:"The Quiet Backbone",text:"Woodley Park represents the suburban dream of Montgomery's north side. Neighborhoods like this are the stable backbone of any city.",landmarks:[{icon:"&#127968;",name:"Woodley Park Neighborhood",desc:"Well-maintained 1970s-80s homes"},{icon:"&#127891;",name:"Top-Rated Elementary Schools",desc:"Above-average school ratings"}]},
     restaurants:[{name:"Neighborhood Deli & Grill",cuisine:"American",rating:4.0,price:"$",note:"The kind of place where everyone knows your name"}],
-    parking:[{name:"Street parking",type:"Street",spots:50,rate:"Free"}]
+    parking:[{name:"Street parking",type:"Street",spots:50,rate:"Free"}],
+    narrative:"Woodley Park is Montgomery\u2019s quiet achiever. The safest neighborhood in the data, with the fastest 311 response (2.5 days) and the highest civic grade (A+). Growth is steady at 7.9%. School ratings are above average. It\u2019s not flashy, but for families, it\u2019s exactly what a neighborhood should be.",
+    voices:[{author:"Jennifer & David W.",role:"Parents of three",quote:"The schools are great, the neighborhood is safe, and our kids play outside until dark. We don\u2019t need trendy \u2014 we need stable."},{author:"Mr. Harold T.",role:"Retired postal worker",quote:"I\u2019ve lived here since 1982. It\u2019s never made the news. That\u2019s the best compliment a neighborhood can get."}],
+    eras:[{year:"1970s\u201380s",title:"Suburban Stability",connection:"Built during Montgomery\u2019s suburban expansion, Woodley Park represented the promise of stable, middle-class neighborhood life."}],
+    wishes:[{id:1,text:"Playground equipment upgrades at Woodley Park",votes:24},{id:2,text:"Speed humps on cut-through streets",votes:19},{id:3,text:"Neighborhood watch program expansion",votes:15}],
+    communityStories:[{author:"Lisa P.",role:"Neighborhood association president",quote:"We have a block party every Fourth of July. Last year, 200 people showed up. That doesn\u2019t happen in neighborhoods that don\u2019t care about each other."}]
   }
 ];
 
@@ -821,7 +918,7 @@ function openPanel(hood) {
       <span class="score-badge ${sc}">Growth: +${hood.business.netGrowth}%</span>
       <button class="btn-compare" onclick="addToComparison('${hood.id}')">+ Compare</button>
     </div>`;
-  const tabs=['Snapshot','Explore','Data'];
+  const tabs=['Then','Now','Tomorrow'];
   document.getElementById('tabBar').innerHTML=tabs.map((t,i)=>`<div class="tab ${i===0?'active':''}" onclick="switchTab(${i},'${hood.id}')">${t}</div>`).join('');
   renderTabContent(hood);
   document.getElementById('poiBar').className='poi-toggle-bar panel-open';
@@ -833,51 +930,116 @@ function switchTab(idx,hoodId) {
   document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
   document.querySelectorAll('.tab-content').forEach((c,i)=>c.classList.toggle('active',i===idx));
   const hood=NEIGHBORHOODS.find(h=>h.id===hoodId);
-  if(idx===2&&hood) setTimeout(()=>renderSafetyChart(hood),50);
+  if(idx===1&&hood) setTimeout(()=>renderSafetyChart(hood),50);
 }
 function renderTabContent(hood) {
+  // Load any user-submitted stories from localStorage
+  const storedStories = JSON.parse(localStorage.getItem('stories_'+hood.id) || '[]');
+  const allStories = [...(hood.communityStories||[]), ...storedStories];
+  
+  // Load wish votes from localStorage
+  const storedVotes = JSON.parse(localStorage.getItem('votes_'+hood.id) || '{}');
+  const votedWishes = JSON.parse(localStorage.getItem('voted_'+hood.id) || '[]');
+  const storedWishes = JSON.parse(localStorage.getItem('wishes_'+hood.id) || '[]');
+  const allWishes = [...(hood.wishes||[]).map(w=>({...w, votes: w.votes + (storedVotes[w.id]||0)})), ...storedWishes];
+  allWishes.sort((a,b)=>b.votes-a.votes);
+  
+  const participationCount = allStories.length + allWishes.length;
+  
   document.getElementById('tabContent').innerHTML=`
-    <!-- SNAPSHOT -->
+    <!-- THEN -->
     <div class="tab-content active">
-      <div class="stat-grid">
-        <div class="stat-card"><div class="stat-label">Businesses</div><div class="stat-value">${hood.business.total}</div><div class="stat-change positive">+${hood.business.newOpen} new</div></div>
-        <div class="stat-card"><div class="stat-label">Crime Rate</div><div class="stat-value">${hood.safety.crimeRate}<small style="font-size:11px;color:#64748b">/1k</small></div><div class="stat-change ${hood.safety.crimeChange<0?'positive':'negative'}">${hood.safety.crimeChange}% YoY</div></div>
-        <div class="stat-card"><div class="stat-label">311 Response</div><div class="stat-value">${hood.civic.avgResDays}d</div><div class="stat-change">Grade: ${hood.civic.grade}</div></div>
-        <div class="stat-card"><div class="stat-label">Permits</div><div class="stat-value">${hood.development.permits}</div><div class="stat-change positive">${hood.development.projects.length} projects</div></div>
-      </div>
-      <div class="section-head">Top Business Categories</div>
-      ${hood.business.topCats.map((c,i)=>`<div style="font-size:12px;color:#94a3b8;padding:3px 0">${i+1}. ${c}</div>`).join('')}
-      <div class="insight-box"><strong>Bright Data Insight</strong>${hood.business.insight}</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:19px;color:#fff;margin-bottom:8px">${hood.history.title}</h3>
+      <p class="neighborhood-narrative">${hood.history.text}</p>
+      <div class="section-head">Key Historic Sites</div>
+      ${hood.history.landmarks.map(l=>`<div class="landmark"><div class="landmark-icon">${l.icon}</div><div><div class="landmark-name">${l.name}</div><div class="landmark-desc">${l.desc}</div></div></div>`).join('')}
+      ${hood.eras && hood.eras.length ? `
+        <div class="section-head" style="margin-top:16px">Civil Rights & Historical Timeline</div>
+        <div class="era-timeline">
+          ${hood.eras.map(e=>`<div class="era-badge"><span class="era-badge-year">${e.year}</span><div><strong style="color:#e2e8f0;font-size:12px">${e.title}</strong><div style="margin-top:2px">${e.connection}</div></div></div>`).join('')}
+        </div>
+      ` : ''}
     </div>
-    <!-- EXPLORE -->
+    <!-- NOW -->
     <div class="tab-content">
-      <div class="section-head">Parks &amp; Spaces</div>
+      <p class="neighborhood-narrative">${hood.narrative || hood.description}</p>
+      ${hood.voices && hood.voices.length ? `
+        <div class="section-head">What Residents Say</div>
+        ${hood.voices.map(v=>`<div class="voice-card"><blockquote>&ldquo;${v.quote}&rdquo;</blockquote><cite>&mdash; ${v.author}, ${v.role}</cite></div>`).join('')}
+      ` : ''}
+      <button class="data-toggle" onclick="toggleDataSection(this)">
+        <span class="toggle-arrow">&#9654;</span> By the Numbers
+      </button>
+      <div class="data-collapsible">
+        <div class="stat-grid" style="margin-top:12px">
+          <div class="stat-card"><div class="stat-label">Businesses</div><div class="stat-value">${hood.business.total}</div><div class="stat-change positive">+${hood.business.newOpen} new</div></div>
+          <div class="stat-card"><div class="stat-label">Crime Rate</div><div class="stat-value">${hood.safety.crimeRate}<small style="font-size:11px;color:#64748b">/1k</small></div><div class="stat-change ${hood.safety.crimeChange<0?'positive':'negative'}">${hood.safety.crimeChange}% YoY</div></div>
+          <div class="stat-card"><div class="stat-label">311 Response</div><div class="stat-value">${hood.civic.avgResDays}d</div><div class="stat-change">Grade: ${hood.civic.grade}</div></div>
+          <div class="stat-card"><div class="stat-label">Permits</div><div class="stat-value">${hood.development.permits}</div><div class="stat-change positive">${hood.development.projects.length} projects</div></div>
+        </div>
+        <div class="insight-box"><strong>Bright Data Insight</strong>${hood.business.insight}</div>
+        <div class="section-head" style="margin-top:16px">Safety: Perception vs. Reality</div>
+        <div class="gap-bar-container">
+          <div class="gap-row"><span class="gap-label">Actual</span><div class="gap-track"><div class="gap-fill reality" style="width:${hood.safety.crimeRate}%">${hood.safety.crimeRate}</div></div></div>
+          <div class="gap-row"><span class="gap-label">Perception</span><div class="gap-track"><div class="gap-fill perception" style="width:${hood.safety.perception}%">${hood.safety.perception}</div></div></div>
+          <div class="gap-row"><span class="gap-label">Media</span><div class="gap-track"><div class="gap-fill media" style="width:${hood.safety.mediaIndex}%">${hood.safety.mediaIndex}</div></div></div>
+        </div>
+        <div class="insight-box"><strong>Bright Data Insight</strong>${hood.safety.insight}</div>
+        <div class="chart-container"><h4>Crime vs. Perception</h4><canvas id="chartSafety" height="180"></canvas></div>
+      </div>
+      <div class="section-head" style="margin-top:16px">Parks & Spaces</div>
       ${hood.spaces.list.map(s=>`<div class="space-item"><div><div class="space-name">${s.name}</div><div class="space-type">${s.type}</div></div><div style="text-align:right"><div style="font-size:11px;color:#64748b;margin-bottom:3px">${s.util}%</div><div class="utilization-bar"><div class="utilization-fill" style="width:${s.util}%;background:${s.util>=65?'#38a169':s.util>=45?'#d69e2e':'#e53e3e'}"></div></div></div></div>`).join('')}
       <div class="section-head" style="margin-top:16px">Restaurants (via Bright Data / Yelp)</div>
       ${hood.restaurants.map(r=>`<div class="restaurant-card"><div class="restaurant-name">${r.name}</div><div class="restaurant-meta"><span class="restaurant-rating">${r.rating} &#9733;</span><span>${r.cuisine}</span><span>${r.price}</span></div><div class="restaurant-note">${r.note}</div></div>`).join('')}
       <div class="section-head" style="margin-top:16px">Parking</div>
       ${hood.parking.map(p=>`<div class="parking-card"><div><div class="parking-name">${p.name}</div><div style="font-size:10px;color:#64748b">${p.type}</div></div><div class="parking-info"><div>${p.spots} spots</div><div>${p.rate}</div></div></div>`).join('')}
-      <div class="section-head" style="margin-top:16px">History</div>
-      <h3 style="font-family:'Playfair Display',serif;font-size:17px;color:#fff;margin-bottom:6px">${hood.history.title}</h3>
-      <p style="font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:14px">${hood.history.text}</p>
-      ${hood.history.landmarks.map(l=>`<div class="landmark"><div class="landmark-icon">${l.icon}</div><div><div class="landmark-name">${l.name}</div><div class="landmark-desc">${l.desc}</div></div></div>`).join('')}
     </div>
-    <!-- DATA -->
+    <!-- TOMORROW -->
     <div class="tab-content">
-      <div class="section-head">Safety: Perception vs. Reality</div>
-      <div class="gap-bar-container">
-        <div class="gap-row"><span class="gap-label">Actual</span><div class="gap-track"><div class="gap-fill reality" style="width:${hood.safety.crimeRate}%">${hood.safety.crimeRate}</div></div></div>
-        <div class="gap-row"><span class="gap-label">Perception</span><div class="gap-track"><div class="gap-fill perception" style="width:${hood.safety.perception}%">${hood.safety.perception}</div></div></div>
-        <div class="gap-row"><span class="gap-label">Media</span><div class="gap-track"><div class="gap-fill media" style="width:${hood.safety.mediaIndex}%">${hood.safety.mediaIndex}</div></div></div>
+      <p class="tomorrow-intro">Montgomery's story isn't finished. Every neighborhood has a future shaped by the people who live, work, and care about it. This is your space to contribute.</p>
+      <div class="participation-counter">&#127793; <strong>${participationCount}</strong>&nbsp;neighbors have shared their voice about ${hood.name}</div>
+      
+      <div class="section-head">Share Your Story</div>
+      <div class="story-form" id="storyForm_${hood.id}">
+        <button class="story-form-trigger" onclick="toggleStoryForm('${hood.id}')">&#128221; What does ${hood.name} mean to you?</button>
+        <div class="story-form-fields" id="storyFields_${hood.id}">
+          <label>Your relationship to this neighborhood</label>
+          <select id="storyRole_${hood.id}">
+            <option value="Resident">I live here</option>
+            <option value="Worker">I work here</option>
+            <option value="Visitor">I visit often</option>
+            <option value="Business Owner">I own a business here</option>
+            <option value="Former Resident">I used to live here</option>
+          </select>
+          <label>Your story</label>
+          <textarea id="storyText_${hood.id}" placeholder="Share a memory, an observation, or what this place means to you..." maxlength="500"></textarea>
+          <label>Your first name (optional)</label>
+          <input type="text" id="storyName_${hood.id}" placeholder="Anonymous" maxlength="30">
+          <button class="story-form-submit" onclick="submitStory('${hood.id}')">Share Your Story</button>
+        </div>
       </div>
-      <div class="chart-container"><h4>Crime vs. Perception</h4><canvas id="chartSafety" height="180"></canvas></div>
-      <div class="insight-box"><strong>Bright Data Insight</strong>${hood.safety.insight}</div>
-      <div class="section-head" style="margin-top:16px">Development Projects</div>
+      
+      ${allStories.length ? `
+        <div class="section-head" style="margin-top:14px">Community Stories</div>
+        ${allStories.map(s=>`<div class="submitted-story"><p>&ldquo;${s.quote}&rdquo;</p><cite>&mdash; ${s.author}, ${s.role}</cite></div>`).join('')}
+      ` : ''}
+      
+      <div class="section-head" style="margin-top:18px">What Should Change in ${hood.name}?</div>
+      ${allWishes.map(w=>`<div class="wish-card"><button class="wish-vote-btn ${votedWishes.includes(w.id)?'voted':''}" onclick="voteWish('${hood.id}',${w.id})">&#128077; ${w.votes}</button><span class="wish-text">${w.text}</span></div>`).join('')}
+      <button class="story-form-trigger" style="margin-top:10px" onclick="toggleWishForm('${hood.id}')">+ Suggest something for ${hood.name}</button>
+      <div class="story-form-fields" id="wishFields_${hood.id}">
+        <label>Your suggestion</label>
+        <input type="text" id="wishText_${hood.id}" placeholder="What would make this neighborhood better?" maxlength="100">
+        <button class="story-form-submit" onclick="submitWish('${hood.id}')">Submit Suggestion</button>
+      </div>
+      
+      <div class="section-head" style="margin-top:18px">Development Projects</div>
       ${hood.development.projects.map(p=>`<div style="font-size:12px;color:#94a3b8;padding:4px 0">&#9656; ${p}</div>`).join('')}
       <div class="section-head" style="margin-top:16px">Top 311 Issues</div>
       ${hood.civic.topIssues.map(i=>`<div style="font-size:12px;color:#94a3b8;padding:3px 0">&#8226; ${i}</div>`).join('')}
     </div>`;
 }
+
 function renderSafetyChart(hood) {
   if(charts.safety) charts.safety.destroy();
   const ctx=document.getElementById('chartSafety'); if(!ctx) return;
@@ -1045,10 +1207,10 @@ document.addEventListener('click',e=>{
    INTENT SYSTEM
    ═══════════════════════════════════════════════════ */
 const INTENTS={
-  exploring:{layer:'vitality',neighborhood:'downtown',pois:['landmarks','parks','trails'],coach:'Neighborhoods are colored by the active data layer. Green = positive, red = needs attention. Click any circle for details.'},
-  visiting:{layer:'vitality',neighborhood:'downtown',pois:['landmarks','parks','trails','restaurants'],coach:'Landmarks, parks, and restaurants are marked on the map. Click any marker for details. Switch to the Explore tab for dining reviews.'},
-  investing:{layer:'development',neighborhood:null,pois:['landmarks'],coach:'Orange = most active development. Click a neighborhood to see permits, business growth, and investment signals.'},
-  resident:{layer:'safety',neighborhood:null,pois:['landmarks','parks'],coach:'Green = safer than average. The Data tab shows how actual crime compares to media perception — many areas are safer than people think.'}
+  exploring:{layer:'vitality',neighborhood:'downtown',pois:['landmarks','parks','trails'],coach:'Each neighborhood tells a story in three chapters: Then (history), Now (what\'s happening), and Tomorrow (community voice). Click any circle to begin.'},
+  visiting:{layer:'vitality',neighborhood:'downtown',pois:['landmarks','parks','trails','restaurants'],coach:'Landmarks, parks, and restaurants are marked on the map. Click any neighborhood and check the Now tab for local dining and the Then tab for history.'},
+  investing:{layer:'development',neighborhood:null,pois:['landmarks'],coach:'Orange = most active development. Click a neighborhood for business data in the Now tab and community priorities in the Tomorrow tab.'},
+  resident:{layer:'safety',neighborhood:null,pois:['landmarks','parks'],coach:'Green = safer areas. Click your neighborhood and visit the Tomorrow tab to share your story and vote on what should change.'}
 };
 function selectIntent(intent){
   const cfg=INTENTS[intent];
@@ -1087,6 +1249,78 @@ function hideLoading(){
   ls.classList.add('hide');
   setTimeout(()=>{ls.remove();document.getElementById('heroOverlay').classList.add('visible')},500);
 }
+/* ═══════════════════════════════════════════════════
+   CIVIC PARTICIPATION — STORIES & WISHES
+   ═══════════════════════════════════════════════════ */
+function toggleStoryForm(hoodId){
+  document.getElementById('storyFields_'+hoodId).classList.toggle('visible');
+}
+function toggleWishForm(hoodId){
+  document.getElementById('wishFields_'+hoodId).classList.toggle('visible');
+}
+function toggleDataSection(btn){
+  btn.classList.toggle('open');
+  const collapsible=btn.nextElementSibling;
+  collapsible.classList.toggle('open');
+  if(collapsible.classList.contains('open')){
+    const hood=NEIGHBORHOODS.find(h=>h.id===activeHood);
+    if(hood) setTimeout(()=>renderSafetyChart(hood),100);
+  }
+}
+function submitStory(hoodId){
+  const text=document.getElementById('storyText_'+hoodId).value.trim();
+  if(!text || text.length<10){showToast('Please write at least 10 characters.');return}
+  const name=document.getElementById('storyName_'+hoodId).value.trim()||'Anonymous';
+  const role=document.getElementById('storyRole_'+hoodId).value;
+  const stories=JSON.parse(localStorage.getItem('stories_'+hoodId)||'[]');
+  stories.push({author:name, role:role, quote:text});
+  localStorage.setItem('stories_'+hoodId, JSON.stringify(stories));
+  showToast('Thanks for sharing! Your story is now part of Montgomery\'s narrative.');
+  const hood=NEIGHBORHOODS.find(h=>h.id===hoodId);
+  if(hood) renderTabContent(hood);
+  // Re-activate the Tomorrow tab
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===2));
+  document.querySelectorAll('.tab-content').forEach((c,i)=>c.classList.toggle('active',i===2));
+}
+function voteWish(hoodId, wishId){
+  const votedKey='voted_'+hoodId;
+  const voted=JSON.parse(localStorage.getItem(votedKey)||'[]');
+  if(voted.includes(wishId)){showToast('You\'ve already voted for this!');return}
+  voted.push(wishId);
+  localStorage.setItem(votedKey, JSON.stringify(voted));
+  const votesKey='votes_'+hoodId;
+  const votes=JSON.parse(localStorage.getItem(votesKey)||'{}');
+  votes[wishId]=(votes[wishId]||0)+1;
+  localStorage.setItem(votesKey, JSON.stringify(votes));
+  const hood=NEIGHBORHOODS.find(h=>h.id===hoodId);
+  if(hood) renderTabContent(hood);
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===2));
+  document.querySelectorAll('.tab-content').forEach((c,i)=>c.classList.toggle('active',i===2));
+}
+function submitWish(hoodId){
+  const text=document.getElementById('wishText_'+hoodId).value.trim();
+  if(!text || text.length<5){showToast('Please write at least 5 characters.');return}
+  const wishes=JSON.parse(localStorage.getItem('wishes_'+hoodId)||'[]');
+  const newId=Date.now();
+  wishes.push({id:newId, text:text, votes:1});
+  localStorage.setItem('wishes_'+hoodId, JSON.stringify(wishes));
+  // Auto-vote for your own suggestion
+  const voted=JSON.parse(localStorage.getItem('voted_'+hoodId)||'[]');
+  voted.push(newId);
+  localStorage.setItem('voted_'+hoodId, JSON.stringify(voted));
+  showToast('Suggestion added! Others can now vote for it.');
+  const hood=NEIGHBORHOODS.find(h=>h.id===hoodId);
+  if(hood) renderTabContent(hood);
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===2));
+  document.querySelectorAll('.tab-content').forEach((c,i)=>c.classList.toggle('active',i===2));
+}
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('visible');
+  setTimeout(()=>t.classList.remove('visible'),3000);
+}
+
 
 /* ═══════════════════════════════════════════════════
    INIT
