@@ -10,6 +10,12 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:#0f172a;color:#e2e8f0;overflow:hidden;height:100vh;width:100vw}
 
+/* ── Accessibility ── */
+.skip-link{position:absolute;top:-100%;left:16px;z-index:99999;padding:10px 18px;background:#d69e2e;color:#0f172a;font-size:14px;font-weight:600;border-radius:0 0 8px 8px;text-decoration:none;transition:top .2s}
+.skip-link:focus{top:0}
+*:focus-visible{outline:2px solid #d69e2e;outline-offset:2px;border-radius:4px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
 /* ── Map ── */
 #map{position:absolute;inset:0;z-index:1}
 .leaflet-control-zoom{display:none}
@@ -29,7 +35,7 @@ body{font-family:'Inter',sans-serif;background:#0f172a;color:#e2e8f0;overflow:hi
 .question-dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;background:rgba(15,23,42,.97);border:1px solid rgba(255,255,255,.1);border-radius:10px;display:none;overflow:hidden;z-index:1100;backdrop-filter:blur(14px)}
 .question-dropdown.visible{display:block}
 .question-section-label{padding:8px 14px 4px;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#475569}
-.question-result{padding:9px 14px;cursor:pointer;font-size:13px;color:#94a3b8;display:flex;align-items:center;gap:10px;transition:all .15s}
+.question-result{padding:9px 14px;cursor:pointer;font-size:13px;color:#94a3b8;display:flex;align-items:center;gap:10px;transition:all .15s;background:none;border:none;width:100%;text-align:left;font-family:'Inter',sans-serif}
 .question-result:hover{background:rgba(255,255,255,.06);color:#e2e8f0}
 .question-result-icon{width:22px;text-align:center;font-size:14px;flex-shrink:0}
 
@@ -124,8 +130,9 @@ body{font-family:'Inter',sans-serif;background:#0f172a;color:#e2e8f0;overflow:hi
 .score-high{background:rgba(56,161,105,.15);color:#68d391}
 .score-mid{background:rgba(214,158,46,.15);color:#d69e2e}
 .score-low{background:rgba(229,62,62,.15);color:#fc8181}
-.btn-compare{padding:3px 10px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#64748b;font-size:11px;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s}
-.btn-compare:hover{background:rgba(214,158,46,.1);border-color:rgba(214,158,46,.3);color:#d69e2e}
+.btn-compare,.btn-compare-add{padding:3px 10px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#64748b;font-size:11px;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s}
+.btn-compare:hover,.btn-compare-add:hover{background:rgba(214,158,46,.1);border-color:rgba(214,158,46,.3);color:#d69e2e}
+.btn-compare-add{position:absolute;top:20px;right:20px}
 
 /* ── Tabs ── */
 .tabs{display:flex;gap:0;padding:14px 20px 0;border-bottom:1px solid rgba(255,255,255,.06)}
@@ -202,7 +209,7 @@ canvas{max-width:100%!important;max-height:180px!important}
 .story-landmark-card h4{font-size:13px;color:#e2e8f0;margin-bottom:3px}
 .story-landmark-card p{font-size:11px;color:#64748b;line-height:1.4}
 .story-divider{width:50px;height:2px;background:linear-gradient(90deg,#d69e2e,transparent);margin:40px 0}
-.view-on-map{color:#d69e2e;font-size:11px;cursor:pointer;text-decoration:none;display:inline-block;margin-top:6px}
+.view-on-map{color:#d69e2e;font-size:11px;cursor:pointer;text-decoration:none;display:inline-block;margin-top:6px;background:none;border:none;font-family:'Inter',sans-serif;padding:0}
 .view-on-map:hover{text-decoration:underline}
 
 /* ── POI Toggle Bar ── */
@@ -293,7 +300,6 @@ canvas{max-width:100%!important;max-height:180px!important}
 .nav-banner-dismiss:hover{color:#fff}
 
 /* ── Coach Mark (hidden, kept for compatibility) ── */
-.coach-mark{display:none}
 
 /* ── Narrative Text ── */
 .neighborhood-narrative{font-size:14px;color:rgba(255,255,255,.88);line-height:1.75;margin-bottom:18px;font-style:normal}
@@ -365,141 +371,306 @@ canvas{max-width:100%!important;max-height:180px!important}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px}
 ::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.15)}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — TABLET (< 1024px)
+   ═══════════════════════════════════════════════════ */
+@media(max-width:1023px){
+  .sidebar{width:220px;transform:translateX(-220px)}
+  .sidebar.visible-mobile{transform:translateX(0)}
+  .sidebar-collapse-btn{left:0}
+  .sidebar-collapse-btn.shifted{left:0}
+  .sidebar-collapse-btn.sidebar-open-mobile{left:220px}
+  .state-bar{left:22px;font-size:10px}
+  .state-bar.sidebar-visible-mobile{left:220px}
+  .nav-banner{left:22px;font-size:11px}
+  .nav-banner.sidebar-visible-mobile{left:220px}
+  .detail-panel{width:340px}
+  .detail-header h2{font-size:19px}
+  .hero-box h1{font-size:28px}
+  .hero-box .hero-sub{font-size:13px}
+  .intent-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .intent-card{padding:18px 12px 16px}
+  .intent-card h3{font-size:13px}
+  .intent-card p{font-size:10px}
+  .hero-story-btn{font-size:14px;padding:14px 16px}
+  .poi-toggle-bar{left:36px}
+  .poi-toggle-bar.sidebar-visible-mobile{left:240px}
+  .poi-toggle-bar.panel-open{right:350px}
+  .comparison-bar{left:36px}
+  .comparison-bar.panel-open{right:350px}
+  .story-content{padding:60px 24px 80px}
+  .story-era h2{font-size:26px}
+  .story-era p{font-size:14px}
+  .story-landmark-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .about-box{max-width:380px;padding:22px}
+  .insights-panel{max-width:380px;left:45%;transform:translateX(-20%)}
+  .map-info-card{width:240px}
+  .question-wrap{max-width:320px;margin:0 16px}
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — PHONE (< 768px)
+   ═══════════════════════════════════════════════════ */
+@media(max-width:767px){
+  /* Header */
+  .header{padding:8px 12px;height:48px}
+  .header-brand h1{font-size:16px}
+  .header-brand span{font-size:8px;padding-left:8px;letter-spacing:1.5px}
+  .question-wrap{display:none}
+  .story-header-btn{padding:5px 10px;font-size:11px}
+  .story-header-btn .story-btn-icon{font-size:12px}
+
+  /* Sidebar — off-screen by default */
+  .sidebar{top:48px;width:260px;transform:translateX(-260px);z-index:1050}
+  .sidebar.visible-mobile{transform:translateX(0)}
+  .sidebar-collapse-btn{top:56px;left:0;z-index:1051;width:32px;height:32px;border-radius:0 8px 8px 0}
+  .sidebar-collapse-btn.sidebar-open-mobile{left:260px}
+
+  /* State bar */
+  .state-bar{top:48px;left:34px;padding:4px 12px;font-size:9px}
+  .state-bar.sidebar-visible-mobile{left:260px}
+
+  /* Nav banner */
+  .nav-banner{top:70px;left:0;right:0;font-size:11px;padding:6px 12px}
+  .nav-banner.sidebar-visible-mobile{left:260px}
+
+  /* Detail panel — full width, slide from bottom */
+  .detail-panel{top:auto;bottom:0;left:0;right:0;width:100%;height:70vh;max-height:70vh;border-left:none;border-top:1px solid rgba(255,255,255,.08);border-radius:16px 16px 0 0;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+  .detail-panel.open{transform:translateY(0)}
+  .detail-panel>.btn-close{position:sticky;top:0;float:right;margin:8px 8px 0 0}
+  .detail-header{padding:14px 16px 0}
+  .detail-header h2{font-size:18px}
+  .detail-subtitle{font-size:11px}
+  .tabs{padding:10px 16px 0}
+  .tab{padding:6px 12px;font-size:11px}
+  .tab-content{padding:12px 16px 16px}
+  .stat-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .stat-value{font-size:17px}
+  .restaurant-card{padding:10px}
+  .restaurant-name{font-size:12px}
+  .neighborhood-narrative{font-size:13px;line-height:1.65}
+
+  /* POI bar */
+  .poi-toggle-bar{left:8px;right:8px;bottom:10px;padding:6px 8px;gap:4px;flex-wrap:wrap;justify-content:center}
+  .poi-toggle-bar.panel-open{right:8px;bottom:calc(70vh + 10px)}
+  .poi-toggle-bar.sidebar-visible-mobile{left:8px}
+  .poi-btn{padding:4px 8px;font-size:10px}
+  .poi-dot{width:6px;height:6px}
+
+  /* Comparison bar */
+  .comparison-bar{left:8px;right:8px;bottom:54px}
+  .comparison-bar.panel-open{right:8px;bottom:calc(70vh + 10px)}
+  .comparison-hoods{grid-template-columns:1fr 1fr}
+
+  /* Hero / Intent overlay */
+  .hero-overlay{align-items:center}
+  .hero-box{padding:0 16px 20px;max-width:100%}
+  .hero-box h1{font-size:24px}
+  .hero-box .hero-sub{font-size:12px;margin-bottom:20px}
+  .hero-story-btn{font-size:13px;padding:12px 14px;margin-bottom:18px}
+  .intent-grid{grid-template-columns:1fr;gap:8px}
+  .intent-card{padding:14px 16px 12px;flex-direction:row;gap:12px;text-align:left;border-radius:10px}
+  .intent-card-icon{margin-bottom:0}
+  .intent-card-icon svg{width:24px;height:24px}
+  .intent-card h3{font-size:13px;margin-bottom:2px}
+  .intent-card p{font-size:10px;margin-bottom:0}
+  .intent-card-arrow{margin-left:auto}
+  .hero-skip{font-size:11px}
+
+  /* Story overlay */
+  .story-overlay .btn-close{top:8px;right:8px;width:32px;height:32px;font-size:16px}
+  .story-content{padding:50px 16px 70px}
+  .story-era h2{font-size:22px}
+  .story-era p{font-size:13px;line-height:1.6}
+  .story-landmark-grid{grid-template-columns:1fr;gap:6px}
+  .story-landmark-card{padding:10px}
+  .story-landmark-card h4{font-size:12px}
+  .story-landmark-card p{font-size:10px}
+
+  /* Insights panel */
+  .insights-panel{top:70px;left:8px;right:8px;max-width:none;transform:none;font-size:11px;padding:8px 12px}
+
+  /* About modal */
+  .about-box{max-width:calc(100vw - 32px);margin:0 16px;padding:20px}
+  .about-box h3{font-size:17px}
+  .about-box p{font-size:12px}
+
+  /* Map info */
+  .map-info-btn{top:56px;right:8px;width:24px;height:24px;font-size:10px}
+  .map-info-card{top:84px;right:8px;width:calc(100vw - 60px);max-width:280px}
+
+  /* Legend popup */
+  .legend-popup{bottom:60px;left:8px;width:200px}
+
+  /* Loading screen */
+  .loading-screen p{font-size:12px}
+  .loading-screen small{font-size:10px}
+
+  /* General text scaling */
+  .section-head{font-size:11px}
+  .voice-card blockquote{font-size:12px}
+  .voice-card cite{font-size:10px}
+  .era-badge{font-size:11px;padding:6px 10px}
+  .gap-label{font-size:10px;width:60px}
+  .chart-container h4{font-size:10px}
+  .tomorrow-intro{font-size:13px}
+  .participation-counter{font-size:11px}
+  .story-form-trigger{font-size:12px}
+  .wish-text{font-size:11px}
+  .data-toggle{font-size:10px}
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — SMALL PHONE (< 400px)
+   ═══════════════════════════════════════════════════ */
+@media(max-width:399px){
+  .header-brand h1{font-size:14px}
+  .header-brand span{display:none}
+  .story-header-btn span:not(.story-btn-icon){display:none}
+  .hero-box h1{font-size:20px}
+  .hero-box .hero-sub{font-size:11px}
+  .intent-card h3{font-size:12px}
+  .detail-header h2{font-size:16px}
+  .stat-grid{grid-template-columns:1fr}
+  .story-era h2{font-size:19px}
+}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#map">Skip to map</a>
 
 <!-- ═══ HEADER ═══ -->
-<header class="header">
+<header class="header" role="banner">
   <div class="header-brand">
     <h1>Discover Montgomery</h1>
-    <span>Civic Journey</span>
+    <span aria-hidden="true">Civic Journey</span>
   </div>
-  <div class="question-wrap" id="questionWrap">
-    <button class="question-trigger" id="questionTrigger" onclick="toggleQuestionDropdown()">
-      <span class="question-trigger-icon">&#10067;</span> Ask a Question
+  <div class="question-wrap" id="questionWrap" role="search" aria-label="Ask a civic question">
+    <button class="question-trigger" id="questionTrigger" onclick="toggleQuestionDropdown()" aria-expanded="false" aria-controls="questionDropdown" aria-label="Ask a question about Montgomery">
+      <span class="question-trigger-icon" aria-hidden="true">&#10067;</span> Ask a Question
     </button>
-    <div class="question-dropdown" id="questionDropdown"></div>
+    <div class="question-dropdown" id="questionDropdown" role="listbox" aria-label="Civic questions"></div>
   </div>
   <div class="header-actions">
-    <button class="story-header-btn" onclick="toggleStory()"><span class="story-btn-icon">&#128214;</span> The Montgomery Story</button>
+    <button class="story-header-btn" onclick="toggleStory()" aria-label="Open The Montgomery Story"><span class="story-btn-icon" aria-hidden="true">&#128214;</span> The Montgomery Story</button>
   </div>
 </header>
 
 <!-- ═══ STATE BREADCRUMB ═══ -->
-<div class="state-bar" id="stateBar">
-  <span class="state-dot" id="stateDot" style="background:#3182ce"></span>
+<div class="state-bar" id="stateBar" role="status" aria-live="polite" aria-label="Current data view">
+  <span class="state-dot" id="stateDot" style="background:#3182ce" aria-hidden="true"></span>
   <span>Layer:</span> <strong id="stateLayer">Business Vitality</strong>
-  <span style="margin:0 4px;color:#334155">·</span>
+  <span style="margin:0 4px;color:#334155" aria-hidden="true">·</span>
   <span id="stateHood" style="color:#475569">No neighborhood selected</span>
 </div>
 
 <!-- ═══ NAVIGATION BANNER ═══ -->
-<div class="nav-banner" id="navBanner">
-  <span class="nav-banner-icon">&#128161;</span>
+<div class="nav-banner" id="navBanner" role="alert" aria-label="Navigation instructions">
+  <span class="nav-banner-icon" aria-hidden="true">&#128161;</span>
   <span class="nav-banner-text">Click on a <strong style="color:#d69e2e">neighborhood circle</strong> to explore its story. Use the tabs &mdash; <strong style="color:#e2e8f0">Then</strong>, <strong style="color:#e2e8f0">Now</strong>, <strong style="color:#e2e8f0">Tomorrow</strong> &mdash; to navigate through history, present-day data, and community participation.</span>
-  <button class="nav-banner-dismiss" onclick="dismissNavBanner()">&times;</button>
+  <button class="nav-banner-dismiss" onclick="dismissNavBanner()" aria-label="Dismiss navigation instructions">&times;</button>
 </div>
 
 <!-- ═══ SIDEBAR ═══ -->
-<aside class="sidebar">
+<nav class="sidebar" role="navigation" aria-label="Neighborhood and data layer navigation">
   <div class="sidebar-section">
-    <button class="sidebar-toggle" onclick="toggleSidebarSection('hoods')">Neighborhoods <span class="toggle-icon">&#9660;</span></button>
-    <div class="sidebar-section-content" id="hoods-content">
-      <ul class="hood-list" id="hoodList"></ul>
+    <button class="sidebar-toggle" onclick="toggleSidebarSection('hoods')" aria-expanded="true" aria-controls="hoods-content">Neighborhoods <span class="toggle-icon" aria-hidden="true">&#9660;</span></button>
+    <div class="sidebar-section-content" id="hoods-content" role="list" aria-label="Neighborhood list">
+      <ul class="hood-list" id="hoodList" role="listbox" aria-label="Select a neighborhood"></ul>
     </div>
   </div>
 
   <div class="sidebar-section">
-    <button class="sidebar-toggle" onclick="toggleSidebarSection('layers')">Data Layers <span class="toggle-icon">&#9660;</span></button>
-    <div class="sidebar-section-content" id="layers-content">
+    <button class="sidebar-toggle" onclick="toggleSidebarSection('layers')" aria-expanded="false" aria-controls="layers-content">Data Layers <span class="toggle-icon" aria-hidden="true">&#9660;</span></button>
+    <div class="sidebar-section-content" id="layers-content" role="group" aria-label="Data layer controls">
       <div class="layer-btn-wrap">
-        <button class="layer-btn active" data-layer="vitality" onclick="setLayer('vitality')">
-          <span class="layer-icon" style="background:#3182ce"></span> Business Vitality
+        <button class="layer-btn active" data-layer="vitality" onclick="setLayer('vitality')" aria-pressed="true" aria-label="Business Vitality layer — new business openings vs. closures">
+          <span class="layer-icon" style="background:#3182ce" aria-hidden="true"></span> Business Vitality
         </button>
-        <div class="layer-tooltip">New business openings vs. closures and average Yelp ratings by neighborhood.</div>
+        <div class="layer-tooltip" role="tooltip">New business openings vs. closures and average Yelp ratings by neighborhood.</div>
       </div>
       <div class="layer-btn-wrap">
-        <button class="layer-btn" data-layer="safety" onclick="setLayer('safety')">
-          <span class="layer-icon" style="background:#38a169"></span> Safety Profile
+        <button class="layer-btn" data-layer="safety" onclick="setLayer('safety')" aria-pressed="false" aria-label="Safety Profile layer — crime rates vs. perception">
+          <span class="layer-icon" style="background:#38a169" aria-hidden="true"></span> Safety Profile
         </button>
-        <div class="layer-tooltip">Crime rates compared with media coverage and public perception.</div>
+        <div class="layer-tooltip" role="tooltip">Crime rates compared with media coverage and public perception.</div>
       </div>
       <div class="layer-btn-wrap">
-        <button class="layer-btn" data-layer="spaces" onclick="setLayer('spaces')">
-          <span class="layer-icon" style="background:#68d391"></span> Parks &amp; Trails
+        <button class="layer-btn" data-layer="spaces" onclick="setLayer('spaces')" aria-pressed="false" aria-label="Parks and Trails layer — utilization rates">
+          <span class="layer-icon" style="background:#68d391" aria-hidden="true"></span> Parks &amp; Trails
         </button>
-        <div class="layer-tooltip">Park and trail utilization rates across the city.</div>
+        <div class="layer-tooltip" role="tooltip">Park and trail utilization rates across the city.</div>
       </div>
       <div class="layer-btn-wrap">
-        <button class="layer-btn" data-layer="development" onclick="setLayer('development')">
-          <span class="layer-icon" style="background:#dd6b20"></span> Development
+        <button class="layer-btn" data-layer="development" onclick="setLayer('development')" aria-pressed="false" aria-label="Development layer — construction permits and projects">
+          <span class="layer-icon" style="background:#dd6b20" aria-hidden="true"></span> Development
         </button>
-        <div class="layer-tooltip">Active construction permits and major infrastructure projects.</div>
+        <div class="layer-tooltip" role="tooltip">Active construction permits and major infrastructure projects.</div>
       </div>
       <div class="layer-btn-wrap">
-        <button class="layer-btn" data-layer="civic" onclick="setLayer('civic')">
-          <span class="layer-icon" style="background:#805ad5"></span> 311 Civic
+        <button class="layer-btn" data-layer="civic" onclick="setLayer('civic')" aria-pressed="false" aria-label="311 Civic layer — city response times">
+          <span class="layer-icon" style="background:#805ad5" aria-hidden="true"></span> 311 Civic
         </button>
-        <div class="layer-tooltip">Average city response time to resident 311 service requests.</div>
+        <div class="layer-tooltip" role="tooltip">Average city response time to resident 311 service requests.</div>
       </div>
     </div>
   </div>
 
   <div class="sidebar-links">
-    <a onclick="toggleLegend()">Legend</a>
-    <a onclick="toggleAbout()">About &amp; Sources</a>
+    <button class="sidebar-link-btn" onclick="toggleLegend()" style="background:none;border:none;color:#475569;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;padding:0" aria-label="Show map legend">Legend</button>
+    <button class="sidebar-link-btn" onclick="toggleAbout()" style="background:none;border:none;color:#475569;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;padding:0" aria-label="About and data sources">About &amp; Sources</button>
   </div>
-</aside>
-<button class="sidebar-collapse-btn" id="sidebarCollapseBtn" onclick="toggleSidebar()" title="Toggle sidebar">◀</button>
+</nav>
+<button class="sidebar-collapse-btn" id="sidebarCollapseBtn" onclick="toggleSidebar()" aria-label="Toggle sidebar navigation" aria-expanded="true">◀</button>
 
 <!-- ═══ LEGEND POPUP ═══ -->
-<div class="legend-popup" id="legendPopup">
+<div class="legend-popup" id="legendPopup" role="complementary" aria-label="Map legend">
   <h4 id="legendTitle">Legend</h4>
   <div id="legendContent"></div>
 </div>
 
 <!-- ═══ ABOUT MODAL ═══ -->
-<div class="about-modal" id="aboutModal">
+<div class="about-modal" id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
   <div class="about-box">
-    <button class="btn-close" onclick="toggleAbout()" style="top:12px;right:12px">&times;</button>
-    <h3>About Discover Montgomery</h3>
+    <button class="btn-close" onclick="toggleAbout()" style="top:12px;right:12px" aria-label="Close about dialog">&times;</button>
+    <h3 id="aboutTitle">About Discover Montgomery</h3>
     <p>A civic intelligence platform that combines city open data with web-scraped insights to help residents, visitors, investors, and explorers understand Montgomery's neighborhoods.</p>
     <p><strong style="color:#cbd5e1">Data Sources</strong></p>
-    <p><a href="https://opendata.montgomeryal.gov/" target="_blank">City of Montgomery Open Data Portal</a> — business licenses, crime mapping, 311 requests, permits, recreation data.</p>
-    <p>Restaurant, review &amp; sentiment data via <a href="https://brightdata.com" target="_blank">Bright Data</a> web scraping API (Yelp, Google, news sources).</p>
+    <p><a href="https://opendata.montgomeryal.gov/" target="_blank" rel="noopener">City of Montgomery Open Data Portal</a> — business licenses, crime mapping, 311 requests, permits, recreation data.</p>
+    <p>Restaurant, review &amp; sentiment data via <a href="https://brightdata.com" target="_blank" rel="noopener">Bright Data</a> web scraping API (Yelp, Google, news sources).</p>
     <p style="font-size:11px;color:#475569;margin-top:16px">Built for the Montgomery Civic Tech Hackathon.</p>
   </div>
 </div>
 
 <!-- ═══ INSIGHTS PANEL ═══ -->
-<div class="insights-panel" id="insightsPanel">
-  <span class="insights-icon">&#128161;</span>
+<div class="insights-panel" id="insightsPanel" role="status" aria-live="polite" aria-label="Data insight">
+  <span class="insights-icon" aria-hidden="true">&#128161;</span>
   <div class="insights-text" id="insightsText"></div>
-  <button class="insights-close" onclick="hideInsights()">&times;</button>
+  <button class="insights-close" onclick="hideInsights()" aria-label="Dismiss insight">&times;</button>
 </div>
 
 <!-- ═══ MAP INFO ═══ -->
-<button class="map-info-btn" id="mapInfoBtn" onclick="toggleMapInfo()">&#9432;</button>
-<div class="map-info-card" id="mapInfoCard">
+<button class="map-info-btn" id="mapInfoBtn" onclick="toggleMapInfo()" aria-label="Map information" aria-expanded="false" aria-controls="mapInfoCard">&#9432;</button>
+<div class="map-info-card" id="mapInfoCard" role="tooltip">
   Each neighborhood is shaded by the selected data layer. <strong style="color:#e2e8f0">Darker color = stronger signal.</strong> For example, on the Safety layer, green means lower crime. Click any neighborhood for full details.<br><br>
-  <a style="color:#d69e2e;cursor:pointer" onclick="toggleLegend()">View legend</a>
+  <button style="color:#d69e2e;cursor:pointer;background:none;border:none;font-size:12px;font-family:'Inter',sans-serif;padding:0" onclick="toggleLegend()" aria-label="View map legend">View legend</button>
 </div>
 
 <!-- ═══ MAP ═══ -->
-<div id="map"></div>
+<div id="map" role="application" aria-label="Interactive map of Montgomery neighborhoods"></div>
 
 <!-- ═══ DETAIL PANEL ═══ -->
-<div class="detail-panel" id="detailPanel">
-  <button class="btn-close" onclick="closePanel()">&times;</button>
+<div class="detail-panel" id="detailPanel" role="region" aria-label="Neighborhood details" aria-hidden="true">
+  <button class="btn-close" onclick="closePanel()" aria-label="Close neighborhood details">&times;</button>
   <div class="detail-header" id="detailHeader"></div>
-  <div class="tabs" id="tabBar"></div>
+  <div class="tabs" id="tabBar" role="tablist" aria-label="Neighborhood timeline"></div>
   <div id="tabContent"></div>
 </div>
 
 <!-- ═══ STORY OVERLAY ═══ -->
-<div class="story-overlay" id="storyOverlay">
-  <button class="btn-close" onclick="toggleStory()" style="z-index:2001">&times;</button>
+<div class="story-overlay" id="storyOverlay" role="dialog" aria-modal="true" aria-label="The Montgomery Story" aria-hidden="true">
+  <button class="btn-close" onclick="toggleStory()" style="z-index:2001" aria-label="Close The Montgomery Story">&times;</button>
   <div class="story-content">
     <div style="background:rgba(214,158,46,.06);border:1px solid rgba(214,158,46,.15);border-radius:8px;padding:12px 16px;margin-bottom:36px;font-size:12px;color:#94a3b8;line-height:1.5">
       The map shows what's happening now. The stories below explain how we got here &mdash; and why certain neighborhoods matter in the history of civil rights and civic change.
@@ -517,8 +688,8 @@ canvas{max-width:100%!important;max-height:180px!important}
       <p>On December 1, 1955, Rosa Parks refused to give up her seat on a Montgomery city bus. What followed was a 381-day boycott that galvanized the nation and launched a 26-year-old pastor named Martin Luther King Jr. into the national spotlight.</p>
       <p>The boycott wasn't spontaneous. It was organized, strategic, and sustained by tens of thousands of ordinary people who walked to work, carpooled, and sacrificed for over a year.</p>
       <div class="story-landmark-grid">
-        <div class="story-landmark-card"><h4>Rosa Parks Museum</h4><p>Located at the site where Rosa Parks was arrested. Interactive exhibits tell the full story of the boycott.</p><a class="view-on-map" onclick="viewOnMap(32.3810,-86.3120,'Rosa Parks Museum')">View on map &rarr;</a></div>
-        <div class="story-landmark-card"><h4>Dexter Ave King Memorial Church</h4><p>Where Dr. King served as pastor and helped organize the boycott.</p><a class="view-on-map" onclick="viewOnMap(32.3773,-86.3065,'Dexter Ave King Memorial Baptist Church')">View on map &rarr;</a></div>
+        <div class="story-landmark-card"><h4>Rosa Parks Museum</h4><p>Located at the site where Rosa Parks was arrested. Interactive exhibits tell the full story of the boycott.</p><button class="view-on-map" onclick="viewOnMap(32.3810,-86.3120,'Rosa Parks Museum')">View on map &rarr;</button></div>
+        <div class="story-landmark-card"><h4>Dexter Ave King Memorial Church</h4><p>Where Dr. King served as pastor and helped organize the boycott.</p><button class="view-on-map" onclick="viewOnMap(32.3773,-86.3065,'Dexter Ave King Memorial Baptist Church')">View on map &rarr;</button></div>
       </div>
     </div>
     <div class="story-divider"></div>
@@ -527,7 +698,7 @@ canvas{max-width:100%!important;max-height:180px!important}
       <h2>The Freedom Riders</h2>
       <p>In May 1961, Freedom Riders arrived at Montgomery's Greyhound bus station, testing the Supreme Court's ruling against segregated interstate travel. They were met with violence, but they didn't stop.</p>
       <div class="story-landmark-grid">
-        <div class="story-landmark-card"><h4>Freedom Rides Museum</h4><p>The restored Greyhound station where the Riders arrived.</p><a class="view-on-map" onclick="viewOnMap(32.3818,-86.3105,'Freedom Rides Museum')">View on map &rarr;</a></div>
+        <div class="story-landmark-card"><h4>Freedom Rides Museum</h4><p>The restored Greyhound station where the Riders arrived.</p><button class="view-on-map" onclick="viewOnMap(32.3818,-86.3105,'Freedom Rides Museum')">View on map &rarr;</button></div>
         <div class="story-landmark-card"><h4>First Baptist Church</h4><p>Where 1,500 people gathered with Dr. King as a mob surrounded the church.</p></div>
       </div>
     </div>
@@ -537,7 +708,7 @@ canvas{max-width:100%!important;max-height:180px!important}
       <h2>Selma to Montgomery Marches</h2>
       <p>The 54-mile march from Selma to Montgomery for voting rights ended on the steps of the Alabama State Capitol on March 25, 1965. Dr. King addressed 25,000 marchers. Five months later, President Johnson signed the Voting Rights Act.</p>
       <div class="story-landmark-grid">
-        <div class="story-landmark-card"><h4>Alabama State Capitol</h4><p>The endpoint of the march. The bronze star marks where Jefferson Davis stood, and where King triumphed.</p><a class="view-on-map" onclick="viewOnMap(32.3770,-86.3003,'Alabama State Capitol')">View on map &rarr;</a></div>
+        <div class="story-landmark-card"><h4>Alabama State Capitol</h4><p>The endpoint of the march. The bronze star marks where Jefferson Davis stood, and where King triumphed.</p><button class="view-on-map" onclick="viewOnMap(32.3770,-86.3003,'Alabama State Capitol')">View on map &rarr;</button></div>
         <div class="story-landmark-card"><h4>Civil Rights Memorial</h4><p>Designed by Maya Lin. Water flows over the names of 40 martyrs.</p></div>
       </div>
     </div>
@@ -548,30 +719,30 @@ canvas{max-width:100%!important;max-height:180px!important}
       <p>Montgomery is a city in motion. Downtown is experiencing a renaissance. The National Memorial for Peace and Justice, opened in 2018, confronts the legacy of racial terror and has drawn visitors from around the world.</p>
       <p>Discover Montgomery was built to make the city's data visible, accessible, and human. Because a city isn't just its numbers. It's its story.</p>
       <div class="story-landmark-grid">
-        <div class="story-landmark-card"><h4>National Memorial for Peace and Justice</h4><p>The nation's first memorial dedicated to victims of lynching.</p><a class="view-on-map" onclick="viewOnMap(32.3722,-86.3145,'National Memorial for Peace and Justice')">View on map &rarr;</a></div>
-        <div class="story-landmark-card"><h4>Legacy Museum</h4><p>From enslavement to mass incarceration. Tracing the through-line of racial injustice.</p><a class="view-on-map" onclick="viewOnMap(32.3795,-86.3100,'Legacy Museum')">View on map &rarr;</a></div>
+        <div class="story-landmark-card"><h4>National Memorial for Peace and Justice</h4><p>The nation's first memorial dedicated to victims of lynching.</p><button class="view-on-map" onclick="viewOnMap(32.3722,-86.3145,'National Memorial for Peace and Justice')">View on map &rarr;</button></div>
+        <div class="story-landmark-card"><h4>Legacy Museum</h4><p>From enslavement to mass incarceration. Tracing the through-line of racial injustice.</p><button class="view-on-map" onclick="viewOnMap(32.3795,-86.3100,'Legacy Museum')">View on map &rarr;</button></div>
       </div>
     </div>
   </div>
 </div>
 
 <!-- ═══ POI TOGGLE BAR ═══ -->
-<div class="poi-toggle-bar panel-closed" id="poiBar">
-  <button class="poi-btn active" data-poi="landmarks" onclick="togglePOI('landmarks')" title="Historic Landmarks"><span class="poi-dot" style="background:#d4a017"></span> Landmarks</button>
-  <button class="poi-btn active" data-poi="parks" onclick="togglePOI('parks')" title="Parks"><span class="poi-dot" style="background:#0d9488"></span> Parks</button>
-  <button class="poi-btn active" data-poi="trails" onclick="togglePOI('trails')" title="Trails"><span class="poi-dot" style="background:#06b6d4"></span> Trails</button>
-  <button class="poi-btn" data-poi="parking" onclick="togglePOI('parking')" title="Parking"><span class="poi-dot" style="background:#6366f1"></span> Parking</button>
-  <button class="poi-btn" data-poi="restaurants" onclick="togglePOI('restaurants')" title="Restaurants"><span class="poi-dot" style="background:#e11d48"></span> Dining</button>
+<div class="poi-toggle-bar panel-closed" id="poiBar" role="toolbar" aria-label="Map point-of-interest toggles">
+  <button class="poi-btn active" data-poi="landmarks" onclick="togglePOI('landmarks')" aria-pressed="true" aria-label="Toggle landmarks on map"><span class="poi-dot" style="background:#d4a017" aria-hidden="true"></span> Landmarks</button>
+  <button class="poi-btn active" data-poi="parks" onclick="togglePOI('parks')" aria-pressed="true" aria-label="Toggle parks on map"><span class="poi-dot" style="background:#0d9488" aria-hidden="true"></span> Parks</button>
+  <button class="poi-btn active" data-poi="trails" onclick="togglePOI('trails')" aria-pressed="true" aria-label="Toggle trails on map"><span class="poi-dot" style="background:#06b6d4" aria-hidden="true"></span> Trails</button>
+  <button class="poi-btn" data-poi="parking" onclick="togglePOI('parking')" aria-pressed="false" aria-label="Toggle parking on map"><span class="poi-dot" style="background:#6366f1" aria-hidden="true"></span> Parking</button>
+  <button class="poi-btn" data-poi="restaurants" onclick="togglePOI('restaurants')" aria-pressed="false" aria-label="Toggle restaurants on map"><span class="poi-dot" style="background:#e11d48" aria-hidden="true"></span> Dining</button>
 </div>
 
 <!-- ═══ COMPARISON BAR ═══ -->
-<div class="comparison-bar panel-closed" id="comparisonBar">
-  <div class="comparison-header"><span>Comparing Neighborhoods</span><button class="btn-compare-reset" onclick="clearComparison()">Clear all</button></div>
+<div class="comparison-bar panel-closed" id="comparisonBar" role="region" aria-label="Neighborhood comparison">
+  <div class="comparison-header"><span>Comparing Neighborhoods</span><button class="btn-compare-reset" onclick="clearComparison()" aria-label="Clear all comparisons">Clear all</button></div>
   <div class="comparison-hoods" id="comparisonHoods"></div>
 </div>
 
 <!-- ═══ TOAST ═══ -->
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="alert" aria-live="assertive"></div>
 
 <!-- ═══ LOADING SCREEN ═══ -->
 <div class="loading-screen" id="loadingScreen">
@@ -587,33 +758,33 @@ canvas{max-width:100%!important;max-height:180px!important}
     <p class="hero-sub">More than data &mdash; a city of stories. From the courage of 1955 to the new businesses opening today.</p>
     <button class="hero-story-btn" onclick="openStoryFromHero()"><span class="hero-story-icon">&#128214;</span> The Montgomery Story</button>
     <p style="font-size:12px;color:#64748b;margin-bottom:18px;text-transform:uppercase;letter-spacing:2px">How would you like to explore?</p>
-    <div class="intent-grid">
-      <div class="intent-card" onclick="selectIntent('resident')">
-        <div class="intent-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+    <div class="intent-grid" role="group" aria-label="Choose how to explore Montgomery">
+      <div class="intent-card" onclick="selectIntent('resident')" role="button" tabindex="0" aria-label="Living — Shape the future of your neighborhood">
+        <div class="intent-card-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
         <h3>Living</h3>
         <p>Shape the future of your neighborhood</p>
-        <span class="intent-card-arrow">&rarr;</span>
+        <span class="intent-card-arrow" aria-hidden="true">&rarr;</span>
       </div>
-      <div class="intent-card" onclick="selectIntent('investing')">
-        <div class="intent-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+      <div class="intent-card" onclick="selectIntent('investing')" role="button" tabindex="0" aria-label="Investing — See where Montgomery is growing">
+        <div class="intent-card-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
         <h3>Investing</h3>
         <p>See where Montgomery is growing</p>
-        <span class="intent-card-arrow">&rarr;</span>
+        <span class="intent-card-arrow" aria-hidden="true">&rarr;</span>
       </div>
-      <div class="intent-card" onclick="selectIntent('exploring')">
-        <div class="intent-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
+      <div class="intent-card" onclick="selectIntent('exploring')" role="button" tabindex="0" aria-label="Exploring — Discover stories behind every neighborhood">
+        <div class="intent-card-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
         <h3>Exploring</h3>
         <p>Discover stories behind every neighborhood</p>
-        <span class="intent-card-arrow">&rarr;</span>
+        <span class="intent-card-arrow" aria-hidden="true">&rarr;</span>
       </div>
-      <div class="intent-card" onclick="selectIntent('visiting')">
-        <div class="intent-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <div class="intent-card" onclick="selectIntent('visiting')" role="button" tabindex="0" aria-label="Visiting — Find gems, landmarks, and local spots">
+        <div class="intent-card-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <h3>Visiting</h3>
         <p>Find gems, landmarks, and local spots</p>
-        <span class="intent-card-arrow">&rarr;</span>
+        <span class="intent-card-arrow" aria-hidden="true">&rarr;</span>
       </div>
     </div>
-    <p class="hero-skip"><a onclick="selectIntent('exploring')">or explore everything &rarr;</a></p>
+    <p class="hero-skip"><button onclick="selectIntent('exploring')" style="background:none;border:none;color:#64748b;font-size:inherit;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:underline;text-underline-offset:2px" aria-label="Skip selection and explore everything">or explore everything &rarr;</button></p>
   </div>
 </div>
 
@@ -885,7 +1056,7 @@ function renderNeighborhoods() {
   });
 }
 function renderSidebar() {
-  document.getElementById('hoodList').innerHTML=NEIGHBORHOODS.map(h=>`<li class="hood-item ${activeHood===h.id?'active':''}" onclick="selectNeighborhood('${h.id}')"><span class="hood-dot" style="background:${getLayerColor(h,activeLayer)}"></span>${h.name}</li>`).join('');
+  document.getElementById('hoodList').innerHTML=NEIGHBORHOODS.map(h=>`<li class="hood-item ${activeHood===h.id?'active':''}" role="option" aria-selected="${activeHood===h.id}" tabindex="0" onclick="selectNeighborhood('${h.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectNeighborhood('${h.id}')}"><span class="hood-dot" style="background:${getLayerColor(h,activeLayer)}" aria-hidden="true"></span>${h.name}</li>`).join('');
 }
 function renderLegendContent() {
   const legends={vitality:[['#38a169','Growth 8%+'],['#d69e2e','Growth 5-8%'],['#e53e3e','Growth < 5%']],safety:[['#38a169','Low Crime (< 20)'],['#d69e2e','Moderate (20-35)'],['#e53e3e','Elevated (35+)']],spaces:[['#38a169','Well-Utilized (65%+)'],['#d69e2e','Moderate (45-65%)'],['#e53e3e','Under-Utilized']],development:[['#dd6b20','Active (15+ permits)'],['#d69e2e','Moderate (8-15)'],['#718096','Low Activity']],civic:[['#38a169','Fast (< 3 days)'],['#d69e2e','Average (3-4.5d)'],['#e53e3e','Slow (4.5d+)']]};
@@ -905,13 +1076,12 @@ function updateStatebar() {
    ═══════════════════════════════════════════════════ */
 function setLayer(layer) {
   activeLayer=layer;
-  document.querySelectorAll('[data-layer]').forEach(b=>b.classList.toggle('active',b.dataset.layer===layer));
+  activeQuestion=null;
+  document.querySelectorAll('[data-layer]').forEach(b=>{b.classList.toggle('active',b.dataset.layer===layer);b.setAttribute('aria-pressed',b.dataset.layer===layer)});
   renderNeighborhoods(); renderSidebar(); renderLegendContent(); updateStatebar();
   if(activeHood){const hood=NEIGHBORHOODS.find(h=>h.id===activeHood); if(hood) openPanel(hood);}
-  if(!activeQuestion){
-    const desc={vitality:'Business Vitality — new openings vs. closures by neighborhood.',safety:'Safety Profile — actual crime rates vs. public perception.',spaces:'Parks & Trails — utilization rates across the city.',development:'Development — active construction permits and projects.',civic:'311 Civic — city response times to service requests.'};
-    if(desc[layer]) showInsights('Viewing: '+desc[layer]);
-  }
+  const desc={vitality:'Business Vitality — new openings vs. closures by neighborhood.',safety:'Safety Profile — actual crime rates vs. public perception.',spaces:'Parks & Trails — utilization rates across the city.',development:'Development — active construction permits and projects.',civic:'311 Civic — city response times to service requests.'};
+  if(desc[layer]) showInsights('Viewing: '+desc[layer]);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -931,21 +1101,33 @@ function selectNeighborhood(id) {
    ═══════════════════════════════════════════════════ */
 function openPanel(hood) {
   const panel=document.getElementById('detailPanel'); panel.classList.add('open');
+  panel.setAttribute('aria-hidden','false');
   Object.values(charts).forEach(c=>c.destroy()); charts={};
   document.getElementById('detailHeader').innerHTML=`
     <h2>${hood.name}</h2>
-    <div class="detail-subtitle">${hood.description}</div>`;
+    <div class="detail-subtitle">${hood.description}</div>
+    <button class="btn-compare-add" onclick="addToComparison('${hood.id}')" aria-label="Add ${hood.name} to comparison">+ Compare</button>`;
   const tabs=['Then','Now','Tomorrow'];
-  document.getElementById('tabBar').innerHTML=tabs.map((t,i)=>`<div class="tab ${i===0?'active':''}" onclick="switchTab(${i},'${hood.id}')">${t}</div>`).join('');
+  const tabIds=['tabpanel-then','tabpanel-now','tabpanel-tomorrow'];
+  document.getElementById('tabBar').innerHTML=tabs.map((t,i)=>`<button class="tab ${i===0?'active':''}" role="tab" aria-selected="${i===0}" aria-controls="${tabIds[i]}" tabindex="${i===0?'0':'-1'}" onclick="switchTab(${i},'${hood.id}')">${t}</button>`).join('');
   renderTabContent(hood);
   document.getElementById('poiBar').className='poi-toggle-bar panel-open';
   document.getElementById('comparisonBar').classList.add('panel-open');
   document.getElementById('comparisonBar').classList.remove('panel-closed');
   hideInsights();
+  // On mobile, close sidebar when panel opens
+  if(isMobileView()&&sidebarOpen){toggleSidebar()}
 }
 function switchTab(idx,hoodId) {
-  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
-  document.querySelectorAll('.tab-content').forEach((c,i)=>c.classList.toggle('active',i===idx));
+  document.querySelectorAll('.tab').forEach((t,i)=>{
+    t.classList.toggle('active',i===idx);
+    t.setAttribute('aria-selected',i===idx);
+    t.setAttribute('tabindex',i===idx?'0':'-1');
+  });
+  document.querySelectorAll('.tab-content').forEach((c,i)=>{
+    c.classList.toggle('active',i===idx);
+    c.setAttribute('aria-hidden',i!==idx);
+  });
   const hood=NEIGHBORHOODS.find(h=>h.id===hoodId);
   if(idx===1&&hood) setTimeout(()=>renderSafetyChart(hood),50);
 }
@@ -965,7 +1147,7 @@ function renderTabContent(hood) {
   
   document.getElementById('tabContent').innerHTML=`
     <!-- THEN -->
-    <div class="tab-content active">
+    <div class="tab-content active" id="tabpanel-then" role="tabpanel" aria-label="Then — History" aria-hidden="false">
       <h3 style="font-family:'Playfair Display',serif;font-size:19px;color:#fff;margin-bottom:8px">${hood.history.title}</h3>
       <p class="neighborhood-narrative">${hood.history.text}</p>
       <div class="section-head">Key Historic Sites</div>
@@ -978,7 +1160,7 @@ function renderTabContent(hood) {
       ` : ''}
     </div>
     <!-- NOW -->
-    <div class="tab-content">
+    <div class="tab-content" id="tabpanel-now" role="tabpanel" aria-label="Now — Present day" aria-hidden="true">
       <p class="neighborhood-narrative">${hood.narrative || hood.description}</p>
       ${hood.voices && hood.voices.length ? `
         <div class="section-head">What Residents Say</div>
@@ -1012,7 +1194,7 @@ function renderTabContent(hood) {
       ${hood.parking.map(p=>`<div class="parking-card"><div><div class="parking-name">${p.name}</div><div style="font-size:10px;color:#64748b">${p.type}</div></div><div class="parking-info"><div>${p.spots} spots</div><div>${p.rate}</div></div></div>`).join('')}
     </div>
     <!-- TOMORROW -->
-    <div class="tab-content">
+    <div class="tab-content" id="tabpanel-tomorrow" role="tabpanel" aria-label="Tomorrow — Community voice" aria-hidden="true">
       <p class="tomorrow-intro">Montgomery's story isn't finished. Every neighborhood has a future shaped by the people who live, work, and care about it. This is your space to contribute.</p>
       <div class="participation-counter">&#127793; <strong>${participationCount}</strong>&nbsp;neighbors have shared their voice about ${hood.name}</div>
       
@@ -1063,7 +1245,9 @@ function renderSafetyChart(hood) {
   charts.safety=new Chart(ctx,{type:'radar',data:{labels:['Crime Rate','Perception','Media','YoY Change','Safety Trend'],datasets:[{label:'Actual',data:[hood.safety.crimeRate,hood.safety.crimeRate*.9,hood.safety.crimeRate*.8,Math.abs(hood.safety.crimeChange)*2,(100-hood.safety.crimeRate)],borderColor:'#38a169',backgroundColor:'rgba(56,161,105,0.1)',pointBackgroundColor:'#38a169'},{label:'Perceived',data:[hood.safety.perception,hood.safety.perception,hood.safety.mediaIndex,hood.safety.mediaIndex*.6,(100-hood.safety.perception)],borderColor:'#e53e3e',backgroundColor:'rgba(229,62,62,0.1)',pointBackgroundColor:'#e53e3e'}]},options:{responsive:true,plugins:{legend:{labels:{color:'#94a3b8',font:{size:10}}}},scales:{r:{beginAtZero:true,grid:{color:'rgba(255,255,255,0.06)'},pointLabels:{color:'#64748b',font:{size:9}},ticks:{display:false}}}}});
 }
 function closePanel() {
-  document.getElementById('detailPanel').classList.remove('open');
+  const panel=document.getElementById('detailPanel');
+  panel.classList.remove('open');
+  panel.setAttribute('aria-hidden','true');
   activeHood=null; renderNeighborhoods(); renderSidebar(); updateStatebar();
   map.flyTo([32.375,-86.295],13,{duration:.5});
   document.getElementById('poiBar').className='poi-toggle-bar panel-closed';
@@ -1074,7 +1258,13 @@ function closePanel() {
 /* ═══════════════════════════════════════════════════
    STORY
    ═══════════════════════════════════════════════════ */
-function toggleStory(){document.getElementById('storyOverlay').classList.toggle('open')}
+function toggleStory(){
+  const overlay=document.getElementById('storyOverlay');
+  overlay.classList.toggle('open');
+  const isOpen=overlay.classList.contains('open');
+  overlay.setAttribute('aria-hidden',!isOpen);
+  if(isOpen){const closeBtn=overlay.querySelector('.btn-close');if(closeBtn)closeBtn.focus()}
+}
 function openStoryFromHero(){
   const hero=document.getElementById('heroOverlay');
   hero.classList.add('hiding');
@@ -1107,6 +1297,7 @@ function togglePOI(type){
   const btn=document.querySelector(`.poi-btn[data-poi="${type}"]`);
   if(poiState[type]){poiLayers[type].addTo(map);btn.classList.add('active')}
   else{map.removeLayer(poiLayers[type]);btn.classList.remove('active')}
+  btn.setAttribute('aria-pressed',poiState[type]);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -1132,10 +1323,11 @@ function initQuestionDropdown(){
 function toggleQuestionDropdown(){
   const dd=document.getElementById('questionDropdown'),btn=document.getElementById('questionTrigger');
   const isOpen=dd.classList.contains('visible');
-  if(isOpen){dd.classList.remove('visible');btn.classList.remove('active');return}
-  dd.innerHTML='<div class="question-section-label">Ask Montgomery</div>'+Object.entries(QUESTION_LABELS).map(([k,l])=>`<div class="question-result" onclick="selectQuestionFromDropdown('${k}')"><span class="question-result-icon">&#10067;</span><span>${l}</span></div>`).join('');
+  if(isOpen){dd.classList.remove('visible');btn.classList.remove('active');btn.setAttribute('aria-expanded','false');return}
+  dd.innerHTML='<div class="question-section-label" role="presentation">Ask Montgomery</div>'+Object.entries(QUESTION_LABELS).map(([k,l])=>`<button class="question-result" role="option" onclick="selectQuestionFromDropdown('${k}')" aria-label="${l}"><span class="question-result-icon" aria-hidden="true">&#10067;</span><span>${l}</span></button>`).join('');
   dd.classList.add('visible');
   btn.classList.add('active');
+  btn.setAttribute('aria-expanded','true');
 }
 function selectQuestionFromDropdown(key){
   document.getElementById('questionDropdown').classList.remove('visible');
@@ -1171,24 +1363,61 @@ function renderComparison(){
   const bar=document.getElementById('comparisonBar'),container=document.getElementById('comparisonHoods');
   if(!comparisonHoods.size){bar.classList.remove('visible');return}
   bar.classList.add('visible');
-  container.innerHTML=[...comparisonHoods].map(id=>{const h=NEIGHBORHOODS.find(n=>n.id===id);return`<div class="comparison-card"><button class="btn-compare-remove" onclick="removeFromComparison('${id}')">&times;</button><div class="comparison-card-name">${h.name}</div><div class="comparison-stat"><span>Growth</span><strong style="color:${h.business.netGrowth>=8?'#68d391':'#d69e2e'}">${h.business.netGrowth}%</strong></div><div class="comparison-stat"><span>Crime</span><strong>${h.safety.crimeRate}</strong></div><div class="comparison-stat"><span>311</span><strong>${h.civic.avgResDays}d</strong></div><div class="comparison-stat"><span>Permits</span><strong>${h.development.permits}</strong></div></div>`}).join('');
+  container.innerHTML=[...comparisonHoods].map(id=>{const h=NEIGHBORHOODS.find(n=>n.id===id);return`<div class="comparison-card" role="group" aria-label="${h.name} comparison"><button class="btn-compare-remove" onclick="removeFromComparison('${id}')" aria-label="Remove ${h.name} from comparison">&times;</button><div class="comparison-card-name">${h.name}</div><div class="comparison-stat"><span>Growth</span><strong style="color:${h.business.netGrowth>=8?'#68d391':'#d69e2e'}">${h.business.netGrowth}%</strong></div><div class="comparison-stat"><span>Crime</span><strong>${h.safety.crimeRate}</strong></div><div class="comparison-stat"><span>311</span><strong>${h.civic.avgResDays}d</strong></div><div class="comparison-stat"><span>Permits</span><strong>${h.development.permits}</strong></div></div>`}).join('');
 }
 
 /* ═══════════════════════════════════════════════════
-   SIDEBAR COLLAPSE / EXPAND
+   SIDEBAR COLLAPSE / EXPAND (responsive-aware)
    ═══════════════════════════════════════════════════ */
 let sidebarOpen=true;
+function isMobileView(){return window.innerWidth<1024}
 function toggleSidebar(){
   sidebarOpen=!sidebarOpen;
   const sb=document.querySelector('.sidebar'),btn=document.getElementById('sidebarCollapseBtn'),stateBar=document.querySelector('.state-bar'),poiBar=document.getElementById('poiBar'),legendP=document.getElementById('legendPopup'),navBanner=document.getElementById('navBanner');
-  sb.classList.toggle('hidden',!sidebarOpen);
-  btn.classList.toggle('shifted',!sidebarOpen);
+  if(isMobileView()){
+    sb.classList.toggle('visible-mobile',sidebarOpen);
+    btn.classList.toggle('sidebar-open-mobile',sidebarOpen);
+    stateBar.classList.toggle('sidebar-visible-mobile',sidebarOpen);
+    poiBar.classList.toggle('sidebar-visible-mobile',sidebarOpen);
+    if(navBanner)navBanner.classList.toggle('sidebar-visible-mobile',sidebarOpen);
+  } else {
+    sb.classList.toggle('hidden',!sidebarOpen);
+    btn.classList.toggle('shifted',!sidebarOpen);
+    stateBar.classList.toggle('sidebar-hidden',!sidebarOpen);
+    poiBar.classList.toggle('sidebar-hidden',!sidebarOpen);
+    if(navBanner)navBanner.classList.toggle('sidebar-hidden',!sidebarOpen);
+  }
   btn.innerHTML=sidebarOpen?'◀':'▶';
-  stateBar.classList.toggle('sidebar-hidden',!sidebarOpen);
-  poiBar.classList.toggle('sidebar-hidden',!sidebarOpen);
-  if(navBanner)navBanner.classList.toggle('sidebar-hidden',!sidebarOpen);
+  btn.setAttribute('aria-expanded',sidebarOpen);
   if(legendP)legendP.classList.remove('visible');
   setTimeout(()=>map.invalidateSize(),350);
+}
+function initResponsive(){
+  if(isMobileView()){
+    sidebarOpen=false;
+    const sb=document.querySelector('.sidebar'),btn=document.getElementById('sidebarCollapseBtn');
+    sb.classList.remove('visible-mobile');
+    btn.classList.remove('sidebar-open-mobile');
+    btn.innerHTML='▶';
+    btn.setAttribute('aria-expanded','false');
+  }
+  window.addEventListener('resize',function(){
+    const sb=document.querySelector('.sidebar'),btn=document.getElementById('sidebarCollapseBtn'),stateBar=document.querySelector('.state-bar'),poiBar=document.getElementById('poiBar'),navBanner=document.getElementById('navBanner');
+    // Clean up classes from other mode
+    sb.classList.remove('hidden','visible-mobile');
+    btn.classList.remove('shifted','sidebar-open-mobile');
+    stateBar.classList.remove('sidebar-hidden','sidebar-visible-mobile');
+    poiBar.classList.remove('sidebar-hidden','sidebar-visible-mobile');
+    if(navBanner){navBanner.classList.remove('sidebar-hidden','sidebar-visible-mobile')}
+    if(isMobileView()){
+      sidebarOpen=false;
+      btn.innerHTML='▶';
+    } else {
+      sidebarOpen=true;
+      btn.innerHTML='◀';
+    }
+    setTimeout(()=>map.invalidateSize(),350);
+  });
 }
 
 /* ═══════════════════════════════════════════════════
@@ -1197,14 +1426,25 @@ function toggleSidebar(){
 function toggleSidebarSection(section){
   const btn=event.target.closest('.sidebar-toggle'),content=document.getElementById(section+'-content');
   btn.classList.toggle('collapsed'); content.classList.toggle('collapsed');
+  const isExpanded=!btn.classList.contains('collapsed');
+  btn.setAttribute('aria-expanded',isExpanded);
 }
 
 /* ═══════════════════════════════════════════════════
    LEGEND / ABOUT / MAP INFO
    ═══════════════════════════════════════════════════ */
 function toggleLegend(){renderLegendContent();document.getElementById('legendPopup').classList.toggle('visible')}
-function toggleAbout(){document.getElementById('aboutModal').classList.toggle('visible')}
-function toggleMapInfo(){document.getElementById('mapInfoCard').classList.toggle('visible')}
+function toggleAbout(){
+  const modal=document.getElementById('aboutModal');
+  modal.classList.toggle('visible');
+  const isOpen=modal.classList.contains('visible');
+  if(isOpen){const closeBtn=modal.querySelector('.btn-close');if(closeBtn)closeBtn.focus()}
+}
+function toggleMapInfo(){
+  const card=document.getElementById('mapInfoCard');
+  card.classList.toggle('visible');
+  document.getElementById('mapInfoBtn').setAttribute('aria-expanded',card.classList.contains('visible'));
+}
 document.addEventListener('click',e=>{
   if(!e.target.closest('#mapInfoBtn')&&!e.target.closest('#mapInfoCard'))document.getElementById('mapInfoCard').classList.remove('visible');
   if(!e.target.closest('.legend-popup')&&!e.target.closest('.sidebar-links'))document.getElementById('legendPopup').classList.remove('visible');
@@ -1214,10 +1454,10 @@ document.addEventListener('click',e=>{
    INTENT SYSTEM
    ═══════════════════════════════════════════════════ */
 const INTENTS={
-  exploring:{layer:'vitality',neighborhood:'downtown',pois:['landmarks','parks','trails'],coach:'Each neighborhood tells a story in three chapters: Then (history), Now (what\'s happening), and Tomorrow (community voice). Click any circle to begin.'},
-  visiting:{layer:'vitality',neighborhood:'downtown',pois:['landmarks','parks','trails','restaurants'],coach:'Landmarks, parks, and restaurants are marked on the map. Click any neighborhood and check the Now tab for local dining and the Then tab for history.'},
-  investing:{layer:'development',neighborhood:null,pois:['landmarks'],coach:'Orange = most active development. Click a neighborhood for business data in the Now tab and community priorities in the Tomorrow tab.'},
-  resident:{layer:'safety',neighborhood:null,pois:['landmarks','parks'],coach:'Green = safer areas. Click your neighborhood and visit the Tomorrow tab to share your story and vote on what should change.'}
+  exploring:{layer:'vitality',neighborhood:'downtown',pois:['landmarks','parks','trails']},
+  visiting:{layer:'vitality',neighborhood:'downtown',pois:['landmarks','parks','trails','restaurants']},
+  investing:{layer:'development',neighborhood:null,pois:['landmarks']},
+  resident:{layer:'safety',neighborhood:null,pois:['landmarks','parks']}
 };
 function selectIntent(intent){
   const cfg=INTENTS[intent];
@@ -1329,6 +1569,36 @@ function showToast(msg){
 
 
 /* ═══════════════════════════════════════════════════
+   KEYBOARD ACCESSIBILITY
+   ═══════════════════════════════════════════════════ */
+// Activate intent cards, hood items, and any [role="button"] via Enter/Space
+document.addEventListener('keydown',function(e){
+  const el=e.target;
+  // Enter/Space on role="button" elements (intent cards, etc.)
+  if((e.key==='Enter'||e.key===' ')&&el.getAttribute('role')==='button'){
+    e.preventDefault();el.click();
+  }
+  // Arrow keys for tab navigation in detail panel
+  if(el.getAttribute('role')==='tab'){
+    const tabs=Array.from(el.parentNode.querySelectorAll('[role="tab"]'));
+    let idx=tabs.indexOf(el);
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();idx=(idx+1)%tabs.length;tabs[idx].focus();tabs[idx].click()}
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();idx=(idx-1+tabs.length)%tabs.length;tabs[idx].focus();tabs[idx].click()}
+  }
+  // Escape key — close overlays and panels in order of priority
+  if(e.key==='Escape'){
+    const story=document.getElementById('storyOverlay');
+    const about=document.getElementById('aboutModal');
+    const detail=document.getElementById('detailPanel');
+    const qd=document.getElementById('questionDropdown');
+    if(story&&story.classList.contains('open')){toggleStory();return}
+    if(about&&about.classList.contains('visible')){toggleAbout();return}
+    if(qd&&qd.classList.contains('visible')){toggleQuestionDropdown();return}
+    if(detail&&detail.classList.contains('open')){closePanel();return}
+  }
+});
+
+/* ═══════════════════════════════════════════════════
    INIT
    ═══════════════════════════════════════════════════ */
 renderNeighborhoods();
@@ -1337,11 +1607,12 @@ renderLegendContent();
 buildPOIMarkers();
 updateStatebar();
 initQuestionDropdown();
+initResponsive();
 // Collapse Data Layers by default
 (function(){
   const layersToggle=document.querySelector('[onclick="toggleSidebarSection(\'layers\')"]');
   const layersContent=document.getElementById('layers-content');
-  if(layersToggle) layersToggle.classList.add('collapsed');
+  if(layersToggle){layersToggle.classList.add('collapsed');layersToggle.setAttribute('aria-expanded','false')}
   if(layersContent) layersContent.classList.add('collapsed');
 })();
 map.whenReady(()=>setTimeout(hideLoading,600));
